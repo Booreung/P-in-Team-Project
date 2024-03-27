@@ -8,6 +8,7 @@ public class Main {
         int totalScore = 0;
         Random random = new Random();
         //안녕
+        //sihosiho
 
         for (int frame = 1; frame <= FRAMES; frame++) {
             int firstRoll = roll(random, PINS);
