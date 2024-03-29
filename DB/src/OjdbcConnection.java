@@ -4,9 +4,9 @@ import java.sql.SQLException;
 
 public class OjdbcConnection {
     private static String driverName = "com.mysql.cj.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost:3306/ksm";
-    private static String user = "root";
-    private static String pw = "tmdals1234!";
+    private static String url = "jdbc:mysql://localhost:3306/pin?useSSL=false&allowPublicKeyRetrieval=true&useLegacyAuth=false";
+    private static String user = "sm";
+    private static String pw = "tmdals1234!!";
 
     static {
         try {
@@ -14,6 +14,7 @@ public class OjdbcConnection {
         }
         catch (ClassNotFoundException e){
             e.printStackTrace();
+
         }
     }
 

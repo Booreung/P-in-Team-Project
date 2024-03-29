@@ -26,7 +26,7 @@ public class LoginScreen extends JPanel {
         idField.setFont(idField.getFont().deriveFont(Font.PLAIN, 20)); // 폰트 크기 조절
 
         JLabel pwLabel = new JLabel("비밀번호");
-        JTextField pwField = new JTextField(15);
+        JPasswordField pwField = new JPasswordField(15);
         // 라벨의 폰트 크기 설정
         pwLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20));
         pwField.setPreferredSize(new Dimension(300, 30)); // 가로 크기 조절
@@ -64,8 +64,25 @@ public class LoginScreen extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //여기에 로그인 유효 검사랑 로그인 실패했을때
-                // 알림을 띄어주는 화면이 필요함
-                cardLayout.show(cardPanel,"main");
+                String userId = idField.getText();
+                String password = new String(pwField.getPassword());
+
+                User user = new User();
+                user.setUserId(userId);
+                user.setPassword(password);
+
+                Login_ViewModel loginViewModel = new Login_ViewModel(user);
+                if(loginViewModel.isValidUser()){
+                    // 로그인 성공시 로그인 성공 메세지 후 메인으로 이동
+                    JOptionPane.showMessageDialog(null,"로그인 성공");
+                    cardLayout.show(cardPanel,"main");
+                    System.out.println("로그인 성공 메인화면 호출");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"로그인 실패");
+
+                }
+
             }
         });
         joinBtn.addActionListener(new ActionListener() {
