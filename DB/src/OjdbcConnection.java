@@ -17,7 +17,6 @@ public class OjdbcConnection {
 
         }
     }
-
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url,user,pw);
     }
