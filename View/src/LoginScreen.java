@@ -73,10 +73,13 @@ public class LoginScreen extends JPanel {
 
                 Login_ViewModel loginViewModel = new Login_ViewModel(user);
                 if(loginViewModel.isValidUser()){
+                    //로그인 성공시 해당 사용자 정보를 가져오기
+                    User loggedInUser = DBHelper.getUserInfoFromDB(userId);
                     // 로그인 성공시 로그인 성공 메세지 후 메인으로 이동
                     JOptionPane.showMessageDialog(null,"로그인 성공");
+                    //cardLayout.show(cardPanel,"main");
+                    cardPanel.add(new MainScreen(loggedInUser),"main");
                     cardLayout.show(cardPanel,"main");
-                    System.out.println("로그인 성공 메인화면 호출");
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"로그인 실패");
@@ -89,15 +92,18 @@ public class LoginScreen extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //여기에는 회원가입 화면으로 전환되는 동작
-                System.out.println("회원가입 페이지");
+                SignUpScreen signUpScreen = new SignUpScreen();
+                signUpScreen.setModal(true);
+                signUpScreen.setVisible(true);
             }
         });
         nonloginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //여기는 바로 메인 화면으로 가는데 이름없이 전돨되어야함
-                //그리고 비회원 알림이 있어야 하는지는 고민좀
-                System.out.println("비회원 로그인 성공");
+                JOptionPane.showMessageDialog(null,"비회원 로그인 성공");
+                cardLayout.show(cardPanel,"main");
+                //이름이 없이 전달
             }
         });
 
