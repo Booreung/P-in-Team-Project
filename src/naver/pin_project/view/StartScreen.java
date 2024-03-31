@@ -1,3 +1,5 @@
+package src.naver.pin_project.view;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

@@ -1,7 +1,10 @@
+package src.naver.pin_project.db;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import src.naver.pin_project.data.User;
 
 public class DBHelper {
     //사용자 정보를 DB에서 가져오는 메소드
@@ -19,7 +22,7 @@ public class DBHelper {
             rs = psmt.executeQuery();
 
             if(rs.next()){
-                //사용자 정보를 받아왔으면 바로 User 객체에 저장
+                //사용자 정보를 받아왔으면 바로 src.naver.pin_project.data1.User 객체에 저장
                 user = new User();
                 user.setUserId(rs.getString("userid"));
                 user.setUserName(rs.getString("username"));

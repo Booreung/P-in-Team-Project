@@ -1,3 +1,7 @@
+package src.naver.pin_project.view;
+
+import src.naver.pin_project.viewmodel.SignUp_ViewModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

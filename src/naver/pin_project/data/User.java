@@ -1,3 +1,5 @@
+package src.naver.pin_project.data;
+
 public class User {
     private String userId;
     private String userName;
