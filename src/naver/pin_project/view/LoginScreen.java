@@ -107,10 +107,16 @@ public class LoginScreen extends JPanel {
         nonloginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //이름이 없이 전달을 위해 빈 user로 객체 생성후 전달
+                User non_user = new User();
+                non_user.setUserId("Guest");
+                non_user.setUserName("게스트");
+                non_user.setPassword("1234");
+
                 //여기는 바로 메인 화면으로 가는데 이름없이 전돨되어야함
                 JOptionPane.showMessageDialog(null,"비회원 로그인 성공");
+                cardPanel.add(new MainScreen(non_user),"main");
                 cardLayout.show(cardPanel,"main");
-                //이름이 없이 전달
             }
         });
 

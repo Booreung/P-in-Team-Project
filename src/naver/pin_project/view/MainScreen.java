@@ -63,15 +63,20 @@ public class MainScreen extends JPanel {
         cartbtn.setHorizontalAlignment(SwingConstants.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        //데이터 전달 확인용 테스터
-        JLabel testLabel = new JLabel("사용자 정보: " + loggedInUser.getUserId() + " (" + loggedInUser.getUserName() + ")");
-        testLabel.setFont(testLabel.getFont().deriveFont(Font.BOLD, 16));
-        add(testLabel, BorderLayout.NORTH);
 
         //프로필 이미지(터치가능) -> 터치하면 개인정보 수정으로
-        ImageIcon profileIcon = new ImageIcon();
+        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/짱구.jpg");
         JLabel profileLabel = new JLabel(profileIcon);
         profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
+        //사용자 이름 라벨
+        JLabel nameLabel = new JLabel(loggedInUser.getUserName());
+        //프로필 판넬
+        JPanel profilePanel = new JPanel();
+        profilePanel.setLayout(new BorderLayout());
+        profilePanel.add(profileLabel, BorderLayout.NORTH);
+        profilePanel.add(nameLabel, BorderLayout.CENTER);
+        //전체 판넬의 프로필 판넬 추가
+        add(profilePanel, BorderLayout.SOUTH);
 
         //개인정보 클릭이벤트
         profileLabel.addMouseListener(new MouseAdapter() {
@@ -85,6 +90,7 @@ public class MainScreen extends JPanel {
         callbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("직원 호출 화면 연결");
             }
         });
@@ -93,6 +99,7 @@ public class MainScreen extends JPanel {
         rankbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("랭킹 다이알로그 창 띄우기");
             }
         });
@@ -101,6 +108,7 @@ public class MainScreen extends JPanel {
         myrecordbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("내 기록 다이알로그 창 띄우기");
             }
         });
@@ -109,6 +117,7 @@ public class MainScreen extends JPanel {
         orderlistbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("주문내역 화면 연결");
             }
         });
@@ -117,6 +126,7 @@ public class MainScreen extends JPanel {
         cartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("장바구니 화면 연결");
             }
         });
