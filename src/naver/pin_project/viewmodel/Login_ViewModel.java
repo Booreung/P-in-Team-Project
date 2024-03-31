@@ -1,3 +1,8 @@
+package src.naver.pin_project.viewmodel;
+
+import src.naver.pin_project.data.User;
+import src.naver.pin_project.db.OjdbcConnection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

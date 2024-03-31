@@ -1,10 +1,16 @@
+package src.naver.pin_project.view;
+
+import src.naver.pin_project.data.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainScreen extends JPanel {
-    private  User loggedInUser;
+    private User loggedInUser;
     private User user;
     public MainScreen(User loggedInUser){
         this.loggedInUser = loggedInUser;
@@ -61,6 +67,19 @@ public class MainScreen extends JPanel {
         JLabel testLabel = new JLabel("사용자 정보: " + loggedInUser.getUserId() + " (" + loggedInUser.getUserName() + ")");
         testLabel.setFont(testLabel.getFont().deriveFont(Font.BOLD, 16));
         add(testLabel, BorderLayout.NORTH);
+
+        //프로필 이미지(터치가능) -> 터치하면 개인정보 수정으로
+        ImageIcon profileIcon = new ImageIcon();
+        JLabel profileLabel = new JLabel(profileIcon);
+        profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
+
+        //개인정보 클릭이벤트
+        profileLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("프로필 이미지 클릭");
+            }
+        });
 
         //직원 호출 화면 연결
         callbtn.addActionListener(new ActionListener() {

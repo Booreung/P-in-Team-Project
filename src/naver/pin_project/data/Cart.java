@@ -1,3 +1,5 @@
+package src.naver.pin_project.data;
+
 import java.util.Date;
 
 public class Cart {

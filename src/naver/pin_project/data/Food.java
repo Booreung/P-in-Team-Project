@@ -1,3 +1,5 @@
+package src.naver.pin_project.data;
+
 public class Food {
     private int food_no;
     private String food_name;
