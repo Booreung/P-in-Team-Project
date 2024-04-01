@@ -1,5 +1,7 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.User;
+import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.SignUp_ViewModel;
 
 import javax.swing.*;
@@ -258,9 +260,7 @@ public class SignUpScreen extends JDialog {
                                     "회원가입 완료",
                                     JOptionPane.INFORMATION_MESSAGE);
 
-                            // 회원가입이 성공했을 때 로그인 화면으로 전환합니다.
-                            CardLayout cardLayout = (CardLayout) getParent().getLayout();
-                            cardLayout.show(getParent(), "login"); // "login"은 로그인 화면의 패널 이름입니다.
+                        dispose();
                         } else {
                             // 회원가입 실패 메시지를 표시합니다.
                             JOptionPane.showMessageDialog(SignUpScreen.this,
@@ -302,8 +302,9 @@ public class SignUpScreen extends JDialog {
     }
 
     private void checkUserId() {
-        String username = idField.getText();
-        if (existingUsernames.contains(username)) {
+        String userid = idField.getText();
+        User duplicate_user = DBHelper.getUserInfoFromDB(userid);
+        if (duplicate_user.getUserId().equals(userid)) {
             JOptionPane.showMessageDialog(this,
                     "이미 존재하는 아이디입니다.",
                     "중복 확인", JOptionPane.WARNING_MESSAGE);
