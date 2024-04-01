@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 public class MainScreen extends JPanel {
     private User loggedInUser;
     private User user;
+
     public MainScreen(User loggedInUser){
         this.loggedInUser = loggedInUser;
         //좌측 상단 버튼 3개 1열로
@@ -90,7 +91,6 @@ public class MainScreen extends JPanel {
         callbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 System.out.println("직원 호출 화면 연결");
             }
         });

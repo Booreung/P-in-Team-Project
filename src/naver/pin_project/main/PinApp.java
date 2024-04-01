@@ -24,12 +24,6 @@ public class PinApp extends JFrame {
 
         // 로그인 화면 추가
         cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
-        //회원가입 화면 추가
-        //cardPanel.add(new src.naver.pin_project.view1.SignUpScreen(cardLayout,cardPanel),"signup");
-
-        // 메인 화면 추가
-        //cardPanel.add(new src.naver.pin_project.view1.MainScreen(user), "main");
-
 
         //프레임에 카드패널 추가
         add(cardPanel);
