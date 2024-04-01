@@ -85,7 +85,7 @@ public class LoginScreen extends JPanel {
                     // 로그인 성공시 로그인 성공 메세지 후 메인으로 이동
                     JOptionPane.showMessageDialog(null,"로그인 성공");
                     //cardLayout.show(cardPanel,"main");
-                    cardPanel.add(new MainScreen(loggedInUser),"main");
+                    cardPanel.add(new MainScreen(cardLayout,loggedInUser,cardPanel),"main");
                     cardLayout.show(cardPanel,"main");
                 }
                 else{
@@ -115,7 +115,7 @@ public class LoginScreen extends JPanel {
 
                 //여기는 바로 메인 화면으로 가는데 이름없이 전돨되어야함
                 JOptionPane.showMessageDialog(null,"비회원 로그인 성공");
-                cardPanel.add(new MainScreen(non_user),"main");
+                cardPanel.add(new MainScreen(cardLayout,non_user,cardPanel),"main");
                 cardLayout.show(cardPanel,"main");
             }
         });
