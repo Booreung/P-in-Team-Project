@@ -1,5 +1,7 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.User;
+import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.SignUp_ViewModel;
 
 import javax.swing.*;
@@ -300,8 +302,9 @@ public class SignUpScreen extends JDialog {
     }
 
     private void checkUserId() {
-        String username = idField.getText();
-        if (existingUsernames.contains(username)) {
+        String userid = idField.getText();
+        User duplicate_user = DBHelper.getUserInfoFromDB(userid);
+        if (duplicate_user.getUserId().equals(userid)) {
             JOptionPane.showMessageDialog(this,
                     "이미 존재하는 아이디입니다.",
                     "중복 확인", JOptionPane.WARNING_MESSAGE);

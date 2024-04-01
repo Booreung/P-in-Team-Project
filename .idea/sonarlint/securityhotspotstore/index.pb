@@ -13,3 +13,5 @@ S
 Q.idea/sonarlint/securityhotspotstore/5/f/5ff099e9af65c7eae7612f27d15ec17f9e798bb6,7\e\7e8d4c4e67618e7367c17b0d2bb17a9b74dc487e
 Å
 Q.idea/sonarlint/securityhotspotstore/a/4/a473323d9809d9828f90456b734cb69584f1ae3c,8\9\8955df7002c6a373093e6e51e11f52dda3c82267
+V
+&src/naver/pin_project/db/DBHelper.java,3\6\3611231514f25db375dd0dfaf4abfee162a8974d
