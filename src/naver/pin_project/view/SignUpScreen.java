@@ -1,5 +1,7 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.User;
+import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.SignUp_ViewModel;
 
 import javax.swing.*;
@@ -207,7 +209,6 @@ public class SignUpScreen extends JDialog {
         checkDuplicateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 checkUserId(); // 아이디 중복 확인 로직 호출
             }
         });
@@ -259,7 +260,7 @@ public class SignUpScreen extends JDialog {
                                     "회원가입 완료",
                                     JOptionPane.INFORMATION_MESSAGE);
 
-                            dispose();
+                        dispose();
                         } else {
                             // 회원가입 실패 메시지를 표시합니다.
                             JOptionPane.showMessageDialog(SignUpScreen.this,
@@ -302,7 +303,8 @@ public class SignUpScreen extends JDialog {
 
     private void checkUserId() {
         String userid = idField.getText();
-        if (existingUsernames.contains(userid)) {
+        User duplicate_user = DBHelper.getUserInfoFromDB(userid);
+        if (duplicate_user.getUserId().equals(userid)) {
             JOptionPane.showMessageDialog(this,
                     "이미 존재하는 아이디입니다.",
                     "중복 확인", JOptionPane.WARNING_MESSAGE);
