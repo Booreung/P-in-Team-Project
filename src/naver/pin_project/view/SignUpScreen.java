@@ -207,6 +207,7 @@ public class SignUpScreen extends JDialog {
         checkDuplicateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 checkUserId(); // 아이디 중복 확인 로직 호출
             }
         });
@@ -300,8 +301,8 @@ public class SignUpScreen extends JDialog {
     }
 
     private void checkUserId() {
-        String username = idField.getText();
-        if (existingUsernames.contains(username)) {
+        String userid = idField.getText();
+        if (existingUsernames.contains(userid)) {
             JOptionPane.showMessageDialog(this,
                     "이미 존재하는 아이디입니다.",
                     "중복 확인", JOptionPane.WARNING_MESSAGE);
