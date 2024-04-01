@@ -258,9 +258,7 @@ public class SignUpScreen extends JDialog {
                                     "회원가입 완료",
                                     JOptionPane.INFORMATION_MESSAGE);
 
-                            // 회원가입이 성공했을 때 로그인 화면으로 전환합니다.
-                            CardLayout cardLayout = (CardLayout) getParent().getLayout();
-                            cardLayout.show(getParent(), "login"); // "login"은 로그인 화면의 패널 이름입니다.
+                        dispose();
                         } else {
                             // 회원가입 실패 메시지를 표시합니다.
                             JOptionPane.showMessageDialog(SignUpScreen.this,
