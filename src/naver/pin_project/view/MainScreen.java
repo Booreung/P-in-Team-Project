@@ -82,6 +82,8 @@ public class MainScreen extends JPanel {
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
+                cardLayout.show(cardPanel, "mypage");
                 System.out.println("프로필 이미지 클릭");
             }
         });
@@ -130,7 +132,5 @@ public class MainScreen extends JPanel {
                 System.out.println("장바구니 화면 연결");
             }
         });
-
     }
-
 }
