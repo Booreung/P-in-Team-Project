@@ -15,3 +15,5 @@ Q.idea/sonarlint/securityhotspotstore/5/f/5ff099e9af65c7eae7612f27d15ec17f9e798b
 Q.idea/sonarlint/securityhotspotstore/a/4/a473323d9809d9828f90456b734cb69584f1ae3c,8\9\8955df7002c6a373093e6e51e11f52dda3c82267
 V
 &src/naver/pin_project/db/DBHelper.java,3\6\3611231514f25db375dd0dfaf4abfee162a8974d
+[
++src/naver/pin_project/view/LoginScreen.java,4\b\4b3c84dcd8ea773129d055ed6ccef0ed1fad22a4

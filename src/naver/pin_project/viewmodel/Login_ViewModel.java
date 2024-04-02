@@ -18,7 +18,7 @@ public class Login_ViewModel {
     //로그인 동작
     public boolean isValidUser(){
         Connection con = null;
-        String query = "select * from user where userid = ? and userpw =?";
+        String query = "select * from user where userid = ? and pw =?";
 
         try{
             con = OjdbcConnection.getConnection();
