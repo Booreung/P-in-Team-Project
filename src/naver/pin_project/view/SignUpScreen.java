@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.sql.SQLException;
-import java.util.HashSet;
+
 
 
 public class SignUpScreen extends JDialog {
@@ -25,8 +25,6 @@ public class SignUpScreen extends JDialog {
     private JTextField phoneField3; // 휴대전화번호 입력필드3
     private JTextField verificationCodeField; // 인증번호 입력 필드
     private JButton sendVerificationCodeButton; // 인증번호 받기 버튼
-
-    private HashSet<String> existingUsernames = new HashSet<>();
 
     public SignUpScreen() {
         setTitle("회원가입");
@@ -330,5 +328,4 @@ public class SignUpScreen extends JDialog {
             return false;
         }
     }
-
 }
