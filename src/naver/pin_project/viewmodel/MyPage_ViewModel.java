@@ -21,11 +21,9 @@ public class MyPage_ViewModel {
             String newUsername = msgName; // 새로운 사용자 이름
             String newPw = msgPw; // 새로운 비밀번호
 
-<<<<<<< HEAD
-            String query = "UPDATE User SET userid = ?, username = ?, userpw = ? WHERE userid = ? ";
-=======
+
             String query = "UPDATE user SET userid = ?, username = ?, pw = ? WHERE userid = ?";
->>>>>>> main
+
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, newmsgId);
             pstmt.setString(2, newUsername);

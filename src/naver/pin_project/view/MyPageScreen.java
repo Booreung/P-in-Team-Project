@@ -95,12 +95,7 @@ public class MyPageScreen extends JFrame {
         MyPage_ViewModel myPageFuc = new MyPage_ViewModel();
 
         String msgId = inputId.getText();
-<<<<<<< HEAD
-        String msgName = inputName.getText();
-        String msgPw = inputPw.getText();
 
-=======
->>>>>>> main
         //업데이트 버튼 클릭했을때
         update.addActionListener(new ActionListener() {
             @Override
@@ -109,11 +104,8 @@ public class MyPageScreen extends JFrame {
                 String msgName = inputName.getText();
                 String msgPw = inputPw.getText();
 
-<<<<<<< HEAD
-                myPageFuc.update(msgId, msgName, msgPw); //update함수에게 필요한 파라미터(변수)를 넣어줌
-=======
                 myPageFuc.update(msgId, msgName,msgPw, newmsgId); //update함수에게 필요한 파라미터(변수)를 넣어줌
->>>>>>> main
+
                 dispose();
             }
         });
