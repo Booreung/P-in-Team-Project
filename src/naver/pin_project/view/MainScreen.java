@@ -91,7 +91,8 @@ public class MainScreen extends JPanel {
         callbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                cardPanel.add(new StaffCall_Screen(MainScreen.this), "staffcall");
+                cardLayout.show(cardPanel, "staffcall");
                 System.out.println("직원 호출 화면 연결");
             }
         });

@@ -315,7 +315,6 @@ public class SignUpScreen extends JDialog {
         }
     }
 
-
     private boolean checkPassword() {
         String password = new String(passwordField.getPassword());
         String confirmPassword = new String(confirmPasswordField.getPassword());
@@ -330,5 +329,4 @@ public class SignUpScreen extends JDialog {
             return false;
         }
     }
-
 }

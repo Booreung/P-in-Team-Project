@@ -23,3 +23,15 @@ Z
 	Main.java,6\9\69cdb079609ed3ce1e356d44cff508330a5787c4
 _
 /src/naver/pin_project/view/StaffcallScreen.java,0\8\080e45b944c4c2ddf42fe9c9e059112e11f1aa79
+\
+,src/naver/pin_project/view/MyPageScreen.java,d\1\d122eadfbadeb8fc43a5b8973f525e7a6d201a07
+[
++src/naver/pin_project/view/StartScreen.java,8\6\868b09cc3baafd9e55c061562fbbd99f8f418006
+`
+0src/naver/pin_project/view/StaffCall_Screen.java,6\8\682efb1d023dc81311eb6d250b4c84ed924e91e2
+d
+4src/naver/pin_project/viewmodel/Login_ViewModel.java,5\5\5595f502e7b88d1fa33e8abdeb80efaf319d7059
+e
+5src/naver/pin_project/viewmodel/MyPage_ViewModel.java,2\4\24c5aa06b80795ea895eeeec8056db307c2ebf80
+e
+5src/naver/pin_project/viewmodel/SignUp_ViewModel.java,1\2\12a5a02cd29eb3206ecceaa1b2859dfa8e31ecf8
