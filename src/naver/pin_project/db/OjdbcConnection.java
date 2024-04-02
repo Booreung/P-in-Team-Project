@@ -6,9 +6,10 @@ import java.sql.SQLException;
 
 public class OjdbcConnection {
     private static String driverName = "com.mysql.cj.jdbc.Driver";
-    private static String url = "175.209.41.173:3306/kiosk_database";
-    private static String user = "siho";
-    private static String pw = "1234";
+
+    private static String url = "jdbc:mysql://localhost:3306/test1";
+    private static String user = "root";
+    private static String pw = "0000";
 
     static {
         try {

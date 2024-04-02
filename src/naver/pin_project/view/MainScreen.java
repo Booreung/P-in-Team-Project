@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 public class MainScreen extends JPanel {
     private User loggedInUser;
     private User user;
-    public MainScreen(User loggedInUser){
+    public MainScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel){
         this.loggedInUser = loggedInUser;
         //좌측 상단 버튼 3개 1열로
         JPanel buttonPanel = new JPanel();
@@ -78,11 +78,12 @@ public class MainScreen extends JPanel {
         //전체 판넬의 프로필 판넬 추가
         add(profilePanel, BorderLayout.SOUTH);
 
-        //개인정보 클릭이벤트
+        //개인정보 클릭이벤트 유정이가해야할거 !!! 로그인부터 순차적으로 실행되는 코드 이해하기 !!!
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("프로필 이미지 클릭");
+                cardPanel.add(new MyPageScreen(cardLayout,loggedInUser,cardPanel),"mypage");
+                cardLayout.show(cardPanel,"mypage");
             }
         });
 
