@@ -1,0 +1,5 @@
+
+ˆ	java:S101	"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¥Š¢J$c1a185b7-d1f6-4124-8951-0d946860e51f
+‘
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(éä„X8÷ûÜòé1J$4995de76-808c-48a5-96a8-6e14dc55b83e
+k	java:S106"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿJ$db2a18c7-059b-437e-82c8-919bf65e8a91

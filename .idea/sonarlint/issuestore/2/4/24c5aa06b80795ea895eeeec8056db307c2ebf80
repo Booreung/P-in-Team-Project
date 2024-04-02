@@ -1,0 +1,14 @@
+
+a	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Η§Ϊ]
+j
+java:S2095:"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ε›ηκϋÿÿÿÿ
+c
+java:S20956"HUse try-with-resources or close this "Connection" in a "finally" clause.(Κΐν ώÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ε›ηκϋÿÿÿÿ
+c
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(Κΐν ώÿÿÿÿ
+Q
+java:S6437"6Revoke and change this password, as it is compromised.(Κΐν ώÿÿÿÿ
+Q
+java:S64376"6Revoke and change this password, as it is compromised.(Κΐν ώÿÿÿÿ

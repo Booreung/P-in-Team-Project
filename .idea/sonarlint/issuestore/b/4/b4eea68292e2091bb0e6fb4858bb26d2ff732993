@@ -1,0 +1,24 @@
+
+p
+java:S1604["(Make this anonymous inner class a lambda(ƒ¤¬¾úÿÿÿÿ8òÑßòé1J$fe817b5b-4e0c-4b54-b424-422689997ef7
+p
+java:S1604e"(Make this anonymous inner class a lambda(µÛçûÿÿÿÿ8òÑßòé1J$07366c20-6db9-4927-bb42-314f831313c4
+k
+java:S1604n"(Make this anonymous inner class a lambda(¨Ê÷Û8òÑßòé1J$57fa1a27-2945-43e6-8f59-9285b74e3ab3
+p
+java:S1604w"(Make this anonymous inner class a lambda(ÜÈ­©ÿÿÿÿÿ8òÑßòé1J$d2a984e9-8610-4d70-899a-23087c71d568
+l
+java:S1604€"(Make this anonymous inner class a lambda(¬êÀ8òÑßòé1J$1876b063-bc76-4905-977e-882d60093f9a
+q
+java:S1948".Make "loggedInUser" transient or serializable.(è–í¼8‰Òßòé1J$13c73315-4a9f-465a-bc09-3e03b0b58588
+n
+java:S1948"&Make "user" transient or serializable.(’Ø¾ıÿÿÿÿ8‰Òßòé1J$e5d83ba0-61f8-49ce-9a31-ae63ae5e8767
+r	java:S106`"+Replace this use of System.out by a logger.(•™Şˆüÿÿÿÿ8šÒßòé1J$c309f38c-9fa9-41c6-945d-810d06bf56b4
+r	java:S106i"+Replace this use of System.out by a logger.(ıÇŠÉÿÿÿÿÿ8œÒßòé1J$d5e03a5a-77e0-48ea-b35b-30b95d5776d0
+l	java:S106r"+Replace this use of System.out by a logger.(üì8Òßòé1J$f53af80b-8667-4e69-b5fc-a1afe1dc06fb
+r	java:S106{"+Replace this use of System.out by a logger.(›ŞÕışÿÿÿÿ8Òßòé1J$bcd58c31-57a9-4d9f-a0ba-bb10214bb9f4
+s	java:S106„"+Replace this use of System.out by a logger.(²›†ùùÿÿÿÿ8‚—¢óé1J$fdfa4e75-666a-4e7b-ba15-9dbe52214223
+s
+java:S1068"0Remove this unused "loggedInUser" private field.(è–í¼8 Òßòé1J$f4427afe-5a31-4982-aa36-8823ccfc05b4
+p
+java:S1068"(Remove this unused "user" private field.(’Ø¾ıÿÿÿÿ8 Òßòé1J$3f44017a-4353-41d9-adf6-1c3b9e568f9d

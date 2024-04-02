@@ -1,0 +1,22 @@
+
+ª
+java:S1192E"gDefine a constant instead of duplicating this literal "ê´€ë¦¬ìì—ê²Œ ì „ë‹¬ë˜ì—ˆìŠµë‹ˆë‹¤." 6 times.(ñ·Î8Á¶¿òé1J$204fedc5-573b-49f4-bdae-55afe22cd13b
+k
+java:S1604&"(Make this anonymous inner class a lambda(™¬ŞÔ8Â¶¿òé1J$c7a4734d-2746-4019-8e38-347e596a1baa
+p
+java:S1604B"(Make this anonymous inner class a lambda(ÊŞ’ƒıÿÿÿÿ8Ã¶¿òé1J$6eccdc2f-7cf7-4a2b-8ffe-3f9a17e5e4d6
+k
+java:S1604M"(Make this anonymous inner class a lambda(²’÷Â8Ã¶¿òé1J$27cbf486-2b66-46ce-a37f-27fbd5294c92
+p
+java:S1604X"(Make this anonymous inner class a lambda(Ó·îôøÿÿÿÿ8Ã¶¿òé1J$41415cee-ecc5-4128-ac1b-baa37f3025b1
+k
+java:S1604d"(Make this anonymous inner class a lambda(şüÿ‘8Ã¶¿òé1J$89b129c7-db4a-4fac-9828-64d83069aef9
+p
+java:S1604o"(Make this anonymous inner class a lambda(„Úùìıÿÿÿÿ8Ã¶¿òé1J$ede4bcd4-2014-4946-8f99-51c9c027dc0a
+p
+java:S1604z"(Make this anonymous inner class a lambda(ô„Šşşÿÿÿÿ8Ã¶¿òé1J$b355d700-f684-4ef5-99bb-e7ced520ea31
+	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(»®é­8Å¶¿òé1J$a372be64-df88-45fb-80e7-2e12030656d2
+Œ
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8è¶¿òé1J$cb4cadb4-7d3e-474e-a6aa-c77f2a1c6b82
+l	java:S106+"+Replace this use of System.out by a logger.(ê˜ÄM8ğ¶¿òé1J$ff15db13-dea2-4679-aa28-8c68b8650e2f
+~	java:S125-"<This block of commented-out lines of code should be removed.(ô¾Îş8ÚÀòé1J$ba962325-43f9-46cb-864a-d541bde1e13b
