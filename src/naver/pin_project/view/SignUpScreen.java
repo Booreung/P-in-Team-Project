@@ -223,7 +223,6 @@ public class SignUpScreen extends JDialog {
                 // 휴대폰 번호로 인증번호 전송
 
 
-
                 // 인증번호가 발송되었음을 나타내는 메시지 표시
                 JOptionPane.showMessageDialog(SignUpScreen.this,
                         phone+"으로 인증번호가 발송되었습니다.",
@@ -302,7 +301,9 @@ public class SignUpScreen extends JDialog {
     private void checkUserId() {
         String userid = idField.getText();
         User duplicate_user = DBHelper.getUserInfoFromDB(userid);
-        if (duplicate_user.getUserId().equals(userid)) {
+        
+        //      if (duplicate_user.getUserId().equals(userid)) {  변경했던 코드
+        if (duplicate_user != null && duplicate_user.getUserId().equals(userid)) { // 중복확인 안되서 다시 변경한 코드
             JOptionPane.showMessageDialog(this,
                     "이미 존재하는 아이디입니다.",
                     "중복 확인", JOptionPane.WARNING_MESSAGE);
@@ -313,6 +314,7 @@ public class SignUpScreen extends JDialog {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
 
     private boolean checkPassword() {
         String password = new String(passwordField.getPassword());
