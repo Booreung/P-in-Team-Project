@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.sql.SQLException;
-import java.util.HashSet;
+
 
 
 public class SignUpScreen extends JDialog {
@@ -330,5 +330,4 @@ public class SignUpScreen extends JDialog {
             return false;
         }
     }
-
 }

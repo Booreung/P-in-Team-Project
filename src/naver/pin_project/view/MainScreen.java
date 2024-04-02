@@ -78,12 +78,13 @@ public class MainScreen extends JPanel {
         //전체 판넬의 프로필 판넬 추가
         add(profilePanel, BorderLayout.SOUTH);
 
-        //개인정보 클릭이벤트 유정이가해야할거 !!! 로그인부터 순차적으로 실행되는 코드 이해하기 !!!
+        //개인정보 클릭이벤트
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardPanel.add(new MyPageScreen(cardLayout,loggedInUser,cardPanel),"mypage");
-                cardLayout.show(cardPanel,"mypage");
+                cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
+                cardLayout.show(cardPanel, "mypage");
+                System.out.println("프로필 이미지 클릭");
             }
         });
 
@@ -131,7 +132,5 @@ public class MainScreen extends JPanel {
                 System.out.println("장바구니 화면 연결");
             }
         });
-
     }
-
 }

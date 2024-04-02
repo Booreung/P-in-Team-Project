@@ -1,39 +1,41 @@
 package src.naver.pin_project.viewmodel;
 
+import src.naver.pin_project.db.OjdbcConnection;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class MyPage_ViewModel {
-    public boolean update(String msgId, String msgName,String msgPw) {
+    public boolean update(String msgId, String msgName,String msgPw, String newmsgId)  {
         // JTextField에 입력한 문자열 읽어오기
-
-        String url = "jdbc:mysql://localhost:3306/yujung";
-        String user = "root";
-        String password = "00000000";
+        Connection con = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, user, password);
+
+            con = OjdbcConnection.getConnection();
 
             String userId = msgId; // 업데이트할 사용자의 아이디
             String newUsername = msgName; // 새로운 사용자 이름
             String newPw = msgPw; // 새로운 비밀번호
 
-            String query = "UPDATE User SET userid = ?, username = ?, userpw = ? WHERE userid = ?";
+            String query = "UPDATE user SET userid = ?, username = ?, pw = ? WHERE userid = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setString(1, userId);
+            pstmt.setString(1, newmsgId);
             pstmt.setString(2, newUsername);
             pstmt.setString(3, newPw);
             pstmt.setString(4, userId);
 
             int rowsAffected = pstmt.executeUpdate();
+            con.commit();
 
             // JOptionPane을 통해 메시지 보여주기
             if (rowsAffected == 1) {
                 JOptionPane.showMessageDialog(null, "회원정보 수정이 완료되었습니다.");
                 return true;
+
             } else {
                 JOptionPane.showMessageDialog(null, "회원정보 수정에 실패하였습니다.");
                 return false;
@@ -42,19 +44,16 @@ public class MyPage_ViewModel {
             e2.printStackTrace();
             return false;
         }
+
     }
 
     public boolean delete(String msgId) {
-        String url = "jdbc:mysql://localhost:3306/yujung";
-        String user = "root";
-        String password = "00000000";
+        Connection con = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(url, user, password);
+            con = OjdbcConnection.getConnection();
 
-
-            String query = "DELETE FROM User WHERE userid = ?";
+            String query = "DELETE FROM user WHERE userid = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, msgId);
 
