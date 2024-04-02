@@ -102,7 +102,7 @@ public class MyPageScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                myPageFuc.update(msgId, msgName,msgPw); //update함수에게 필요한 파라미터(변수)를 넣어줌
+                myPageFuc.update(msgId, msgName, msgPw); //update함수에게 필요한 파라미터(변수)를 넣어줌
                 dispose();
             }
         });
@@ -116,7 +116,6 @@ public class MyPageScreen extends JFrame {
                 dispose();
 
                 //회원이 삭제되면 로그인화면으로 이동
-
                 cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
                 cardLayout.show(cardPanel,"login");
             }

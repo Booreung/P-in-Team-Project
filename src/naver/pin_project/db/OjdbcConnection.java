@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class OjdbcConnection {
     private static String driverName = "com.mysql.cj.jdbc.Driver";
 
-    private static String url = "jdbc:mysql://localhost:3306/test1";
+    private static String url = "jdbc:mysql://localhost:3306/test2";
     private static String user = "root";
-    private static String pw = "0000";
+    private static String pw = "00000000";
 
 
     static {
