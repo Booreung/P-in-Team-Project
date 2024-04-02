@@ -97,6 +97,7 @@ public class MyPageScreen extends JFrame {
         String msgId = inputId.getText();
         String msgName = inputName.getText();
         String msgPw = inputPw.getText();
+
         //업데이트 버튼 클릭했을때
         update.addActionListener(new ActionListener() {
             @Override

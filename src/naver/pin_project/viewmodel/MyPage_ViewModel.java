@@ -27,8 +27,9 @@ public class MyPage_ViewModel {
             pstmt.setString(2, newUsername);
             pstmt.setString(3, newPw);
             pstmt.setString(4, userId);
-
+            System.out.println();//지워
             int rowsAffected = pstmt.executeUpdate();
+
 
             // JOptionPane을 통해 메시지 보여주기
             if (rowsAffected == 1) {
