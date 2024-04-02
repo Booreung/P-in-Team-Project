@@ -29,7 +29,6 @@ public class MyPage_ViewModel {
             pstmt.setString(4, userId);
 
             int rowsAffected = pstmt.executeUpdate();
-            con.commit();
 
             // JOptionPane을 통해 메시지 보여주기
             if (rowsAffected == 1) {
