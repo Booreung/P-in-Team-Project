@@ -95,6 +95,7 @@ public class MyPageScreen extends JFrame {
         MyPage_ViewModel myPageFuc = new MyPage_ViewModel();
 
         String msgId = inputId.getText();
+
         //업데이트 버튼 클릭했을때
         update.addActionListener(new ActionListener() {
             @Override
@@ -104,6 +105,7 @@ public class MyPageScreen extends JFrame {
                 String msgPw = inputPw.getText();
 
                 myPageFuc.update(msgId, msgName,msgPw, newmsgId); //update함수에게 필요한 파라미터(변수)를 넣어줌
+
                 dispose();
             }
         });
@@ -117,7 +119,6 @@ public class MyPageScreen extends JFrame {
                 dispose();
 
                 //회원이 삭제되면 로그인화면으로 이동
-
                 cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
                 cardLayout.show(cardPanel,"login");
             }

@@ -21,14 +21,17 @@ public class MyPage_ViewModel {
             String newUsername = msgName; // 새로운 사용자 이름
             String newPw = msgPw; // 새로운 비밀번호
 
+
             String query = "UPDATE user SET userid = ?, username = ?, userpw = ? WHERE userid = ?";
+
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, newmsgId);
             pstmt.setString(2, newUsername);
             pstmt.setString(3, newPw);
             pstmt.setString(4, userId);
-
+            System.out.println();//지워
             int rowsAffected = pstmt.executeUpdate();
+
 
             // JOptionPane을 통해 메시지 보여주기
             if (rowsAffected == 1) {
