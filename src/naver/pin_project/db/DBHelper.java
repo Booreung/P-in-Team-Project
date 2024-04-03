@@ -26,7 +26,7 @@ public class DBHelper {
                 user = new User();
                 user.setUserId(rs.getString("userid"));
                 user.setUserName(rs.getString("username"));
-                user.setPassword(rs.getString("pw"));
+                user.setPassword(rs.getString("userpw"));
             }
         }
         catch (SQLException e){

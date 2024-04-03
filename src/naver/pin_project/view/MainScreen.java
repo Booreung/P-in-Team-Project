@@ -85,7 +85,6 @@ public class MainScreen extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
                 cardLayout.show(cardPanel, "mypage");
-                System.out.println("프로필 이미지 클릭");
             }
         });
 
@@ -93,7 +92,8 @@ public class MainScreen extends JPanel {
         callbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                cardPanel.add(new StaffCallScreen(MainScreen.this),"staffcall");
+                cardLayout.show(cardPanel,"staffcall");
                 System.out.println("직원 호출 화면 연결");
             }
         });
