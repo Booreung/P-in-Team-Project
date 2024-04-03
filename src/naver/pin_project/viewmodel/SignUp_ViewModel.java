@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class SignUp_ViewModel {
     public int registerUser(String userid, String username, String pw) throws SQLException {
         Connection con = null;
-        String sql = "insert into user(userid,username,pw) values(?,?,?)";
+        String sql = "insert into user(userid,username,userpw) values(?,?,?)";
 
         try {
             con = OjdbcConnection.getConnection();
