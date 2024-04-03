@@ -97,6 +97,7 @@ public class MainScreen extends JPanel {
                 System.out.println("직원 호출 화면 연결");
             }
         });
+        //수정완료
 
         //랭킹 다이알로그 창 띄우기
         rankbtn.addActionListener(new ActionListener() {
