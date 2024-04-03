@@ -32,6 +32,7 @@ public class PinApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             PinApp app = new PinApp();
             app.setVisible(true);
+
         });
     }
 }
