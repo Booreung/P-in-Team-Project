@@ -1,14 +1,11 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.viewmodel.Chat_ViewModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
 
 public class StaffCallScreen extends JPanel {
 
@@ -21,8 +18,9 @@ public class StaffCallScreen extends JPanel {
     private JButton button5;
     private JButton button6;
     private JLabel staffOrderLabel;
+    private ChatScreen chatScreen;
+
     private MainScreen mainScreen;
-    private Socket clientSocket;
 
     public StaffCallScreen(MainScreen mainScreen) {
         this.mainScreen = mainScreen;
@@ -99,22 +97,9 @@ public class StaffCallScreen extends JPanel {
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 직원 호출 버튼 클릭 시 클라이언트 소켓을 생성하고 서버에 연결
-                try {
-                    System.out.println("관리자에게 연결중입니다...");
-                    clientSocket = new Socket("localhost", 8000); // 서버 포트를 수정하세요
-                    // 클라이언트 소켓이 생성되고 서버에 연결되었음을 확인하기 위해 메시지 출력
-                    System.out.println("관리자와 연결되었습니다.");
-
-                    // 여기에 채팅창을 띄우고 채팅 기능을 활성화하는 코드를 추가하세요
-                    openChatWindow(clientSocket);
-
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                JOptionPane.showMessageDialog(frame, "관리자에게 전달되었습니다.");
             }
         });
-
         buttonPanel.add(button3, gbc);
 
         gbc.gridx = 0; // 첫 번째 열
@@ -171,46 +156,4 @@ public class StaffCallScreen extends JPanel {
 
         frame.setVisible(true);
     }
-    // openChatWindow 메소드 추가
-    private void openChatWindow(Socket clientSocket) {
-        // 채팅창을 띄우는 코드를 여기에 추가합니다.
-        JFrame chatFrame = new JFrame("직원 호출 채팅");
-        chatFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        // 채팅창의 내용을 표시할 JTextArea 생성
-        JTextArea chatArea = new JTextArea();
-        chatArea.setEditable(false); // 사용자가 직접 편집하지 못하도록 설정
-        JScrollPane scrollPane = new JScrollPane(chatArea);
-
-        // 메시지를 입력할 JTextField 생성
-        JTextField messageField = new JTextField();
-        messageField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String message = messageField.getText();
-                // 메시지를 서버로 보내는 코드를 추가하세요
-                sendMessageToServer(clientSocket, message);
-                messageField.setText(""); // 메시지 입력 필드 초기화
-            }
-        });
-
-        // 채팅창에 컴포넌트 추가
-        chatFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-        chatFrame.getContentPane().add(messageField, BorderLayout.SOUTH);
-
-        // 채팅창 크기 설정
-        chatFrame.setSize(400, 300);
-        chatFrame.setVisible(true);
-    }
-
-    // sendMessageToServer 메소드 추가
-    private void sendMessageToServer(Socket clientSocket, String message) {
-        try {
-            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-            out.println(message);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
 }
-
