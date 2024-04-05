@@ -8,13 +8,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+import src.naver.pin_project.data.Food;
+import src.naver.pin_project.db.DBHelper;
+import src.naver.pin_project.db.OjdbcConnection;
 
 public class MainScreen extends JPanel {
     private User loggedInUser;
-    private User user;
+    private FoodOrderScreen foodOrderScreen; // FoodOrderScreen 객체 선언
+    private Map<Food, Integer> selectedFoods; // 선택한 음식과 수량을 저장할 Map
+    private int orderNumber; // 주문번호를 저장할 변수
+    private Timestamp orderTime; // 주문 시간을 저장할 변수
+
     public MainScreen(User loggedInUser){
         this.loggedInUser = loggedInUser;
-        //좌측 상단 버튼 3개 1열로
+        this.selectedFoods = new HashMap<>();
+        this.orderNumber = -1;
+        setLayout(new BorderLayout());
+
+        // 좌측 상단 버튼 3개 1열로
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         JButton callbtn = new JButton("직원 호출");
@@ -24,61 +42,70 @@ public class MainScreen extends JPanel {
         buttonPanel.add(rankbtn);
         buttonPanel.add(myrecordbtn);
 
-        //버튼 사이즈 조절, 텍스트 중앙 정렬
+        // 버튼 사이즈 조절, 텍스트 중앙 정렬
         Dimension buttonSize = new Dimension(150, 40);
-        callbtn.setMaximumSize(buttonSize);
-        callbtn.setHorizontalAlignment(SwingConstants.CENTER);
-        rankbtn.setMaximumSize(buttonSize);
-        rankbtn.setHorizontalAlignment(SwingConstants.CENTER);
-        myrecordbtn.setMaximumSize(buttonSize);
-        myrecordbtn.setHorizontalAlignment(SwingConstants.CENTER);
-
-        // 버튼 사이의 간격 조절을 위해 패널에 BorderLayout 적용
-        buttonPanel.add(Box.createVerticalStrut(10)); // 첫 번째 버튼 위에 간격 추가
-        buttonPanel.add(callbtn);
-        buttonPanel.add(Box.createVerticalStrut(10)); // 버튼 사이에 간격 추가
-        buttonPanel.add(rankbtn);
-        buttonPanel.add(Box.createVerticalStrut(10)); // 버튼 사이에 간격 추가
-        buttonPanel.add(myrecordbtn);
-        buttonPanel.add(Box.createVerticalStrut(10)); // 마지막 버튼 아래에 간격 추가
-
+        callbtn.setPreferredSize(buttonSize);
+        rankbtn.setPreferredSize(buttonSize);
+        myrecordbtn.setPreferredSize(buttonSize);
+        callbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        rankbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        myrecordbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(buttonPanel, BorderLayout.WEST);
 
-        //중앙 패널 => 여기엔 테이블이 들어가야함
-        //예준이형 화이팅
+        foodOrderScreen = new FoodOrderScreen(450, 500); // Example width and height
+        add(foodOrderScreen, BorderLayout.CENTER);
+        foodOrderScreen.setLocation(83, 0); // Example coordinates
 
 
-        //우측 하단 버튼 2개(주문내역, 장바구니)
+        // 중앙 패널 => 여기엔 테이블이 들어가야함
+        JPanel centerPanel = new JPanel();
+        add(centerPanel, BorderLayout.CENTER);
+
+        // 우측 하단 버튼 2개(주문내역, 장바구니)
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton orderlistbtn = new JButton("주문내역");
         JButton cartbtn = new JButton("장바구니");
         bottomPanel.add(orderlistbtn);
         bottomPanel.add(cartbtn);
 
-        //버튼 크기 조절 , 텍스트 중앙정렬
-        orderlistbtn.setMaximumSize(buttonSize);
-        orderlistbtn.setHorizontalAlignment(SwingConstants.CENTER);
-        cartbtn.setMaximumSize(buttonSize);
-        cartbtn.setHorizontalAlignment(SwingConstants.CENTER);
+        // 버튼 크기 조절, 텍스트 중앙정렬
+        orderlistbtn.setPreferredSize(buttonSize);
+        cartbtn.setPreferredSize(buttonSize);
+        orderlistbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cartbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         add(bottomPanel, BorderLayout.SOUTH);
 
-
-        //프로필 이미지(터치가능) -> 터치하면 개인정보 수정으로
-        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/짱구.jpg");
+        // 프로필 이미지(터치 가능) -> 터치하면 개인정보 수정으로
+        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/img.png");
         JLabel profileLabel = new JLabel(profileIcon);
         profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
-        //사용자 이름 라벨
+        // 사용자 이름 라벨
         JLabel nameLabel = new JLabel(loggedInUser.getUserName());
-        //프로필 판넬
+        // 프로필 판넬
         JPanel profilePanel = new JPanel();
         profilePanel.setLayout(new BorderLayout());
         profilePanel.add(profileLabel, BorderLayout.NORTH);
-        profilePanel.add(nameLabel, BorderLayout.CENTER);
-        //전체 판넬의 프로필 판넬 추가
-        add(profilePanel, BorderLayout.SOUTH);
+        profilePanel.add(nameLabel, BorderLayout.EAST);
+        // 전체 판넬의 프로필 판넬 추가
+        add(profilePanel, BorderLayout.EAST);
 
-        //개인정보 클릭이벤트
+        // 장바구니 버튼 이벤트 처리
+        cartbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedFoods.putAll(foodOrderScreen.getSelectedFoods());
+                if (orderNumber == -1) { // 주문번호가 없는 경우
+                    orderNumber = generateRandomNumber(); // 새로운 주문번호 생성
+                    orderTime = new Timestamp(System.currentTimeMillis()); // 현재 시간(초까지 포함)으로 주문 시간 생성
+                }
+                addToCart(orderNumber, orderTime); // 장바구니 버튼 클릭 시 addToCart 메서드 호출
+            }
+        });
+
+
+        // 개인정보 클릭 이벤트
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -86,51 +113,77 @@ public class MainScreen extends JPanel {
             }
         });
 
-        //직원 호출 화면 연결
+        // 직원 호출 화면 연결
         callbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 System.out.println("직원 호출 화면 연결");
             }
         });
 
-        //랭킹 다이알로그 창 띄우기
+        // 랭킹 다이얼로그 창 띄우기
         rankbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                System.out.println("랭킹 다이알로그 창 띄우기");
+                System.out.println("랭킹 다이얼로그 창 띄우기");
             }
         });
 
-        //내 기록 다이알로그 창 띄우기
+        // 내 기록 다이얼로그 창 띄우기
         myrecordbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                System.out.println("내 기록 다이알로그 창 띄우기");
+                System.out.println("내 기록 다이얼로그 창 띄우기");
             }
         });
 
-        //주문내역 화면 연결
+        // 주문내역 화면 연결
         orderlistbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 System.out.println("주문내역 화면 연결");
             }
         });
+// Inside the constructor of MainScreen class
 
-        //장바구니 화면 연결
         cartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                System.out.println("장바구니 화면 연결");
+                // Call the method to display the shopping cart
+                foodOrderScreen.displayShoppingCart();
             }
         });
 
+    }
+    private void addToCart(int orderNumber, Timestamp orderTime) {
+        Connection conn = null;
+        try {
+            conn = OjdbcConnection.getConnection();
+            for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
+                Food food = entry.getKey();
+                int quantity = entry.getValue();
+                if (quantity > 0) {
+                    DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), orderNumber, orderTime);
+                }
+            }
+            JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private int generateRandomNumber() {
+        // 1억 범위 내에서 랜덤한 정수 생성
+        Random random = new Random();
+        return random.nextInt(90000000) + 10000000;
     }
 
 }

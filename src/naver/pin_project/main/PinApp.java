@@ -1,5 +1,6 @@
 package src.naver.pin_project.main;
 
+import src.naver.pin_project.view.FoodOrderScreen;
 import src.naver.pin_project.view.LoginScreen;
 import src.naver.pin_project.view.StartScreen;
 
@@ -30,8 +31,6 @@ public class PinApp extends JFrame {
         // 메인 화면 추가
         //cardPanel.add(new src.naver.pin_project.view1.MainScreen(user), "main");
 
-
-        //프레임에 카드패널 추가
         add(cardPanel);
     }
     public static void main(String[] args) {
