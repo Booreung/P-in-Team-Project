@@ -11,7 +11,8 @@ import javax.imageio.ImageIO;
 public class PaymentScreen extends JFrame {
     private JButton cardPaymentButton; // 카드 결제 버튼
     private JButton cashPaymentButton; // 현금 결제 버튼
-    private String fontPath = "/C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/폰트/온글잎 밑미.ttf"; // 사용할 폰트 파일 경로
+
+    private String fontPath = "/C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/폰트/온글잎 밑미.ttf"; // 사용할 폰트 파일 경로
     private JDialog paymentDialog; // 결제 진행 상태를 나타내는 다이얼로그
 
     // 생성자: 결제 화면의 초기 설정

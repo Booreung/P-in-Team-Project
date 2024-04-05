@@ -1,5 +1,7 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.User;
+import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.SignUp_ViewModel;
 
 import javax.swing.*;
@@ -9,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.sql.SQLException;
-import java.util.HashSet;
+
 
 
 public class SignUpScreen extends JDialog {
@@ -23,8 +25,6 @@ public class SignUpScreen extends JDialog {
     private JTextField phoneField3; // 휴대전화번호 입력필드3
     private JTextField verificationCodeField; // 인증번호 입력 필드
     private JButton sendVerificationCodeButton; // 인증번호 받기 버튼
-
-    private HashSet<String> existingUsernames = new HashSet<>();
 
     public SignUpScreen() {
         setTitle("회원가입");
@@ -223,7 +223,6 @@ public class SignUpScreen extends JDialog {
                 // 휴대폰 번호로 인증번호 전송
 
 
-
                 // 인증번호가 발송되었음을 나타내는 메시지 표시
                 JOptionPane.showMessageDialog(SignUpScreen.this,
                         phone+"으로 인증번호가 발송되었습니다.",
@@ -258,9 +257,7 @@ public class SignUpScreen extends JDialog {
                                     "회원가입 완료",
                                     JOptionPane.INFORMATION_MESSAGE);
 
-                            // 회원가입이 성공했을 때 로그인 화면으로 전환합니다.
-                            CardLayout cardLayout = (CardLayout) getParent().getLayout();
-                            cardLayout.show(getParent(), "login"); // "login"은 로그인 화면의 패널 이름입니다.
+                        dispose();
                         } else {
                             // 회원가입 실패 메시지를 표시합니다.
                             JOptionPane.showMessageDialog(SignUpScreen.this,
@@ -302,8 +299,11 @@ public class SignUpScreen extends JDialog {
     }
 
     private void checkUserId() {
-        String username = idField.getText();
-        if (existingUsernames.contains(username)) {
+        String userid = idField.getText();
+        User duplicate_user = DBHelper.getUserInfoFromDB(userid);
+        
+        //      if (duplicate_user.getUserId().equals(userid)) {  변경했던 코드
+        if (duplicate_user != null && duplicate_user.getUserId().equals(userid)) { // 중복확인 안되서 다시 변경한 코드
             JOptionPane.showMessageDialog(this,
                     "이미 존재하는 아이디입니다.",
                     "중복 확인", JOptionPane.WARNING_MESSAGE);
@@ -314,6 +314,7 @@ public class SignUpScreen extends JDialog {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
 
     private boolean checkPassword() {
         String password = new String(passwordField.getPassword());
@@ -329,5 +330,4 @@ public class SignUpScreen extends JDialog {
             return false;
         }
     }
-
 }

@@ -1,6 +1,9 @@
+
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
+import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,12 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.List;
 
 import src.naver.pin_project.data.Food;
 import src.naver.pin_project.db.DBHelper;
@@ -26,7 +31,9 @@ public class MainScreen extends JPanel {
     private int orderNumber; // 주문번호를 저장할 변수
     private Timestamp orderTime; // 주문 시간을 저장할 변수
 
-    public MainScreen(User loggedInUser){
+    private User user;
+    public MainScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel){
+
         this.loggedInUser = loggedInUser;
         this.selectedFoods = new HashMap<>();
         this.orderNumber = -1;
@@ -109,7 +116,8 @@ public class MainScreen extends JPanel {
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("프로필 이미지 클릭");
+                cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
+                cardLayout.show(cardPanel, "mypage");
             }
         });
 
@@ -117,15 +125,29 @@ public class MainScreen extends JPanel {
         callbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                cardPanel.add(new StaffCallScreen(MainScreen.this),"staffcall");
+                cardLayout.show(cardPanel,"staffcall");
+
                 System.out.println("직원 호출 화면 연결");
             }
         });
+        //수정완료
 
-        // 랭킹 다이얼로그 창 띄우기
+
+        // 랭킹 다이알로그 창 띄우기
         rankbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("랭킹 다이얼로그 창 띄우기");
+                SwingUtilities.invokeLater(() -> {
+                    List<List<Ranking>> rankingData = Ranking_ViewModel.getRankingData(); // 실시간 및 이달의 랭킹 정보를 가져옴
+                    List<Ranking> realTimeRankingList = rankingData.get(0); // 실시간 랭킹 리스트
+                    List<Ranking> monthlyRankingList = rankingData.get(1); // 이달의 랭킹 리스트
+
+                    RankingScreen rankingScreen = new RankingScreen(realTimeRankingList, monthlyRankingList); // 랭킹스크린 객체 생성
+                    rankingScreen.setVisible(true); // 랭킹스크린을 화면에 표시
+                });
+
             }
         });
 
@@ -153,8 +175,8 @@ public class MainScreen extends JPanel {
                 foodOrderScreen.displayShoppingCart();
             }
         });
-
     }
+
     private void addToCart(int orderNumber, Timestamp orderTime) {
         Connection conn = null;
         try {
@@ -185,5 +207,6 @@ public class MainScreen extends JPanel {
         Random random = new Random();
         return random.nextInt(90000000) + 10000000;
     }
+
 
 }
