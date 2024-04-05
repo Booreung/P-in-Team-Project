@@ -27,7 +27,7 @@ public class StaffCallScreen extends JPanel {
 
         frame = new JFrame("직원호출");
         frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         // 화면의 너비를 가져옴
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -97,7 +97,20 @@ public class StaffCallScreen extends JPanel {
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "관리자에게 전달되었습니다.");
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Chat_ViewModel.startServer();
+                    }
+                }).start();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        chatScreen = new ChatScreen();
+                    }
+                }).start();
             }
         });
         buttonPanel.add(button3, gbc);
