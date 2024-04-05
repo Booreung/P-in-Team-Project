@@ -22,7 +22,6 @@ public class RankingScreen extends JFrame {
     public RankingScreen(List<Ranking> realTimeRankingList, List<Ranking> monthlyRankingList) {
         setTitle("랭킹 정보"); // 프레임 타이틀 설정
         setSize(600, 460); // 프레임 크기 설정
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임이 닫힐 때 프로그램 종료
         Collections.sort(realTimeRankingList, Comparator.comparingInt(Ranking::getPoint).reversed());
         Collections.sort(monthlyRankingList, Comparator.comparingInt(Ranking::getPoint).reversed());
 

@@ -18,7 +18,6 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public GameFrame() {
         setTitle("Game");
         setSize(800, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/b_menu.jpg");
         JLabel imageLabel = new JLabel(imageIcon);//게임 실행창 게임메뉴
 
@@ -100,7 +99,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public void result_game(){
         JFrame frame = new JFrame("게임결과!!");
         frame.setSize(800, 480);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton cButton = new JButton("확인");
         JPanel buttonPanel = new JPanel();
@@ -178,7 +177,6 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public JFrame LoadingAnimation() {
         JFrame frame = new JFrame();
         frame.setTitle("볼링치는중...");
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(400, 200);
         //frame.setLocationRelativeTo(null);
 

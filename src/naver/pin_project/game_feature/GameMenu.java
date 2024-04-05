@@ -12,7 +12,6 @@ public class GameMenu extends JFrame {
     public GameMenu() {//처음 게임메뉴
         setTitle("Main Screen");
         setSize(800, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 상단 이미지
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.gif");
