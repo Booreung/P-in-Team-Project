@@ -13,6 +13,7 @@ public class ChatScreen extends JFrame {
     private BufferedReader in;
 
     public ChatScreen() {
+        setLocationRelativeTo(null);
         // UI
         chatArea = new JTextArea(20, 40);
         chatArea.setEditable(false);

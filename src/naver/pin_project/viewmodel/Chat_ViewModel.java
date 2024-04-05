@@ -1,5 +1,6 @@
 package src.naver.pin_project.viewmodel;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,6 +42,7 @@ public class Chat_ViewModel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
 
     }
 

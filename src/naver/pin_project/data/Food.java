@@ -4,9 +4,17 @@ public class Food {
     private int food_no;
     private String food_name;
     private int food_price;
-    private byte[] food_image; // 이미지는 byte 배열로 저장하는 것이 일반적
+
+    private String food_image;
     private boolean food_etc;
     private int food_code;
+
+    public Food(String foodName, int foodPrice, String food_image,boolean food_etc) {
+        this.food_name= foodName;
+        this.food_price =foodPrice;
+        this.food_image= food_image;
+        this.food_etc=food_etc;
+    }
 
     public int getFood_no() {
         return food_no;
@@ -32,14 +40,6 @@ public class Food {
         this.food_price = food_price;
     }
 
-    public byte[] getFood_image() {
-        return food_image;
-    }
-
-    public void setFood_image(byte[] food_image) {
-        this.food_image = food_image;
-    }
-
     public boolean isFood_etc() {
         return food_etc;
     }
@@ -55,4 +55,7 @@ public class Food {
     public void setFood_code(int food_code) {
         this.food_code = food_code;
     }
+
+    public String getFood_image() { return food_image;}
+
 }

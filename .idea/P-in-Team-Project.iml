@@ -8,18 +8,14 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-j-8.2.0" level="project" />
+
+
     <orderEntry type="library" name="mysql-connector-j-8.2.01" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../java-start/gson-2.10.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="mysql-connector-j-8.2.02" level="project" />
+
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="608c2295-31c6-4eb9-9d97-38112a712345" />
+
   </component>
 </module>
