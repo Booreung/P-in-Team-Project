@@ -1,7 +1,9 @@
 
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
+import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class MainScreen extends JPanel {
     private User loggedInUser;
@@ -99,12 +102,18 @@ public class MainScreen extends JPanel {
         });
         //수정완료
 
-        //랭킹 다이알로그 창 띄우기
+        // 랭킹 다이알로그 창 띄우기
         rankbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    List<List<Ranking>> rankingData = Ranking_ViewModel.getRankingData(); // 실시간 및 이달의 랭킹 정보를 가져옴
+                    List<Ranking> realTimeRankingList = rankingData.get(0); // 실시간 랭킹 리스트
+                    List<Ranking> monthlyRankingList = rankingData.get(1); // 이달의 랭킹 리스트
 
-                System.out.println("랭킹 다이알로그 창 띄우기");
+                    RankingScreen rankingScreen = new RankingScreen(realTimeRankingList, monthlyRankingList); // 랭킹스크린 객체 생성
+                    rankingScreen.setVisible(true); // 랭킹스크린을 화면에 표시
+                });
             }
         });
 
