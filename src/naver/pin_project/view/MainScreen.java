@@ -3,6 +3,7 @@ package src.naver.pin_project.view;
 
 import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
+import src.naver.pin_project.game_feature.GameMenu;
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 
 import javax.swing.*;
@@ -24,9 +25,11 @@ public class MainScreen extends JPanel {
         JButton callbtn = new JButton("직원 호출");
         JButton rankbtn = new JButton("랭킹");
         JButton myrecordbtn = new JButton("내 기록");
+        JButton gameStartbtn = new JButton("볼링 시작");
         buttonPanel.add(callbtn);
         buttonPanel.add(rankbtn);
         buttonPanel.add(myrecordbtn);
+        buttonPanel.add(gameStartbtn);
 
         //버튼 사이즈 조절, 텍스트 중앙 정렬
         Dimension buttonSize = new Dimension(150, 40);
@@ -36,6 +39,8 @@ public class MainScreen extends JPanel {
         rankbtn.setHorizontalAlignment(SwingConstants.CENTER);
         myrecordbtn.setMaximumSize(buttonSize);
         myrecordbtn.setHorizontalAlignment(SwingConstants.CENTER);
+        gameStartbtn.setMaximumSize(buttonSize);
+        gameStartbtn.setHorizontalAlignment(SwingConstants.CENTER);
 
         // 버튼 사이의 간격 조절을 위해 패널에 BorderLayout 적용
         buttonPanel.add(Box.createVerticalStrut(10)); // 첫 번째 버튼 위에 간격 추가
@@ -45,6 +50,8 @@ public class MainScreen extends JPanel {
         buttonPanel.add(Box.createVerticalStrut(10)); // 버튼 사이에 간격 추가
         buttonPanel.add(myrecordbtn);
         buttonPanel.add(Box.createVerticalStrut(10)); // 마지막 버튼 아래에 간격 추가
+        buttonPanel.add(gameStartbtn);
+        buttonPanel.add(Box.createVerticalStrut(10));
 
 
         add(buttonPanel, BorderLayout.WEST);
@@ -123,6 +130,14 @@ public class MainScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 System.out.println("내 기록 다이알로그 창 띄우기");
+            }
+        });
+
+        gameStartbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("게임 시작");
+                new GameMenu().setVisible(true);
             }
         });
 

@@ -15,7 +15,7 @@ public class GameMenu extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 상단 이미지
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\ASTERISK\\Documents\\JAVA_PROJECT\\P-in-Team-Project\\src\\naver\\pin_project\\game_feature\\img_asset\\bowling.gif");
+        ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.gif");
         JLabel imageLabel = new JLabel(imageIcon);
 
         // 하단 패널
@@ -101,7 +101,7 @@ public class GameMenu extends JFrame {
         mainMenuButton.addActionListener(new ActionListener() { //메인메뉴로 돌아가기
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 여기다 dispose() 로 창닫고 쓰면 될듯!
+                dispose();
             }
         });
 
