@@ -22,7 +22,6 @@ public class RankingScreen extends JFrame {
     public RankingScreen(List<Ranking> realTimeRankingList, List<Ranking> monthlyRankingList) {
         setTitle("랭킹 정보"); // 프레임 타이틀 설정
         setSize(600, 460); // 프레임 크기 설정
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임이 닫힐 때 프로그램 종료
         Collections.sort(realTimeRankingList, Comparator.comparingInt(Ranking::getPoint).reversed());
         Collections.sort(monthlyRankingList, Comparator.comparingInt(Ranking::getPoint).reversed());
 
@@ -30,7 +29,7 @@ public class RankingScreen extends JFrame {
         String[] columnNames = {"유저 아이디", "유저 이름", "게임 날짜", "점수"};
 
         // 테이블 열 제목에 사용할 폰트 설정
-        Font tableFont = getCustomFont("C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/폰트/온글잎 밑미.ttf", 15f);
+        Font tableFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 15f);
 
         // 실시간 랭킹과 이달의 랭킹을 위한 DefaultTableModel 생성
         DefaultTableModel realTimeModel = new DefaultTableModel(columnNames, 0);
@@ -55,10 +54,10 @@ public class RankingScreen extends JFrame {
         JScrollPane monthlyScrollPane = new JScrollPane(monthlyTable);
 
         // 레이블 제목 폰트 설정
-        Font labelFont = getCustomFont("C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/폰트/온글잎 밑미.ttf", 40f);
+        Font labelFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 40f);
 
         // 이미지 아이콘 생성
-        ImageIcon labelIcon = getScaledImageIcon("C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/img/bowling_7955611.png", 50, 50);
+        ImageIcon labelIcon = getScaledImageIcon("src/naver/pin_project/lib/볼링핀.png", 50, 50);
 
         // 실시간 랭킹 레이블 생성
         JLabel realTimeLabel = createLabel("실시간 랭킹", labelIcon, labelFont);

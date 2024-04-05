@@ -15,6 +15,7 @@ public class PinApp extends JFrame {
         setTitle("Pin");
         setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         //CardLayout 설정
         cardLayout = new CardLayout();

@@ -108,7 +108,6 @@ public class FoodOrderScreen extends JPanel {
     public void displayShoppingCart() {
         CartScreen cartScreen = new CartScreen(selectedFoods);
         JFrame frame = new JFrame("장바구니");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only this window
         frame.add(cartScreen);
         frame.pack();
         frame.setVisible(true);

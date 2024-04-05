@@ -21,7 +21,7 @@ public class DBConnector {
     }
     public void saveGameRecords(int game_code, String userid, int game_point) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://175.209.41.173:3306/pin", "root", "1234");
+        conn = DriverManager.getConnection("jdbc:mysql://175.209.41.173:3308/pin", "root", "q123");
 
 
 

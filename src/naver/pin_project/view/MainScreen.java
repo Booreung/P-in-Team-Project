@@ -3,6 +3,7 @@ package src.naver.pin_project.view;
 
 import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
+import src.naver.pin_project.game_feature.GameMenu;
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 
 import javax.swing.*;
@@ -45,6 +46,7 @@ public class MainScreen extends JPanel {
         JButton callbtn = new JButton("직원 호출");
         JButton rankbtn = new JButton("랭킹");
         JButton myrecordbtn = new JButton("내 기록");
+        JButton gameStartbtn = new JButton("볼링");
         buttonPanel.add(callbtn);
         buttonPanel.add(rankbtn);
         buttonPanel.add(myrecordbtn);
@@ -54,9 +56,34 @@ public class MainScreen extends JPanel {
         callbtn.setPreferredSize(buttonSize);
         rankbtn.setPreferredSize(buttonSize);
         myrecordbtn.setPreferredSize(buttonSize);
+        gameStartbtn.setPreferredSize(buttonSize);
+
         callbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         rankbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         myrecordbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        gameStartbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        callbtn.setMaximumSize(buttonSize);
+        rankbtn.setMaximumSize(buttonSize);
+        myrecordbtn.setMaximumSize(buttonSize);
+        gameStartbtn.setMaximumSize(buttonSize);
+
+        callbtn.setHorizontalAlignment(SwingConstants.CENTER);
+        rankbtn.setHorizontalAlignment(SwingConstants.CENTER);
+        myrecordbtn.setHorizontalAlignment(SwingConstants.CENTER);
+        gameStartbtn.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // 버튼 사이의 간격 조절을 위해 패널에 BorderLayout 적용
+        buttonPanel.add(Box.createVerticalStrut(10)); // 첫 번째 버튼 위에 간격 추가
+        buttonPanel.add(callbtn);
+        buttonPanel.add(Box.createVerticalStrut(10)); // 버튼 사이에 간격 추가
+        buttonPanel.add(rankbtn);
+        buttonPanel.add(Box.createVerticalStrut(10)); // 버튼 사이에 간격 추가
+        buttonPanel.add(myrecordbtn);
+        buttonPanel.add(Box.createVerticalStrut(10)); // 마지막 버튼 아래에 간격 추가
+        buttonPanel.add(gameStartbtn);
+        buttonPanel.add(Box.createVerticalStrut(10));
+
 
         add(buttonPanel, BorderLayout.WEST);
 
@@ -108,6 +135,7 @@ public class MainScreen extends JPanel {
                     orderTime = new Timestamp(System.currentTimeMillis()); // 현재 시간(초까지 포함)으로 주문 시간 생성
                 }
                 addToCart(orderNumber, orderTime); // 장바구니 버튼 클릭 시 addToCart 메서드 호출
+                foodOrderScreen.displayShoppingCart();
             }
         });
 
@@ -160,6 +188,15 @@ public class MainScreen extends JPanel {
         });
 
         // 주문내역 화면 연결
+        gameStartbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("게임 시작");
+                new GameMenu().setVisible(true);
+            }
+        });
+
+        //주문내역 화면 연결
         orderlistbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -168,13 +205,13 @@ public class MainScreen extends JPanel {
         });
 // Inside the constructor of MainScreen class
 
-        cartbtn.addActionListener(new ActionListener() {
+        /*cartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Call the method to display the shopping cart
                 foodOrderScreen.displayShoppingCart();
             }
-        });
+        });*/
     }
 
     private void addToCart(int orderNumber, Timestamp orderTime) {

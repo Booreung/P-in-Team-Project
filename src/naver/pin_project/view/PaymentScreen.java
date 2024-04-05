@@ -12,7 +12,7 @@ public class PaymentScreen extends JFrame {
     private JButton cardPaymentButton; // 카드 결제 버튼
     private JButton cashPaymentButton; // 현금 결제 버튼
 
-    private String fontPath = "/C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/폰트/온글잎 밑미.ttf"; // 사용할 폰트 파일 경로
+    private String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf"; // 사용할 폰트 파일 경로
     private JDialog paymentDialog; // 결제 진행 상태를 나타내는 다이얼로그
 
     // 생성자: 결제 화면의 초기 설정
@@ -24,7 +24,7 @@ public class PaymentScreen extends JFrame {
     private void initializeUI() {
         setTitle("결제 화면"); // 프레임의 제목 설정
         setSize(450, 300); // 프레임의 크기 설정
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프로그램 종료 설정
+
 
         // 결제 다이얼로그 생성
         createPaymentDialog();
@@ -69,8 +69,8 @@ public class PaymentScreen extends JFrame {
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0)); // 새로운 그리드 레이아웃 패널 생성
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // 여백 추가
-        cardPaymentButton = createButton("카드 결제", "credit-card_4021708.png", new Color(255, 227, 243)); // 카드 결제 버튼 생성
-        cashPaymentButton = createButton("현금 결제", "loan_2140373.png", new Color(208, 237, 255)); // 현금 결제 버튼 생성
+        cardPaymentButton = createButton("카드 결제", "src/naver/pin_project/lib/카드결제.png", new Color(255, 227, 243)); // 카드 결제 버튼 생성
+        cashPaymentButton = createButton("현금 결제", "src/naver/pin_project/lib/현금결제.png", new Color(208, 237, 255)); // 현금 결제 버튼 생성
         buttonPanel.add(cardPaymentButton); // 카드 결제 버튼을 버튼 패널에 추가
         buttonPanel.add(cashPaymentButton); // 현금 결제 버튼을 버튼 패널에 추가
         buttonPanel.setBackground(Color.WHITE); // 배경색 설정
@@ -125,7 +125,7 @@ public class PaymentScreen extends JFrame {
                 Thread.sleep(5000); // 5초 대기
                 SwingUtilities.invokeLater(() -> {
                     paymentDialog.setVisible(false); // 다이얼로그를 닫습니다.
-                    System.exit(0);
+                    setVisible(false);
                 });
             } catch (InterruptedException e) {
                 // 스레드가 중지될 때 발생하는 예외입니다.

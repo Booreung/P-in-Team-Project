@@ -27,6 +27,7 @@ public class StaffCallScreen extends JPanel {
 
         frame = new JFrame("직원호출");
         frame.setSize(800, 600);
+        frame.setLocationRelativeTo(null);
 
 
         // 화면의 너비를 가져옴
