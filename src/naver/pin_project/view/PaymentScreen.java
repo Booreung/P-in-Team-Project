@@ -124,7 +124,6 @@ public class PaymentScreen extends JFrame {
                 Thread.sleep(5000); // 5초 대기
                 SwingUtilities.invokeLater(() -> {
                     paymentDialog.setVisible(false); // 다이얼로그를 닫습니다.
-                    System.exit(0);
                 });
             } catch (InterruptedException e) {
                 // 스레드가 중지될 때 발생하는 예외입니다.
