@@ -107,10 +107,4 @@ public class DBHelper {
             }
         }
     }
-
-    // 1억 범위 내에서 랜덤한 정수를 생성하는 메서드 (주문번호 생성용)
-    private static int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(90000000) + 10000000; // 1억 범위 내에서 랜덤한 정수 생성
-    }
 }

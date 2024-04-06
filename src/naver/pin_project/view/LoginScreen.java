@@ -27,7 +27,7 @@ public class LoginScreen extends JPanel {
         JLabel idLabel = new JLabel("아이디");
         JTextField idField = new JTextField(15);
         // 라벨의 폰트 크기 설정
-        idLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20)); // 폰
+        idLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20));
         // 텍스트 필드의 크기 설정
         idField.setPreferredSize(new Dimension(300, 30)); // 가로 크기 조절
         idField.setFont(idField.getFont().deriveFont(Font.PLAIN, 20)); // 폰트 크기 조절
