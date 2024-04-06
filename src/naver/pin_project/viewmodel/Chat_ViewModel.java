@@ -1,9 +1,6 @@
 package src.naver.pin_project.viewmodel;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,7 +26,7 @@ public class Chat_ViewModel {
                 // 클라이언트로부터 메시지 수신 및 송신
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
-                    System.out.println("클라이언트: " + inputLine);
+                    System.out.println("고객: " + inputLine);
                     // 직원의 답변 메시지
                     String replyMessage = consoleReader.readLine();
                     out.println(replyMessage);
