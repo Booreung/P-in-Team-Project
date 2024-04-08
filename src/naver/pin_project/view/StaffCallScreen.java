@@ -26,7 +26,7 @@ public class StaffCallScreen extends JPanel {
         this.mainScreen = mainScreen;
 
         frame = new JFrame("직원호출");
-        frame.setSize(800, 600);
+        frame.setSize(730, 530);
         frame.setLocationRelativeTo(null);
 
 

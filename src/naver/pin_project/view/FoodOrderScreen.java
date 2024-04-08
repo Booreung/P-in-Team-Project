@@ -98,6 +98,7 @@ public class FoodOrderScreen extends JPanel {
 
         setPreferredSize(new Dimension(width, height));
         setSize(650, 430);
+        //setSize(750, 580);
     }
     // 선택한 음식과 수량을 Map으로 반환하는 메서드
     public Map<Food, Integer> getSelectedFoods() {
@@ -150,37 +151,5 @@ public class FoodOrderScreen extends JPanel {
             total += food.getFood_price() * quantity;
         }
         totalTextField.setText("◆ 총: " + total + " 원 ◆");
-    }
-    // Method to update and display the total price
-
-
-    private void addToCart(int orderNumber, Timestamp orderTime) {
-        Connection conn = null;
-        try {
-            conn = OjdbcConnection.getConnection();
-            for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
-                Food food = entry.getKey();
-                int quantity = entry.getValue();
-                if (quantity > 0) {
-                    DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), orderNumber, orderTime);
-                }
-            }
-            JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private int generateRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(90000000) + 10000000; // 1억 범위 내에서 랜덤한 정수 생성
     }
 }
