@@ -17,7 +17,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     private JProgressBar loadingBar;
     public GameFrame() {
         setTitle("Game");
-        setSize(800, 480);
+        setSize(730, 530);
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/b_menu.jpg");
         JLabel imageLabel = new JLabel(imageIcon);//게임 실행창 게임메뉴
 
@@ -99,12 +99,12 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public void result_game(){
         JFrame frame = new JFrame("게임결과!!");
         frame.setSize(800, 480);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton cButton = new JButton("확인");
         JPanel buttonPanel = new JPanel();
 
-        frame.getContentPane().add(createScorecard(1, gameMenu.userId), BorderLayout.CENTER);//메뉴에서 받아온 아이디
+        frame.getContentPane().add(createScorecard(1, gameMenu.UserName), BorderLayout.CENTER);//메뉴에서 받아온 아이디
         frame.getContentPane().add(cButton, BorderLayout.SOUTH);
 
         cButton.addActionListener(new ActionListener() {
@@ -119,7 +119,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     }
     private JPanel createScorecard(int numPlayers, String name) {
         JPanel p = new JPanel(new GridBagLayout());
-        System.out.println("gf:"+name);
+        System.out.println("gameframe:"+name);
 
         p.add(new JLabel("  "+name+" 님  "), gbc(0, 1, 1, 1,2));
         p.add(new JLabel("      "), gbc(0, 1, 1, 1,2));
@@ -177,6 +177,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public JFrame LoadingAnimation() {
         JFrame frame = new JFrame();
         frame.setTitle("볼링치는중...");
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(400, 200);
         //frame.setLocationRelativeTo(null);
 
@@ -197,8 +198,8 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
 
 
                 if (progress == 100) {
-                    dispose();
-                    new GameFrame().setVisible(true);
+                    frame.dispose();
+                    //new GameFrame().setVisible(true);
                     try {
                         ball();// 윈도우를 닫습니다.
                     } catch (SQLException ex) {
@@ -220,7 +221,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         int totalScore = 0;
         Random random = new Random();
         // 0부터 99999 사이의 랜덤 정수 생성
-        gameDto.setUserid(gameMenu.userId);
+        gameDto.setUserid(gameMenu.UserID);
         int game_code = random.nextInt(1000000000);
         gameDto.setGame_code(game_code);
         //일단 디티오에 데이터 저장

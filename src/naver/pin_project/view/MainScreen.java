@@ -27,6 +27,12 @@ import src.naver.pin_project.db.OjdbcConnection;
 
 public class MainScreen extends JPanel {
     private User loggedInUser;
+    public static String UserName; //로그인한 username 을 여기저기 퍼갈수 있게 정적메소드를 임시로 만들긴했는데
+    //물론 비효율적이긴 하지만 현대 컴퓨터들의 부동소수점 연산은 어마무시하게 빠르므로 딱히 놔둬도 상관은 없을것 같긴하다
+    //오히려 이렇게 긴 주석이 영향이 더 클듯 + 미학적으로 좀 지저분하고 거슬릴 뿐....
+    public static String UserID; //로그인한 userid 을 여기저기 퍼갈수 있게 정적메소드를 임시로 만들긴했는데
+    //물론 비효율적이긴 하지만 현대 컴퓨터들의 부동소수점 연산은 어마무시하게 빠르므로 딱히 놔둬도 상관은 없을것 같긴하다
+    //오히려 이렇게 긴 주석이 영향이 더 클듯 + 미학적으로 좀 지저분하고 거슬릴 뿐....
     private FoodOrderScreen foodOrderScreen; // FoodOrderScreen 객체 선언
     private Map<Food, Integer> selectedFoods; // 선택한 음식과 수량을 저장할 Map
     private int orderNumber; // 주문번호를 저장할 변수
@@ -36,6 +42,7 @@ public class MainScreen extends JPanel {
     public MainScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel){
 
         this.loggedInUser = loggedInUser;
+
         this.selectedFoods = new HashMap<>();
         this.orderNumber = -1;
         setLayout(new BorderLayout());
@@ -111,7 +118,9 @@ public class MainScreen extends JPanel {
         JLabel profileLabel = new JLabel(profileIcon);
         profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
         // 사용자 이름 라벨
-        JLabel nameLabel = new JLabel(loggedInUser.getUserName());
+        this.UserName =loggedInUser.getUserName();
+        this.UserID = loggedInUser.getUserId();
+        JLabel nameLabel = new JLabel(UserName);
         nameLabel.setFont(nameLabel.getFont().deriveFont(Font.BOLD, 20));
         // 프로필 판넬
         JPanel profilePanel = new JPanel();
@@ -202,7 +211,8 @@ public class MainScreen extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("게임 시작");
-                new GameMenu().setVisible(true);
+                GameMenu gameMenu = new GameMenu();
+                gameMenu.setVisible(true);
             }
         });
 
