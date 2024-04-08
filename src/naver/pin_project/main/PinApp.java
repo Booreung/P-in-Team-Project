@@ -13,7 +13,7 @@ public class PinApp extends JFrame {
 
     public PinApp(){
         setTitle("Pin");
-        setSize(800,600);
+        setSize(730,530);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
