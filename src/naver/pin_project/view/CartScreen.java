@@ -45,6 +45,7 @@ public class CartScreen extends JPanel {
         });
         add(payButton, BorderLayout.NORTH);
         setPreferredSize(new Dimension(650, 430));
+
     }
 
     private int calculateTotal() {

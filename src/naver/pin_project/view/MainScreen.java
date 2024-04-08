@@ -85,16 +85,11 @@ public class MainScreen extends JPanel {
         buttonPanel.add(Box.createVerticalStrut(10));
 
 
-        add(buttonPanel, BorderLayout.WEST);
-
+        // 중앙 패널 => 여기엔 테이블이 들어가야함
         foodOrderScreen = new FoodOrderScreen(450, 500); // Example width and height
         add(foodOrderScreen, BorderLayout.CENTER);
         foodOrderScreen.setLocation(83, 0); // Example coordinates
 
-
-        // 중앙 패널 => 여기엔 테이블이 들어가야함
-        JPanel centerPanel = new JPanel();
-        add(centerPanel, BorderLayout.CENTER);
 
         // 우측 하단 버튼 2개(주문내역, 장바구니)
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -117,13 +112,28 @@ public class MainScreen extends JPanel {
         profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
         // 사용자 이름 라벨
         JLabel nameLabel = new JLabel(loggedInUser.getUserName());
+        nameLabel.setFont(nameLabel.getFont().deriveFont(Font.BOLD, 20));
         // 프로필 판넬
         JPanel profilePanel = new JPanel();
         profilePanel.setLayout(new BorderLayout());
         profilePanel.add(profileLabel, BorderLayout.NORTH);
         profilePanel.add(nameLabel, BorderLayout.EAST);
-        // 전체 판넬의 프로필 판넬 추가
-        add(profilePanel, BorderLayout.EAST);
+
+
+        // BorderLayout.WEST 에 GridLayout으로 설정하여 위아래로 배치
+        JPanel westPanel = new JPanel(new GridBagLayout());
+        // westPanel 에 버튼 패널과 프로필 패널 추가
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.NORTH;
+        westPanel.add(buttonPanel, gbc);
+
+        gbc.gridy = 1; // 다음 행으로 이동
+        gbc.insets = new Insets(150, 0, 0, 0); // 위쪽 여백 추가
+        westPanel.add(profilePanel, gbc);
+
+        add(westPanel, BorderLayout.WEST);
 
         // 장바구니 버튼 이벤트 처리
         cartbtn.addActionListener(new ActionListener() {
@@ -203,17 +213,9 @@ public class MainScreen extends JPanel {
                 System.out.println("주문내역 화면 연결");
             }
         });
-// Inside the constructor of MainScreen class
-
-        /*cartbtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Call the method to display the shopping cart
-                foodOrderScreen.displayShoppingCart();
-            }
-        });*/
     }
 
+    //
     private void addToCart(int orderNumber, Timestamp orderTime) {
         Connection conn = null;
         try {
@@ -238,12 +240,9 @@ public class MainScreen extends JPanel {
             }
         }
     }
-
     private int generateRandomNumber() {
         // 1억 범위 내에서 랜덤한 정수 생성
         Random random = new Random();
         return random.nextInt(90000000) + 10000000;
     }
-
-
 }
