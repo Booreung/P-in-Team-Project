@@ -17,7 +17,7 @@ public class DBConnector {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection("jdbc:mysql://175.209.41.173:3306/kiosk_database", "siho", "1234");
-        searchUserName(gm.userId);
+
     }
     public void saveGameRecords(int game_code, String userid, int game_point) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");

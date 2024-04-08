@@ -1,17 +1,21 @@
 package src.naver.pin_project.game_feature;
 
+import src.naver.pin_project.view.MainScreen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class GameMenu extends JFrame {
-    String userId = "test"; //메인메뉴로부터 받아올 유저아이디
-    String userName = "홍길동"; //메인메뉴로부터 받아올 유저 닉네임
+
+
+    public String UserID = MainScreen.UserID;//메인메뉴로부터 받아올 유저아이디
+    public String UserName = MainScreen.UserName;//메인메뉴로부터 받아올 유저 닉네임
     //유저아이디 하나로 DB에서 받아올수 있지만 굳이.. 싶어서 메인변수 받아와도 좋을거같다!
 
     public GameMenu() {//처음 게임메뉴
-        setTitle("Main Screen");
-        setSize(800, 480);
+        setTitle("볼링게임");
+        setSize(730, 530);
 
         // 상단 이미지
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.gif");
@@ -22,7 +26,7 @@ public class GameMenu extends JFrame {
         bottomPanel.setBackground(Color.DARK_GRAY);
 
         // 왼쪽 userId 표시되는 라벨
-        JLabel userIdLabel = new JLabel("User ID: " + userId);
+        JLabel userIdLabel = new JLabel(UserName+" 님 환영합니다! 즐거운 시간 되세요.");
         userIdLabel.setForeground(Color.WHITE);
         bottomPanel.add(userIdLabel, BorderLayout.WEST);
 
