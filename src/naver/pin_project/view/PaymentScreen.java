@@ -65,6 +65,7 @@ public class PaymentScreen extends JFrame {
         return headerPanel; // 생성된 패널 반환
     }
 
+
     // 버튼 패널 생성하는 메서드
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0)); // 새로운 그리드 레이아웃 패널 생성
@@ -81,7 +82,7 @@ public class PaymentScreen extends JFrame {
     private JButton createButton(String text, String imagePath, Color backgroundColor) {
         JButton button;
         try {
-            BufferedImage img = ImageIO.read(new File("C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/img/" + imagePath)); // 이미지 파일 읽기
+            BufferedImage img = ImageIO.read(new File(imagePath)); // 이미지 파일 읽기
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH); // 이미지 크기 조정
             ImageIcon icon = new ImageIcon(scaledImg); // 이미지 아이콘 생성
             button = new JButton(text, icon); // 텍스트와 아이콘을 가진 버튼 생성
