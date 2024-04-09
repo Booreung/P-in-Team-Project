@@ -108,11 +108,15 @@ public class GameMenu extends JFrame {
             }
         });
 
-        myRecordsButton.addActionListener(new ActionListener() {//게임 기록 볼수 있는창. 구현중....
+        myRecordsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new GameRecord().setVisible(true);
+                SwingUtilities.invokeLater(() -> {
+                    GameRecord gameRecord = new GameRecord();
+                    gameRecord.setVisible(true);
+                    // 호출되지 않더라도 빈 테이블을 보여주기 위해 추가
+                    gameRecord.fetchDataFromDatabase();
+                });
             }
         });
     }
