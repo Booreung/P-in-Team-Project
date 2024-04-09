@@ -54,19 +54,24 @@ public class SignUpScreen extends JDialog {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        // 사용자 이름 텍스트 필드
+// 사용자 이름 텍스트 필드
         gbc.gridx = 0;
         gbc.gridy = 0;
-        textFieldPanel.add(new JLabel("사용자 이름", SwingConstants.LEFT), gbc);
+        JLabel usernameLabel = new JLabel("사용자 이름", SwingConstants.LEFT);
+        usernameLabel.setForeground(Color.WHITE); // 라벨 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(usernameLabel, gbc);
         gbc.gridx = 1;
         usernameField = new JTextField(15);
+        usernameField.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
         textFieldPanel.add(usernameField, gbc);
 
 
         // 아이디 텍스트 필드
         gbc.gridx = 0;
         gbc.gridy = 1;
-        textFieldPanel.add(new JLabel("아이디", SwingConstants.LEFT), gbc);
+        JLabel idLabel = new JLabel("아이디", SwingConstants.LEFT);
+        idLabel.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(idLabel, gbc);
         gbc.gridx = 1;
         idField = new JTextField(15);
         textFieldPanel.add(idField, gbc);
@@ -83,7 +88,9 @@ public class SignUpScreen extends JDialog {
         //비밀번호 텍스트 필드
         gbc.gridx = 0;
         gbc.gridy = 2;
-        textFieldPanel.add(new JLabel("비밀번호", SwingConstants.LEFT), gbc);
+        JLabel pwLabel = new JLabel("비밀번호", SwingConstants.LEFT);
+        pwLabel.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(pwLabel, gbc);
         gbc.gridx = 1;
         passwordField = new JPasswordField(15);
         textFieldPanel.add(passwordField, gbc);
@@ -92,7 +99,9 @@ public class SignUpScreen extends JDialog {
         // 비밀번호 확인 텍스트 필드
         gbc.gridx = 0;
         gbc.gridy = 3;
-        textFieldPanel.add(new JLabel("비밀번호 확인", SwingConstants.LEFT), gbc);
+        JLabel pwchecdkLabel = new JLabel("비밀번호확인", SwingConstants.LEFT);
+        pwchecdkLabel.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(pwchecdkLabel, gbc);
         gbc.gridx = 1;
         confirmPasswordField = new JPasswordField(15);
         textFieldPanel.add(confirmPasswordField, gbc);
@@ -101,7 +110,9 @@ public class SignUpScreen extends JDialog {
         // 생년월일 입력 텍스트 필드
         gbc.gridx = 0;
         gbc.gridy = 4;
-        textFieldPanel.add(new JLabel("생년월일", SwingConstants.LEFT), gbc);
+        JLabel birthLabel = new JLabel("생년월일", SwingConstants.LEFT);
+        birthLabel.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(birthLabel, gbc);
         gbc.gridx = 1;
 
         // placehold 같은 기능 추가
@@ -130,7 +141,9 @@ public class SignUpScreen extends JDialog {
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        textFieldPanel.add(new JLabel("휴대전화번호", SwingConstants.LEFT), gbc);
+        JLabel phonenumLabel = new JLabel("휴대전화번호", SwingConstants.LEFT);
+        phonenumLabel.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(phonenumLabel, gbc);
 
         // 휴대전화번호 입력 필드를 위한 패널
         JPanel phonePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0)); // 5는 컴포넌트 사이의 수평 간격, 0은 수직 간격
@@ -172,7 +185,9 @@ public class SignUpScreen extends JDialog {
         // 인증번호 입력 텍스트필드
         gbc.gridx = 0;
         gbc.gridy = 6;
-        textFieldPanel.add(new JLabel("인증번호", SwingConstants.LEFT), gbc);
+        JLabel verificationcodeLable = new JLabel("인증번호", SwingConstants.LEFT);
+        verificationcodeLable.setForeground(Color.WHITE); // 텍스트 색상을 화이트로 설정
+        textFieldPanel.add(verificationcodeLable, gbc);
         gbc.gridx = 1;
         verificationCodeField = new JTextField(15);
         textFieldPanel.add(verificationCodeField, gbc);
