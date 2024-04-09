@@ -4,17 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
 import src.naver.pin_project.data.Food;
-import src.naver.pin_project.db.DBHelper;
-import src.naver.pin_project.db.OjdbcConnection;
 import src.naver.pin_project.viewmodel.FoodOrder_ViewModel;
 
 public class FoodOrderScreen extends JPanel {

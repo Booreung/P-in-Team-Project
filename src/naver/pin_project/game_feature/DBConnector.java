@@ -2,7 +2,6 @@ package src.naver.pin_project.game_feature;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DBConnector {
