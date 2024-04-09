@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 // 결제 화면을 나타내는 클래스
 public class PaymentScreen extends JFrame {
+
     private JButton cardPaymentButton; // 카드 결제 버튼
     private JButton cashPaymentButton; // 현금 결제 버튼
 
@@ -16,6 +17,7 @@ public class PaymentScreen extends JFrame {
     private JDialog paymentDialog; // 결제 진행 상태를 나타내는 다이얼로그
 
     // 생성자: 결제 화면의 초기 설정
+
     public PaymentScreen() {
         initializeUI();
     }
@@ -81,7 +83,7 @@ public class PaymentScreen extends JFrame {
     private JButton createButton(String text, String imagePath, Color backgroundColor) {
         JButton button;
         try {
-            BufferedImage img = ImageIO.read(new File("C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/img/" + imagePath)); // 이미지 파일 읽기
+            BufferedImage img = ImageIO.read(new File(imagePath)); // 이미지 파일 읽기
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH); // 이미지 크기 조정
             ImageIcon icon = new ImageIcon(scaledImg); // 이미지 아이콘 생성
             button = new JButton(text, icon); // 텍스트와 아이콘을 가진 버튼 생성

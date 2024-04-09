@@ -24,6 +24,7 @@ public class FoodOrderScreen extends JPanel {
     private JPanel cardPanel;
     private Map<Food, Integer> selectedFoods;
     private int orderNumber; // 주문번호를 저장할 변수
+    private JPanel mainPanel; // Declare mainPanel as a class-level field
 
     public FoodOrderScreen(int width, int height) {
         this.cardLayout = new CardLayout();
@@ -36,7 +37,7 @@ public class FoodOrderScreen extends JPanel {
             FoodOrder_ViewModel viewModel = new FoodOrder_ViewModel();
             foodList = viewModel.getFoodMenu();
 
-            JPanel mainPanel = new JPanel(new GridLayout(0, 3, 10, 10));
+            mainPanel = new JPanel(new GridLayout(0, 3, 10, 10));
 
             for (Food food : foodList) {
                 JPanel foodPanel = new JPanel(new BorderLayout());
@@ -51,6 +52,7 @@ public class FoodOrderScreen extends JPanel {
                     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
                     JLabel quantityLabel = new JLabel("0");
                     quantityLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
 
                     JButton addButton = new JButton("+");
                     addButton.addActionListener(new QuantityButtonListener(food, quantityLabel, new JLabel(), 1)); // 추가된 행
@@ -91,7 +93,6 @@ public class FoodOrderScreen extends JPanel {
             add(totalTextField, BorderLayout.NORTH); // Changed here
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -100,11 +101,36 @@ public class FoodOrderScreen extends JPanel {
         setSize(650, 430);
         //setSize(750, 580);
     }
+
     // 선택한 음식과 수량을 Map으로 반환하는 메서드
     public Map<Food, Integer> getSelectedFoods() {
         return selectedFoods;
     }
 
+    public void resetQuantityLabels() {
+        // 모든 선택된 음식의 수량 라벨을 0으로 설정합니다.
+        for (Component component : mainPanel.getComponents()) {
+            if (component instanceof JPanel) {
+                JPanel foodPanel = (JPanel) component;
+                for (Component innerComponent : foodPanel.getComponents()) {
+                    if (innerComponent instanceof JPanel) {
+                        JPanel buttonPanel = (JPanel) innerComponent;
+                        for (Component buttonComponent : buttonPanel.getComponents()) {
+                            if (buttonComponent instanceof JLabel) {
+                                JLabel label = (JLabel) buttonComponent;
+                                label.setText("0");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 선택된 음식 목록을 초기화합니다.
+        selectedFoods.clear();
+        // 총 가격을 업데이트합니다.
+        updateTotal();
+    }
     // Method to display the shopping cart
     public void displayShoppingCart() {
         CartScreen cartScreen = new CartScreen(selectedFoods);
@@ -112,7 +138,10 @@ public class FoodOrderScreen extends JPanel {
         frame.add(cartScreen);
         frame.pack();
         frame.setVisible(true);
+        // 수량 라벨을 초기화합니다.
+        resetQuantityLabels();
     }
+
 
     private class QuantityButtonListener implements ActionListener {
         private Food food;
@@ -152,4 +181,6 @@ public class FoodOrderScreen extends JPanel {
         }
         totalTextField.setText("◆ 총: " + total + " 원 ◆");
     }
+
+
 }
