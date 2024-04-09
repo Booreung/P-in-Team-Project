@@ -57,7 +57,7 @@ public class ChatScreen extends JFrame {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             // 연결 메시지 표시
-            chatArea.append("관리자와(과) 연결되었습니다.\n\n");
+            chatArea.append("직원과 연결되었습니다.\n\n");
 
             // 서버로부터 메시지 수신 스레드 시작
             new Thread(new ReceiveMessageThread()).start();
