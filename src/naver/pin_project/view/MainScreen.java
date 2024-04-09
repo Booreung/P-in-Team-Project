@@ -1,6 +1,7 @@
 
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.OrderInfo;
 import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.game_feature.GameMenu;
@@ -16,9 +17,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.List;
 
 import src.naver.pin_project.data.Food;
@@ -37,6 +36,8 @@ public class MainScreen extends JPanel {
     private Map<Food, Integer> selectedFoods; // 선택한 음식과 수량을 저장할 Map
     private int orderNumber; // 주문번호를 저장할 변수
     private Timestamp orderTime; // 주문 시간을 저장할 변수
+
+    public ArrayList<OrderInfo> orederd_list = new ArrayList<>();
 
     private User user;
     public MainScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel){
@@ -175,11 +176,9 @@ public class MainScreen extends JPanel {
 
                 cardPanel.add(new StaffCallScreen(MainScreen.this),"staffcall");
                 cardLayout.show(cardPanel,"staffcall");
-
-                System.out.println("직원 호출 화면 연결");
             }
         });
-        //수정완료
+
 
 
         // 랭킹 다이알로그 창 띄우기
@@ -206,7 +205,7 @@ public class MainScreen extends JPanel {
             }
         });
 
-        // 주문내역 화면 연결
+        // 볼링 게임 시작
         gameStartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -221,6 +220,10 @@ public class MainScreen extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("주문내역 화면 연결");
+                System.out.println("주문내역 출력");
+                for(OrderInfo obj : orederd_list){
+                    System.out.println(obj.toString());
+                }
             }
         });
     }
@@ -228,6 +231,9 @@ public class MainScreen extends JPanel {
     //
     private void addToCart(int orderNumber, Timestamp orderTime) {
         Connection conn = null;
+
+        orederd_list = new ArrayList<>();
+
         try {
             conn = OjdbcConnection.getConnection();
             for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
@@ -235,6 +241,7 @@ public class MainScreen extends JPanel {
                 int quantity = entry.getValue();
                 if (quantity > 0) {
                     DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), orderNumber, orderTime);
+                    orederd_list.add(new OrderInfo(orderTime,orderNumber,food.getFood_name(),food.getFood_price(),quantity));
                 }
             }
             JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다.");
@@ -255,4 +262,6 @@ public class MainScreen extends JPanel {
         Random random = new Random();
         return random.nextInt(90000000) + 10000000;
     }
+
+
 }
