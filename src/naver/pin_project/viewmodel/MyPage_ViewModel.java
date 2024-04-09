@@ -4,9 +4,8 @@ import src.naver.pin_project.db.OjdbcConnection;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
 
 public class MyPage_ViewModel {
     public boolean update(String msgId, String msgName,String msgPw, String newmsgId)  {
