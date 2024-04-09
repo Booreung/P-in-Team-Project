@@ -1,21 +1,17 @@
 package src.naver.pin_project.view;
 
 
+import src.naver.pin_project.data.Food;
 import src.naver.pin_project.data.OrderInfo;
-
 import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.db.OjdbcConnection;
 import src.naver.pin_project.game_feature.GameMenu;
-
 import src.naver.pin_project.view.FoodOrderScreen;
 import src.naver.pin_project.view.StaffCallScreen; // StaffCallScreen 임포트 추가
-
 import src.naver.pin_project.game_feature.GameRecord;
-
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,11 +21,8 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 public class MainScreen extends JPanel {
     private User loggedInUser;
@@ -37,6 +30,8 @@ public class MainScreen extends JPanel {
     private Map<Food, Integer> selectedFoods;
     private int orderNumber;
     private Timestamp orderTime;
+    public static String UserName;
+    public static String UserID;
 
 
     public ArrayList<OrderInfo> orederd_list = new ArrayList<>();
