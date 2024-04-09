@@ -5,6 +5,7 @@ import src.naver.pin_project.data.OrderInfo;
 import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.game_feature.GameMenu;
+import src.naver.pin_project.game_feature.GameRecord;
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 
 import javax.swing.*;
@@ -201,7 +202,12 @@ public class MainScreen extends JPanel {
         myrecordbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("내 기록 다이얼로그 창 띄우기");
+                SwingUtilities.invokeLater(() -> {
+                    GameRecord gameRecord = new GameRecord();
+                    gameRecord.setVisible(true);
+                    // 호출되지 않더라도 빈 테이블을 보여주기 위해 추가
+                    gameRecord.fetchDataFromDatabase();
+                });
             }
         });
 
