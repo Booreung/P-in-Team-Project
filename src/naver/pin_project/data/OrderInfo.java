@@ -26,6 +26,9 @@ public class OrderInfo {
                 ordered_food_name + " / " +
                 ordered_food_price + " / " +
                 ordered_food_quantity + " / " +
-                totalPrice+"/n";
+
+                totalPrice + "\n";
+
     }
 }
+
