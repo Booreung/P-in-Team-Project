@@ -1,6 +1,6 @@
 package src.naver.pin_project.main;
 
-import src.naver.pin_project.view.FoodOrderScreen;
+
 import src.naver.pin_project.view.LoginScreen;
 import src.naver.pin_project.view.StartScreen;
 
