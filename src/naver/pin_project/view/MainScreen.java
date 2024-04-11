@@ -9,8 +9,6 @@ import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.db.OjdbcConnection;
 import src.naver.pin_project.game_feature.GameMenu;
-import src.naver.pin_project.view.FoodOrderScreen;
-import src.naver.pin_project.view.StaffCallScreen; // StaffCallScreen 임포트 추가
 import src.naver.pin_project.game_feature.GameRecord;
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 import javax.swing.*;
