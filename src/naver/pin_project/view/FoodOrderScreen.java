@@ -25,33 +25,38 @@ public class FoodOrderScreen extends JPanel {
         this.cardPanel = new JPanel(cardLayout);
         this.selectedFoods = new HashMap<>();
         this.orderNumber = -1; // 초기값으로 -1 설정
-
+        setBackground(Color.decode("#8A8585"));
         try {
             List<Food> foodList;
             FoodOrder_ViewModel viewModel = new FoodOrder_ViewModel();
             foodList = viewModel.getFoodMenu();
-
             mainPanel = new JPanel(new GridLayout(0, 3, 10, 10));
 
             for (Food food : foodList) {
                 JPanel foodPanel = new JPanel(new BorderLayout());
+                foodPanel.setBackground(Color.decode("#8A8585"));
 
                 String imagePath = food.getFood_image();
                 if (imagePath != null) {
                     ImageIcon icon = new ImageIcon("src/naver/pin_project/lib/" + imagePath);
                     Image image = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                     JButton button = new JButton(new ImageIcon(image));
+                    button.setBackground(Color.white);
                     foodPanel.add(button, BorderLayout.CENTER);
 
                     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+                    buttonPanel.setBackground(Color.decode("#8A8585"));
                     JLabel quantityLabel = new JLabel("0");
+                    quantityLabel .setForeground(Color.white);
                     quantityLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 
                     JButton addButton = new JButton("+");
+                    addButton.setBackground(Color.decode("#B0FFA9"));
                     addButton.addActionListener(new QuantityButtonListener(food, quantityLabel, new JLabel(), 1)); // 추가된 행
 
                     JButton subtractButton = new JButton("-");
+                    subtractButton.setBackground(Color.decode("#FF66CC"));
                     subtractButton.addActionListener(new QuantityButtonListener(food, quantityLabel, new JLabel(), -1)); // 추가된 행
 
                     buttonPanel.add(addButton);
@@ -61,19 +66,21 @@ public class FoodOrderScreen extends JPanel {
                     JLabel stockLabel = null;
                     if (!food.isFood_etc()) {
                         stockLabel= new JLabel("재고 없음");
+                        stockLabel.setForeground(Color.white);
                         buttonPanel.add(stockLabel);
                     }
 
-
+                    foodPanel.setForeground(Color.white);
                     foodPanel.add(buttonPanel, BorderLayout.SOUTH);
                 } else {
                     System.out.println("Error: Image path is null");
                 }
 
                 JLabel label = new JLabel("▶" + food.getFood_name() + "▶ " + food.getFood_price() + " 원");
+                label.setForeground(Color.white);
                 label.setAlignmentX(Component.CENTER_ALIGNMENT);
                 foodPanel.add(label, BorderLayout.NORTH);
-
+                mainPanel.setBackground(Color.decode("#8A8585"));
                 mainPanel.add(foodPanel);
             }
 
@@ -90,7 +97,6 @@ public class FoodOrderScreen extends JPanel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         setPreferredSize(new Dimension(width, height));
         setSize(650, 430);
         //setSize(750, 580);
@@ -112,6 +118,7 @@ public class FoodOrderScreen extends JPanel {
                         for (Component buttonComponent : buttonPanel.getComponents()) {
                             if (buttonComponent instanceof JLabel) {
                                 JLabel label = (JLabel) buttonComponent;
+                                label.setForeground(Color.white);
                                 label.setText("0");
                             }
                         }
