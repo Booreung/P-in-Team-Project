@@ -1,20 +1,32 @@
 package src.naver.pin_project.view;
 
+
+import src.naver.pin_project.data.Food;
+import src.naver.pin_project.db.OjdbcConnection;
+import src.naver.pin_project.viewmodel.OrderList_ViewModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.imageio.ImageIO;
+
 
 // 결제 화면을 나타내는 클래스
 public class PaymentScreen extends JFrame {
 
     private JButton cardPaymentButton; // 카드 결제 버튼
     private JButton cashPaymentButton; // 현금 결제 버튼
-
     private String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf"; // 사용할 폰트 파일 경로
     private JDialog paymentDialog; // 결제 진행 상태를 나타내는 다이얼로그
+
 
     // 생성자: 결제 화면의 초기 설정
 
@@ -66,6 +78,7 @@ public class PaymentScreen extends JFrame {
         headerPanel.setBackground(Color.WHITE); // 배경색 설정
         return headerPanel; // 생성된 패널 반환
     }
+
 
     // 버튼 패널 생성하는 메서드
     private JPanel createButtonPanel() {
@@ -126,6 +139,10 @@ public class PaymentScreen extends JFrame {
             try {
                 Thread.sleep(5000); // 5초 대기
                 SwingUtilities.invokeLater(() -> {
+
+                    // 장바구니 초기화
+                    initializeCart();
+
                     paymentDialog.setVisible(false); // 다이얼로그를 닫습니다.
                     setVisible(false);
                 });
@@ -148,6 +165,21 @@ public class PaymentScreen extends JFrame {
 
         paymentDialog.revalidate(); // 다이얼로그를 다시 그리도록 합니다.
         paymentDialog.setVisible(true); // 다이얼로그 표시
+    }
+
+    private void initializeCart() {
+        try {
+            Connection conn = OjdbcConnection.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String query = "TRUNCATE TABLE cart";
+            stmt.executeUpdate(query);
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // 컴포넌트에 사용할 사용자 지정 폰트 설정

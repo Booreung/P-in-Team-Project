@@ -1,6 +1,7 @@
 package src.naver.pin_project.view;
 
 
+
 import src.naver.pin_project.data.Food;
 import src.naver.pin_project.data.OrderInfo;
 import src.naver.pin_project.data.Ranking;
@@ -8,8 +9,6 @@ import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.db.OjdbcConnection;
 import src.naver.pin_project.game_feature.GameMenu;
-import src.naver.pin_project.view.FoodOrderScreen;
-import src.naver.pin_project.view.StaffCallScreen; // StaffCallScreen 임포트 추가
 import src.naver.pin_project.game_feature.GameRecord;
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 import javax.swing.*;
@@ -26,6 +25,7 @@ import java.util.List;
 
 public class MainScreen extends JPanel {
     private User loggedInUser;
+
     private FoodOrderScreen foodOrderScreen;
     private Map<Food, Integer> selectedFoods;
     private int orderNumber;
@@ -45,6 +45,7 @@ public class MainScreen extends JPanel {
         this.orderNumber = -1;
         setLayout(new BorderLayout());
 
+
         // 좌측 상단 버튼 3개 1열로
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -55,6 +56,13 @@ public class MainScreen extends JPanel {
         buttonPanel.add(callbtn);
         buttonPanel.add(rankbtn);
         buttonPanel.add(myrecordbtn);
+        buttonPanel.add(gameStartbtn);
+        buttonPanel.setBackground(Color.decode("#8A8585"));
+
+        callbtn.setBackground(Color.decode("#B0FFA9"));
+        rankbtn.setBackground(Color.decode("#B0FFA9"));
+        myrecordbtn.setBackground(Color.decode("#B0FFA9"));
+        gameStartbtn.setBackground(Color.decode("#B0FFA9"));
 
         Dimension buttonSize = new Dimension(150, 40);
         callbtn.setPreferredSize(buttonSize);
@@ -94,9 +102,12 @@ public class MainScreen extends JPanel {
 
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton orderlistbtn = new JButton("주문내역");
+        orderlistbtn.setBackground(Color.decode("#FCEB83"));
         JButton cartbtn = new JButton("장바구니");
+        cartbtn.setBackground(Color.decode("#8DFFF3"));
         bottomPanel.add(orderlistbtn);
         bottomPanel.add(cartbtn);
+        bottomPanel.setBackground(Color.decode("#8A8585"));
 
         orderlistbtn.setPreferredSize(buttonSize);
         cartbtn.setPreferredSize(buttonSize);
@@ -105,20 +116,22 @@ public class MainScreen extends JPanel {
 
         add(bottomPanel, BorderLayout.SOUTH);
 
-        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/img.png");
+        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/P-in 팀로고 1.png");
         JLabel profileLabel = new JLabel(profileIcon);
 
         profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
         // 사용자 이름 라벨
         this.UserName =loggedInUser.getUserName();
         this.UserID = loggedInUser.getUserId();
-        JLabel nameLabel = new JLabel(UserName);
+        JLabel nameLabel = new JLabel(UserName, JLabel.CENTER);
+        nameLabel.setForeground(Color.decode("#FFFFFF"));
 
         nameLabel.setFont(nameLabel.getFont().deriveFont(Font.BOLD, 20));
         JPanel profilePanel = new JPanel();
         profilePanel.setLayout(new BorderLayout());
-        profilePanel.add(profileLabel, BorderLayout.NORTH);
-        profilePanel.add(nameLabel, BorderLayout.EAST);
+        profilePanel.add(profileLabel, BorderLayout.CENTER);
+        profilePanel.add(nameLabel, BorderLayout.SOUTH);
+        profilePanel.setBackground(Color.decode("#8A8585"));
 
         JPanel westPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -130,6 +143,7 @@ public class MainScreen extends JPanel {
         gbc.gridy = 1;
         gbc.insets = new Insets(150, 0, 0, 0);
         westPanel.add(profilePanel, gbc);
+        westPanel.setBackground(Color.decode("#8A8585"));
 
         add(westPanel, BorderLayout.WEST);
 
@@ -208,18 +222,17 @@ public class MainScreen extends JPanel {
         orderlistbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("주문내역 화면 연결");
-                System.out.println("주문내역 출력");
-                for(OrderInfo obj : orederd_list){
-                    System.out.println(obj.toString());
-                }
+
+                // 주문 내역 화면 연결
+                new OrderListScreen(orederd_list);
+
             }
         });
     }
 
+
     private void addToCart(int orderNumber, Timestamp orderTime) {
         Connection conn = null;
-
         orederd_list = new ArrayList<>();
 
         try {

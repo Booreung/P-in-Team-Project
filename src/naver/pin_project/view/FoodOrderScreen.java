@@ -120,6 +120,8 @@ public class FoodOrderScreen extends JPanel {
             }
         }
 
+
+
         // 선택된 음식 목록을 초기화합니다.
         selectedFoods.clear();
         // 총 가격을 업데이트합니다.

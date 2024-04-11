@@ -14,10 +14,15 @@ public class LoginScreen extends JPanel {
     public LoginScreen(CardLayout cardLayout, JPanel cardPanel){
         setLayout(new BorderLayout());
 
+
         JPanel loginPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JLabel loginLabel = new JLabel("로그인");
-        loginLabel.setFont(loginLabel.getFont().deriveFont(Font.BOLD,30));
-        loginPanel.add(loginLabel);
+        ImageIcon logoIcon = new ImageIcon("src/naver/pin_project/lib/P-in 팀로고 1.png");
+        Image image = logoIcon.getImage();
+        Image newImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon newlogoImage = new ImageIcon(newImage);
+        JLabel logoLabel = new JLabel(newlogoImage);
+        loginPanel.add(logoLabel);
+        loginPanel.setBackground(Color.decode("#8A8585"));
 
         //입력 필드 패널
         JPanel inputPanel = new JPanel(new GridBagLayout());
@@ -25,6 +30,7 @@ public class LoginScreen extends JPanel {
         gbc.insets = new Insets(10,10,10,10);
         
         JLabel idLabel = new JLabel("아이디");
+        idLabel.setForeground(Color.decode("#FFFFFF"));
         JTextField idField = new JTextField(15);
         // 라벨의 폰트 크기 설정
         idLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20));
@@ -33,6 +39,7 @@ public class LoginScreen extends JPanel {
         idField.setFont(idField.getFont().deriveFont(Font.PLAIN, 20)); // 폰트 크기 조절
 
         JLabel pwLabel = new JLabel("비밀번호");
+        pwLabel.setForeground(Color.decode("#FFFFFF"));
         JPasswordField pwField = new JPasswordField(15);
         // 라벨의 폰트 크기 설정
         pwLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20));
@@ -65,6 +72,14 @@ public class LoginScreen extends JPanel {
         loginBtn.setPreferredSize(buttonSize);
         joinBtn.setPreferredSize(buttonSize);
         nonloginBtn.setPreferredSize(buttonSize);
+
+        //배경색 설정
+        inputPanel.setBackground(Color.decode("#8A8585"));
+        buttonPanel.setBackground(Color.decode("#8A8585"));
+        loginBtn.setBackground(Color.decode("#B0FFA9"));
+        joinBtn.setBackground(Color.decode("#FCEB83"));
+        nonloginBtn.setBackground(Color.decode("#8DFFF3"));
+
 
         //로그인 버튼을 누르면 메인 키오스크 화면으로
         loginBtn.addActionListener(new ActionListener() {
