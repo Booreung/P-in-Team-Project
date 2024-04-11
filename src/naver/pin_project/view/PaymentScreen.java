@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 
 // 결제 화면을 나타내는 클래스
 public class PaymentScreen extends JFrame {
+
     private JButton cardPaymentButton; // 카드 결제 버튼
     private JButton cashPaymentButton; // 현금 결제 버튼
     private String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf"; // 사용할 폰트 파일 경로
@@ -28,6 +29,7 @@ public class PaymentScreen extends JFrame {
 
 
     // 생성자: 결제 화면의 초기 설정
+
     public PaymentScreen() {
         initializeUI();
     }
