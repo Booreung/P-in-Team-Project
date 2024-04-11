@@ -19,7 +19,6 @@ public class ChatScreen extends JFrame {
         chatArea.setEditable(false);
         JScrollPane chatScrollPane = new JScrollPane(chatArea);
         add(chatScrollPane, BorderLayout.CENTER);
-
         JPanel sendPanel = new JPanel(new BorderLayout());
         sendPanel.setPreferredSize(new Dimension(getWidth(),40 ));// 왼쪽 정렬 FlowLayout 사용
 
