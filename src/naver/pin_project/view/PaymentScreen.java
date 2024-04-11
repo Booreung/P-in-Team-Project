@@ -1,9 +1,6 @@
 package src.naver.pin_project.view;
 
-
-import src.naver.pin_project.data.Food;
 import src.naver.pin_project.db.OjdbcConnection;
-import src.naver.pin_project.viewmodel.OrderList_ViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +10,6 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 

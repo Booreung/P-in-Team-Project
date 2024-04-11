@@ -9,26 +9,37 @@ public class OrderInfo {
     private int ordered_food_price;
     private int ordered_food_quantity;
 
-
-    public OrderInfo(Date ordered_time, int ordered_no, String ordered_food_name, int ordered_food_price, int ordered_food_quantitiy) {
+    public OrderInfo(Date ordered_time, int ordered_no, String ordered_food_name, int ordered_food_price, int ordered_food_quantity) {
         this.ordered_time = ordered_time;
         this.ordered_no = ordered_no;
         this.ordered_food_name = ordered_food_name;
         this.ordered_food_price = ordered_food_price;
-        this.ordered_food_quantity = ordered_food_quantitiy;
+        this.ordered_food_quantity = ordered_food_quantity;
     }
 
-    @Override
-    public String toString() {
-        int totalPrice = ordered_food_price * ordered_food_quantity;
-        return ordered_no + " / " +
-                ordered_time + " / " +
-                ordered_food_name + " / " +
-                ordered_food_price + " / " +
-                ordered_food_quantity + " / " +
+    // Getter 메서드 추가
+    public Date getOrdered_time() {
+        return ordered_time;
+    }
 
-                totalPrice + "\n";
+    public int getOrdered_no() {
+        return ordered_no;
+    }
 
+    public String getOrdered_food_name() {
+        return ordered_food_name;
+    }
+
+    public int getOrdered_food_price() {
+        return ordered_food_price;
+    }
+
+    public int getOrdered_food_quantity() {
+        return ordered_food_quantity;
+    }
+
+    // 총 가격 계산 메서드 추가
+    public int getTotalPrice() {
+        return ordered_food_price * ordered_food_quantity;
     }
 }
-

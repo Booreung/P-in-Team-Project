@@ -34,9 +34,7 @@ public class MainScreen extends JPanel {
     private Timestamp orderTime;
     public static String UserName;
     public static String UserID;
-
-
-    public ArrayList<OrderInfo> orederd_list = new ArrayList<>();
+    public ArrayList<OrderInfo> ordered_list = new ArrayList<>();
 
     private User user;
 
@@ -143,7 +141,7 @@ public class MainScreen extends JPanel {
                     orderNumber = generateRandomNumber();
                     orderTime = new Timestamp(System.currentTimeMillis());
                 }
-                addToCart(orderNumber, orderTime);
+                addToCart();
                 foodOrderScreen.displayShoppingCart();
             }
         });
@@ -210,18 +208,18 @@ public class MainScreen extends JPanel {
         orderlistbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 // 주문 내역 화면 연결
-                new OrderListScreen(orederd_list);
-
+                new OrderListScreen(ordered_list);
             }
         });
     }
 
 
-    private void addToCart(int orderNumber, Timestamp orderTime) {
+
+    private void addToCart() {
         Connection conn = null;
-        orederd_list = new ArrayList<>();
+        int newOrderNumber = generateRandomNumber();
+        Timestamp newOrderTime = new Timestamp(System.currentTimeMillis());
 
         try {
             conn = OjdbcConnection.getConnection();
@@ -229,11 +227,13 @@ public class MainScreen extends JPanel {
                 Food food = entry.getKey();
                 int quantity = entry.getValue();
                 if (quantity > 0) {
-                    DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), orderNumber, orderTime);
-                    orederd_list.add(new OrderInfo(orderTime,orderNumber,food.getFood_name(),food.getFood_price(),quantity));
+                    DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), newOrderNumber, newOrderTime);
+                    ordered_list.add(new OrderInfo(newOrderTime, newOrderNumber, food.getFood_name(), food.getFood_price(), quantity));
                 }
             }
             JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다.");
+            selectedFoods.clear();
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
