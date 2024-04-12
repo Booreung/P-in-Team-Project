@@ -23,7 +23,7 @@ public class GameMenu extends JFrame {
 
         // 하단 패널
         JPanel bottomPanel = new JPanel(new BorderLayout());
-        bottomPanel.setBackground(Color.DARK_GRAY);
+        bottomPanel.setBackground(Color.decode("#8A8585"));
 
         // 왼쪽 userId 표시되는 라벨
         JLabel userIdLabel = new JLabel(UserName+" 님 환영합니다! 즐거운 시간 되세요.");
@@ -39,12 +39,12 @@ public class GameMenu extends JFrame {
         JButton myRecordsButton = new JButton("내 기록");
 
         // 버튼 스타일 설정
-        mainMenuButton.setBackground(Color.GRAY);
-        mainMenuButton.setForeground(Color.WHITE);
-        startGameButton.setBackground(Color.GRAY);
-        startGameButton.setForeground(Color.WHITE);
-        myRecordsButton.setBackground(Color.GRAY);
-        myRecordsButton.setForeground(Color.WHITE);
+        mainMenuButton.setBackground(Color.decode("#FCEB83"));
+        mainMenuButton.setForeground(Color.black);
+        startGameButton.setBackground(Color.decode("#B0FFA9"));
+        startGameButton.setForeground(Color.black);
+        myRecordsButton.setBackground(Color.decode("#8DFFF3"));
+        myRecordsButton.setForeground(Color.black);
 
         // 버튼 눌렸을 때 스타일 변경
         mainMenuButton.addMouseListener(new MouseAdapter() {
@@ -88,6 +88,7 @@ public class GameMenu extends JFrame {
         buttonPanel.add(myRecordsButton);
 
         bottomPanel.add(buttonPanel, BorderLayout.EAST);
+        buttonPanel.setBackground(Color.decode("#8A8585"));
 
         add(bottomPanel, BorderLayout.SOUTH);
         add(imageLabel, BorderLayout.NORTH);
