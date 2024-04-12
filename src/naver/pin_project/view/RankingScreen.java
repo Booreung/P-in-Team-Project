@@ -59,7 +59,7 @@ public class RankingScreen extends JFrame {
         Font labelFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 40f);
 
         // 이미지 아이콘 생성
-        ImageIcon labelIcon = getScaledImageIcon("src/naver/pin_project/lib/볼링핀.png", 50, 50);
+        ImageIcon labelIcon = getScaledImageIcon("src/naver/pin_project/lib/P-in 팀로고 1.png", 50, 50);
 
         // 실시간 랭킹 레이블 생성
         JLabel realTimeLabel = createLabel("실시간 랭킹", labelIcon, labelFont, Color.white);
