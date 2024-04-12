@@ -2,7 +2,7 @@ package src.naver.pin_project.game_feature;
 
 import src.naver.pin_project.view.MainScreen;
 
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -24,9 +24,14 @@ public class GameRecord extends JFrame {
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         table.setPreferredScrollableViewportSize(new Dimension(750, 400));
+        table.setBackground(Color.decode("#8A8585"));
+        table.setForeground(Color.white);
+        table.setRowHeight(30);
 
         // Create the update button
         JButton updateButton = new JButton("업데이트");
+        updateButton.setBackground(Color.decode("#FCEB83"));
+        updateButton.setForeground(Color.black);
         updateButton.addActionListener(e -> fetchDataFromDatabase());
 
         // Add the table and button to the content pane
@@ -34,6 +39,7 @@ public class GameRecord extends JFrame {
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
         contentPane.add(new JScrollPane(table));
         contentPane.add(updateButton);
+        contentPane.setBackground(Color.decode("#8A8585"));
         setContentPane(contentPane);
     }
 
