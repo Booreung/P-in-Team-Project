@@ -24,17 +24,17 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.setBackground(Color.DARK_GRAY);
+        buttonPanel.setBackground(Color.decode("#8A8585"));
 
         JButton backButton = new JButton("뒤로가기");
         JButton exitButton = new JButton("게임종료");
         JButton gameButton = new JButton("볼링치기");
-        backButton.setBackground(Color.GRAY); // 그레이 버튼
-        backButton.setForeground(Color.WHITE);
-        exitButton.setBackground(Color.GRAY);
-        exitButton.setForeground(Color.WHITE);
-        gameButton.setBackground(Color.GRAY);
-        gameButton.setForeground(Color.WHITE);
+        backButton.setBackground(Color.decode("#FCEB83")); // 그레이 버튼
+        backButton.setForeground(Color.black);
+        exitButton.setBackground(Color.decode("#B0FFA9"));
+        exitButton.setForeground(Color.black);
+        gameButton.setBackground(Color.decode("#8DFFF3"));
+        gameButton.setForeground(Color.black);
 
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -102,10 +102,13 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
 
 
         JButton cButton = new JButton("확인");
+        cButton.setBackground(Color.decode("#B0FFA9"));
+        cButton.setForeground(Color.black);
         JPanel buttonPanel = new JPanel();
 
         frame.getContentPane().add(createScorecard(1, gameMenu.UserName), BorderLayout.CENTER);//메뉴에서 받아온 아이디
         frame.getContentPane().add(cButton, BorderLayout.SOUTH);
+        frame.setBackground(Color.decode("#8A8585"));
 
         cButton.addActionListener(new ActionListener() {
             @Override
@@ -120,6 +123,8 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     private JPanel createScorecard(int numPlayers, String name) {
         JPanel p = new JPanel(new GridBagLayout());
         System.out.println("gameframe:"+name);
+        p.setBackground(Color.decode("#B0FFA9"));
+        p.setForeground(Color.white);
 
         p.add(new JLabel("  "+name+" 님  "), gbc(0, 1, 1, 1,2));
         p.add(new JLabel("      "), gbc(0, 1, 1, 1,2));
@@ -129,6 +134,8 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
 
         for (int y = 1; y <= numPlayers; y++) {
             JTextArea textArea = new JTextArea(2, 10);
+            textArea.setBackground(Color.decode("#B0FFA9"));
+            textArea.setForeground(Color.black);
             p.add(textArea, gbc(0, y, 1, 1,0));
 
             for (int i = 1; i <= 10; i++) {
@@ -142,10 +149,11 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     private JPanel createFrame(int entries,int score_sum) {
 
         JLabel label = new JLabel(String.valueOf(score_sum));
-        label.setBackground(Color.GRAY);
+        label.setBackground(Color.decode("#8A8585"));
+        label.setForeground(Color.black);
 
         JPanel p = new JPanel(new GridBagLayout());
-        p.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
+        p.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         for (int i = 0; i < entries; i++) {
 
             JTextField jTextField = new JTextField(4);
@@ -155,6 +163,9 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
             //jTextField.setText(a);
             String score_element = scores.remove(0);
             jTextField.setText(score_element);
+            jTextField.setBackground(Color.ORANGE);
+            jTextField.setForeground(Color.BLACK);
+
             p.add(jTextField, gbc(i, 0, 1, 1, 0));
         }
 
@@ -178,6 +189,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         JFrame frame = new JFrame();
         frame.setTitle("볼링치는중...");
         frame.setSize(400, 200);
+        frame.setBackground(Color.decode("#8A8585"));
         //frame.setLocationRelativeTo(null);
 
         loadingBar = new JProgressBar();
@@ -194,6 +206,8 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
                 progress++;
                 loadingBar.setValue(progress * 100 / 100); // 0~100 사이 값으로 설정
                 loadingBar.setString(progress + "....    공이 굴러가구 있습니다!!!");
+                loadingBar.setBackground(Color.decode("#8A8585"));
+                loadingBar.setForeground(Color.decode("#FCEB83"));
 
 
                 if (progress == 100) {
