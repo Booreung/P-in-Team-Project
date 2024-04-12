@@ -14,9 +14,8 @@ public class LoginScreen extends JPanel {
     public LoginScreen(CardLayout cardLayout, JPanel cardPanel){
         setLayout(new BorderLayout());
 
-
         JPanel loginPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        ImageIcon logoIcon = new ImageIcon("src/naver/pin_project/lib/P-in 팀로고 1.png");
+        ImageIcon logoIcon = new ImageIcon("src/naver/pin_project/lib/Pin로고.png");
         Image image = logoIcon.getImage();
         Image newImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon newlogoImage = new ImageIcon(newImage);
