@@ -38,6 +38,7 @@ public class StaffCallScreen extends JDialog {
 
         JButton cancelButton = new JButton("닫기");
         cancelButton.setBackground(Color.decode("#B0FFA9"));
+
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

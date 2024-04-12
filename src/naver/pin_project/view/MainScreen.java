@@ -37,6 +37,7 @@ public class MainScreen extends JPanel {
     private User user;
 
     public MainScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel) {
+        //로그인한 사용자의 정보를 위해
         this.loggedInUser = loggedInUser;
 
         this.selectedFoods = new HashMap<>();
@@ -57,32 +58,38 @@ public class MainScreen extends JPanel {
         buttonPanel.add(gameStartbtn);
         buttonPanel.setBackground(Color.decode("#8A8585"));
 
+        //버튼의 배경색 추가
         callbtn.setBackground(Color.decode("#B0FFA9"));
         rankbtn.setBackground(Color.decode("#B0FFA9"));
         myrecordbtn.setBackground(Color.decode("#B0FFA9"));
         gameStartbtn.setBackground(Color.decode("#B0FFA9"));
 
+        //버튼의 사이즈 조절
         Dimension buttonSize = new Dimension(150, 40);
         callbtn.setPreferredSize(buttonSize);
         rankbtn.setPreferredSize(buttonSize);
         myrecordbtn.setPreferredSize(buttonSize);
         gameStartbtn.setPreferredSize(buttonSize);
 
+        //컴포넌트의 중앙정렬(가로축으로)
         callbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         rankbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         myrecordbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         gameStartbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        //버튼의 사이즈 조절
         callbtn.setMaximumSize(buttonSize);
         rankbtn.setMaximumSize(buttonSize);
         myrecordbtn.setMaximumSize(buttonSize);
         gameStartbtn.setMaximumSize(buttonSize);
 
+        //버튼의 수직 중앙정렬
         callbtn.setHorizontalAlignment(SwingConstants.CENTER);
         rankbtn.setHorizontalAlignment(SwingConstants.CENTER);
         myrecordbtn.setHorizontalAlignment(SwingConstants.CENTER);
         gameStartbtn.setHorizontalAlignment(SwingConstants.CENTER);
 
+        //버튼을 패널에 추가할때 각각 여백을 두기위한 작업
         buttonPanel.add(Box.createVerticalStrut(10));
         buttonPanel.add(callbtn);
         buttonPanel.add(Box.createVerticalStrut(10));
@@ -98,6 +105,7 @@ public class MainScreen extends JPanel {
         add(foodOrderScreen, BorderLayout.CENTER);
         foodOrderScreen.setLocation(83, 0);
 
+        //주문내역, 장바구니 버튼의 생성
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton orderlistbtn = new JButton("주문내역");
         orderlistbtn.setBackground(Color.decode("#FCEB83"));
@@ -107,6 +115,7 @@ public class MainScreen extends JPanel {
         bottomPanel.add(cartbtn);
         bottomPanel.setBackground(Color.decode("#8A8585"));
 
+        //버튼의 사이즈 조절 및 중앙정렬
         orderlistbtn.setPreferredSize(buttonSize);
         cartbtn.setPreferredSize(buttonSize);
         orderlistbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -131,6 +140,9 @@ public class MainScreen extends JPanel {
         profilePanel.add(nameLabel, BorderLayout.SOUTH);
         profilePanel.setBackground(Color.decode("#8A8585"));
 
+        //BorderLayout 특성상 동서남북, 가운데에 패널이 위치하게 된다
+        //우리 프로젝트에서는 서쪽 패널에 위 아래에 각각 버튼패널, 프로필패널이 들어가야하기 때문에
+        //서쪽 패널을 2행 1열의 느낌으로 설정
         JPanel westPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -145,6 +157,9 @@ public class MainScreen extends JPanel {
 
         add(westPanel, BorderLayout.WEST);
 
+        //스크린에 있는 버튼마다 이벤트 리스너
+
+        //장바구니 화면 연결 : 푸드오더 스크린에서의 정보를 넘김
         cartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,6 +173,7 @@ public class MainScreen extends JPanel {
             }
         });
 
+        //마이페이지 화면 연결
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -177,7 +193,7 @@ public class MainScreen extends JPanel {
             }
         });
 
-
+        //랭킹 화면 연결
         rankbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -193,6 +209,7 @@ public class MainScreen extends JPanel {
             }
         });
 
+        //내 기록 화면 연결
         myrecordbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -206,8 +223,7 @@ public class MainScreen extends JPanel {
         });
 
 
-        // 볼링 게임 시작
-
+        // 볼링 게임 화면 연결
         gameStartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -217,6 +233,7 @@ public class MainScreen extends JPanel {
             }
         });
 
+        //주문내역 화면 연결
         orderlistbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

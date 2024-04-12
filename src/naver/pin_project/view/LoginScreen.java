@@ -15,6 +15,8 @@ public class LoginScreen extends JPanel {
     public LoginScreen(CardLayout cardLayout, JPanel cardPanel){
         setLayout(new BorderLayout());
 
+        //로그인 판넬의 구성 : 로고(이미지아이콘), 텍스트필드(아이디, 비번) + 라벨, 버튼판넬(로그인,회원가입,비회원 로그인)
+        //항상 판넬위에 아이콘 및 라벨, 필드가 추가된다고 생각을 해야한다.
         JPanel loginPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         ImageIcon logoIcon = new ImageIcon("src/naver/pin_project/lib/Pin로고.png");
         Image image = logoIcon.getImage();
@@ -28,6 +30,7 @@ public class LoginScreen extends JPanel {
         //입력 필드 패널
         JPanel inputPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        //여백 부여
         gbc.insets = new Insets(10,10,10,10);
         inputPanel.setBorder(new EmptyBorder(0, 0, 70, 0));
         
@@ -91,6 +94,7 @@ public class LoginScreen extends JPanel {
                 String userId = idField.getText();
                 String password = new String(pwField.getPassword());
 
+                //객체를 부르는 이유 : 객체 정보를 담아 Login_ViewModel에 정보 전달을 위해
                 User user = new User();
                 user.setUserId(userId);
                 user.setPassword(password);
