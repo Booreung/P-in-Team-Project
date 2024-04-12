@@ -5,6 +5,7 @@ import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.Login_ViewModel;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,13 +21,15 @@ public class LoginScreen extends JPanel {
         Image newImage = image.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon newlogoImage = new ImageIcon(newImage);
         JLabel logoLabel = new JLabel(newlogoImage);
-        loginPanel.add(logoLabel);
         loginPanel.setBackground(Color.decode("#8A8585"));
+        loginPanel.setBorder(new EmptyBorder(50, 0, 0, 0));
+        loginPanel.add(logoLabel);
 
         //입력 필드 패널
         JPanel inputPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10,10,10,10);
+        inputPanel.setBorder(new EmptyBorder(0, 0, 70, 0));
         
         JLabel idLabel = new JLabel("아이디");
         idLabel.setForeground(Color.decode("#FFFFFF"));
