@@ -18,7 +18,7 @@ public class OrderListScreen extends JFrame {
 
     public OrderListScreen(ArrayList<OrderInfo> ordered_list) {
         setTitle("주문 내역"); // 프레임 제목 설정
-        setSize(800, 460); // 프레임 크기 설정
+        setSize(750, 460); // 프레임 크기 설정
         setLocationRelativeTo(null);
 
         // 패널 생성
@@ -84,6 +84,7 @@ public class OrderListScreen extends JFrame {
         // 스크롤 가능한 패널에 테이블 추가
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.getViewport().setBackground(new Color(138, 133, 133)); // 패널 배경색 설정
+        scrollPane.setBorder((new LineBorder(new Color(138,133,133),1)));
 
 
         // 뒤로가기 버튼 생성
