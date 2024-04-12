@@ -4,6 +4,7 @@ import src.naver.pin_project.data.Ranking;
 import src.naver.pin_project.viewmodel.Ranking_ViewModel;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -58,13 +59,13 @@ public class RankingScreen extends JFrame {
         Font labelFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 40f);
 
         // 이미지 아이콘 생성
-        ImageIcon labelIcon = getScaledImageIcon("src/naver/pin_project/lib/볼링핀.png", 50, 50);
+        ImageIcon labelIcon = getScaledImageIcon("src/naver/pin_project/lib/P-in 팀로고 1.png", 50, 50);
 
         // 실시간 랭킹 레이블 생성
-        JLabel realTimeLabel = createLabel("실시간 랭킹", labelIcon, labelFont);
+        JLabel realTimeLabel = createLabel("실시간 랭킹", labelIcon, labelFont, Color.white);
 
         // 이달의 랭킹 레이블 생성
-        JLabel monthlyLabel = createLabel("이달의 랭킹", labelIcon, labelFont);
+        JLabel monthlyLabel = createLabel("이달의 랭킹", labelIcon, labelFont, Color.white);
 
         // 두 개의 테이블과 레이블을 담을 패널 생성
         JPanel tablePanel = createTablePanel(realTimeScrollPane, monthlyScrollPane, realTimeLabel, monthlyLabel);
@@ -74,6 +75,10 @@ public class RankingScreen extends JFrame {
 
         // 새로고침 버튼 생성 및 이벤트 처리
         JButton refreshButton = new JButton("새로고침");
+        refreshButton.setBackground(new Color(176, 255, 169));
+        refreshButton.setForeground(Color.black);
+        refreshButton.setBorder(new LineBorder(new Color(38, 171, 50), 1));
+        refreshButton.setPreferredSize(new Dimension(80, 30)); // 크기 조절
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,8 +87,16 @@ public class RankingScreen extends JFrame {
             }
         });
 
+        // 버튼에 사용할 폰트 설정
+        Font buttonFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 20f);
+        refreshButton.setFont(buttonFont);
+
         // 뒤로가기 버튼 생성 및 이벤트 처리
         JButton backButton = new JButton("뒤로가기");
+        backButton.setBackground(new Color(176, 255, 169));
+        backButton.setForeground(Color.black);
+        backButton.setBorder(new LineBorder(new Color(38, 171, 50), 1));
+        backButton.setPreferredSize(new Dimension(70, 30)); // 크기 조절
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -92,6 +105,8 @@ public class RankingScreen extends JFrame {
                 // 이전 창 또는 메인 화면 등으로 이동하는 코드 추가
             }
         });
+
+        backButton.setFont(buttonFont);
 
         // 버튼을 담을 패널 생성
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
@@ -124,7 +139,8 @@ public class RankingScreen extends JFrame {
     // JTableHeader의 폰트 설정
     private void setTableHeaderFont(JTableHeader header, Font font) {
         header.setFont(font);
-        header.setBackground(new Color(204, 0, 204)); // 헤더 배경색 설정
+        header.setBackground(new Color(252, 235, 131)); // 헤더 배경색 설정
+        header.setBorder(new LineBorder(new Color(237, 180, 81), 1));
     }
 
     // 이미지 아이콘 크기 조절하여 가져오기
@@ -136,9 +152,10 @@ public class RankingScreen extends JFrame {
     }
 
     // 레이블 생성 메서드
-    private JLabel createLabel(String text, ImageIcon icon, Font font) {
+    private JLabel createLabel(String text, ImageIcon icon, Font font, Color fontColor) {
         JLabel label = new JLabel(text, icon, SwingConstants.LEFT);
         label.setFont(font);
+        label.setForeground(fontColor);
         label.setHorizontalTextPosition(SwingConstants.RIGHT);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         return label;
@@ -148,19 +165,19 @@ public class RankingScreen extends JFrame {
     private JPanel createTablePanel(JScrollPane realTimeScrollPane, JScrollPane monthlyScrollPane, JLabel realTimeLabel, JLabel monthlyLabel) {
         JPanel tablePanel = new JPanel(new GridLayout(1, 2)); // 1행 2열의 그리드 레이아웃
         tablePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 여백 추가
-        tablePanel.setBackground(new Color(204, 153, 255)); // 배경색 설정
+        tablePanel.setBackground(new Color(138, 133, 133)); // 배경색 설정
 
         JPanel realTimePanel = new JPanel(new BorderLayout()); // 실시간 랭킹을 담을 패널
         realTimePanel.add(realTimeLabel, BorderLayout.NORTH); // 레이블을 패널의 상단에 추가
         realTimePanel.add(realTimeScrollPane, BorderLayout.CENTER); // 테이블 스크롤 패널을 패널의 중앙에 추가
         realTimePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 여백 추가
-        realTimePanel.setBackground(new Color(204, 153, 255)); // 배경색 설정
+        realTimePanel.setBackground(new Color(138, 133, 133)); // 배경색 설정
 
         JPanel monthlyPanel = new JPanel(new BorderLayout()); // 이달의 랭킹을 담을 패널
         monthlyPanel.add(monthlyLabel, BorderLayout.NORTH); // 레이블을 패널의 상단에 추가
         monthlyPanel.add(monthlyScrollPane, BorderLayout.CENTER); // 테이블 스크롤 패널을 패널의 중앙에 추가
         monthlyPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 여백 추가
-        monthlyPanel.setBackground(new Color(204, 153, 255)); // 배경색 설정
+        monthlyPanel.setBackground(new Color(138, 133, 133)); // 배경색 설정
 
         tablePanel.add(realTimePanel); // 실시간 랭킹 패널 추가
         tablePanel.add(monthlyPanel); // 이달의 랭킹 패널 추가
@@ -198,6 +215,7 @@ public class RankingScreen extends JFrame {
 
 
 
+
     // 테이블 데이터를 업데이트하는 메서드
     private void updateTableData(List<Ranking> realTimeRankingList, List<Ranking> monthlyRankingList) {
         // 실시간 랭킹 테이블 모델 업데이트
@@ -217,6 +235,7 @@ public class RankingScreen extends JFrame {
         for (Ranking ranking : monthlyRankingList) {
             monthlyModel.addRow(new Object[]{ranking.getUserId(), ranking.getUserName(), ranking.getGameDate(), ranking.getPoint()});
         }
+
     }
 
 
