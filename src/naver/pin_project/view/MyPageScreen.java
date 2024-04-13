@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.MyPage_ViewModel;
@@ -16,7 +17,15 @@ public class MyPageScreen extends JFrame {
     private JTextField inputPw;
 
     public MyPageScreen(CardLayout cardLayout,User loggedInUser,JPanel cardPanel) {
-        setSize(500, 300);
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 20f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
+        setSize(500, 350);
         setLocationRelativeTo(null); // 화면 가운데에 위치하도록 설정
         setBackground(Color.decode("#8A8585"));
 

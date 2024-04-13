@@ -2,10 +2,7 @@ package src.naver.pin_project.view;
 
 
 
-import src.naver.pin_project.data.Food;
-import src.naver.pin_project.data.OrderInfo;
-import src.naver.pin_project.data.Ranking;
-import src.naver.pin_project.data.User;
+import src.naver.pin_project.data.*;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.db.OjdbcConnection;
 import src.naver.pin_project.game_feature.GameMenu;
@@ -37,8 +34,15 @@ public class MainScreen extends JPanel {
     private User user;
 
     public MainScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel) {
-        this.loggedInUser = loggedInUser;
 
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 25f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
+        this.loggedInUser = loggedInUser;
         this.selectedFoods = new HashMap<>();
         this.orderNumber = -1;
         setLayout(new BorderLayout());
@@ -101,8 +105,10 @@ public class MainScreen extends JPanel {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton orderlistbtn = new JButton("주문내역");
         orderlistbtn.setBackground(Color.decode("#FCEB83"));
+        orderlistbtn.setFont(orderlistbtn.getFont().deriveFont(25f));
         JButton cartbtn = new JButton("장바구니");
         cartbtn.setBackground(Color.decode("#8DFFF3"));
+        cartbtn.setFont(cartbtn.getFont().deriveFont(25f));
         bottomPanel.add(orderlistbtn);
         bottomPanel.add(cartbtn);
         bottomPanel.setBackground(Color.decode("#8A8585"));

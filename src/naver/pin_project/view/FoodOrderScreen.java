@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.Food;
 import src.naver.pin_project.viewmodel.FoodOrder_ViewModel;
 
@@ -21,6 +23,14 @@ public class FoodOrderScreen extends JPanel {
     private JPanel mainPanel; // Declare mainPanel as a class-level field
 
     public FoodOrderScreen(int width, int height) {
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 15f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
         this.cardLayout = new CardLayout();
         this.cardPanel = new JPanel(cardLayout);
         this.selectedFoods = new HashMap<>();
@@ -90,6 +100,8 @@ public class FoodOrderScreen extends JPanel {
 
             totalTextField = new JTextField("◆ 총: 0 원 ◆");
             totalTextField.setPreferredSize(new Dimension(200, 20));
+            totalTextField.setEditable(false);
+            totalTextField.setFocusable(false);
             totalTextField.setHorizontalAlignment(JTextField.CENTER);
             add(totalTextField, BorderLayout.NORTH); // Changed here
 
