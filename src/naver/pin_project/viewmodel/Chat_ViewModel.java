@@ -22,7 +22,7 @@ public class Chat_ViewModel {
 
         try {
             boolean serverStarted = false;
-            int portNumber = 8080;
+            int portNumber = 8081;
             while (!serverStarted) {
                 try {
                     serverSocket = new ServerSocket(portNumber);
