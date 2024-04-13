@@ -183,6 +183,8 @@ public class FoodOrderScreen extends JPanel {
             total += food.getFood_price() * quantity;
         }
         totalTextField.setText("◆ 총: " + total + " 원 ◆");
+        totalTextField.setEditable(false);
+        totalTextField.setFocusable(false);
     }
 
 
