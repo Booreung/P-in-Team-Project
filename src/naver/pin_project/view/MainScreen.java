@@ -184,20 +184,22 @@ public class MainScreen extends JPanel {
         });
 
 
-        rankbtn.addActionListener(new ActionListener() {
+        rankbtn.addActionListener(new ActionListener() { // rankbtn 버튼에 ActionListener 추가
             @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(() -> {
+            public void actionPerformed(ActionEvent e) { // ActionListener의 actionPerformed 메서드 재정의
+                SwingUtilities.invokeLater(() -> { // 이벤트 디스패치 스레드에서 실행되도록 함
+                    // 랭킹 데이터를 가져오는 메서드를 호출하여 실시간 및 월간 랭킹 데이터를 가져옴
                     List<List<Ranking>> rankingData = Ranking_ViewModel.getRankingData();
-                    List<Ranking> realTimeRankingList = rankingData.get(0);
-                    List<Ranking> monthlyRankingList = rankingData.get(1);
+                    List<Ranking> realTimeRankingList = rankingData.get(0); // 실시간 랭킹 데이터
+                    List<Ranking> monthlyRankingList = rankingData.get(1); // 월간 랭킹 데이터
 
+                    // RankingScreen 객체를 생성하여 실시간 및 월간 랭킹 데이터를 전달하여 화면을 생성
                     RankingScreen rankingScreen = new RankingScreen(realTimeRankingList, monthlyRankingList);
-                    rankingScreen.setVisible(true);
+                    rankingScreen.setVisible(true); // 랭킹 화면을 표시
                 });
-
             }
         });
+
 
         myrecordbtn.addActionListener(new ActionListener() {
             @Override
@@ -235,35 +237,39 @@ public class MainScreen extends JPanel {
 
 
     private void addToCart() {
-        Connection conn = null;
-        int newOrderNumber = generateRandomNumber();
-        Timestamp newOrderTime = new Timestamp(System.currentTimeMillis());
+        Connection conn = null; // 데이터베이스 연결을 위한 Connection 객체 초기화
+        int newOrderNumber = generateRandomNumber(); // 임의의 주문번호 생성
+        Timestamp newOrderTime = new Timestamp(System.currentTimeMillis()); // 현재 시간을 이용해 주문시간 생성
 
         try {
-            conn = OjdbcConnection.getConnection();
-            for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
-                Food food = entry.getKey();
-                int quantity = entry.getValue();
-                if (quantity > 0) {
+            conn = OjdbcConnection.getConnection(); // 데이터베이스 연결 획득
+            for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) { // 선택된 음식 목록을 반복
+                Food food = entry.getKey(); // Map에서 키(음식)를 가져옴
+                int quantity = entry.getValue(); // Map에서 값(수량)를 가져옴
+                if (quantity > 0) { // 수량이 0보다 큰 경우에만 처리
+                    // DBHelper를 사용하여 데이터베이스에 카트에 음식을 추가하는 메서드 호출
                     DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), newOrderNumber, newOrderTime);
+                    // 주문 목록에 새로운 주문 정보를 추가
                     ordered_list.add(new OrderInfo(newOrderTime, newOrderNumber, food.getFood_name(), food.getFood_price(), quantity));
                 }
             }
+            // 장바구니에 음식이 추가되었음을 알리는 팝업 메시지 표시
             JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다.");
-            selectedFoods.clear();
+            selectedFoods.clear(); // 선택된 음식 목록을 초기화
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException ex) { // SQL 예외 처리
+            ex.printStackTrace(); // 예외 출력
         } finally {
-            if (conn != null) {
+            if (conn != null) { // Connection 객체가 null이 아닌 경우에만 처리
                 try {
-                    conn.close();
+                    conn.close(); // 데이터베이스 연결 닫기
                 } catch (SQLException ex) {
-                    ex.printStackTrace();
+                    ex.printStackTrace(); // 예외 출력
                 }
             }
         }
     }
+
 
     private int generateRandomNumber() {
         Random random = new Random();

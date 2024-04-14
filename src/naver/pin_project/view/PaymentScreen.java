@@ -10,7 +10,6 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import javax.imageio.ImageIO;
 
 
@@ -24,16 +23,14 @@ public class PaymentScreen extends JFrame {
 
 
     // 생성자: 결제 화면의 초기 설정
-
     public PaymentScreen() {
-        initializeUI();
+        initializeUI(); // UI 초기화 메서드 호출
     }
 
     // UI 초기화 메서드
     private void initializeUI() {
         setTitle("결제 화면"); // 프레임의 제목 설정
         setSize(450, 300); // 프레임의 크기 설정
-
 
         // 결제 다이얼로그 생성
         createPaymentDialog();
@@ -58,7 +55,7 @@ public class PaymentScreen extends JFrame {
 
     // 결제 다이얼로그 생성 메서드
     private void createPaymentDialog() {
-        paymentDialog = new JDialog(this, "결제 진행 상태", true);
+        paymentDialog = new JDialog(this, "결제 진행 상태", true); // 다이얼로그 생성 및 설정
         paymentDialog.setSize(300, 200); // 다이얼로그 크기 설정
         paymentDialog.setLayout(new BorderLayout()); // 레이아웃 설정
         paymentDialog.setLocationRelativeTo(this); // 다이얼로그를 프레임 중앙에 배치
@@ -162,18 +159,19 @@ public class PaymentScreen extends JFrame {
         paymentDialog.setVisible(true); // 다이얼로그 표시
     }
 
+    // 장바구니 초기화 메서드
     private void initializeCart() {
         try {
-            Connection conn = OjdbcConnection.getConnection();
-            Statement stmt = conn.createStatement();
+            Connection conn = OjdbcConnection.getConnection(); // 데이터베이스 연결
+            Statement stmt = conn.createStatement(); // Statement 객체 생성
 
-            String query = "TRUNCATE TABLE cart";
-            stmt.executeUpdate(query);
+            String query = "TRUNCATE TABLE cart"; // 장바구니 테이블 비우는 쿼리
+            stmt.executeUpdate(query); // 쿼리 실행
 
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            stmt.close(); // Statement 객체 닫기
+            conn.close(); // 데이터베이스 연결 닫기
+        } catch (SQLException e) { // SQL 예외 처리
+            e.printStackTrace(); // 예외 출력
         }
     }
 
