@@ -91,7 +91,9 @@ public class FoodOrderScreen extends JPanel {
             totalTextField = new JTextField("◆ 총: 0 원 ◆");
             totalTextField.setPreferredSize(new Dimension(200, 20));
             totalTextField.setHorizontalAlignment(JTextField.CENTER);
-            add(totalTextField, BorderLayout.NORTH); // Changed here
+            totalTextField.setEditable(false); // 텍스트 필드를 읽기 전용으로 설정
+            totalTextField.setFocusable(false); // 포커스 설정 방지
+            add(totalTextField, BorderLayout.NORTH);
 
 
         } catch (SQLException e) {
@@ -183,8 +185,10 @@ public class FoodOrderScreen extends JPanel {
             total += food.getFood_price() * quantity;
         }
         totalTextField.setText("◆ 총: " + total + " 원 ◆");
-        totalTextField.setEditable(false);
-        totalTextField.setFocusable(false);
+        totalTextField.setFocusable(false); // 텍스트 필드에 포커스 설정 방지
+        totalTextField.setEditable(false); // 텍스트 필드를 읽기 전용으로 설정
+
+
     }
 
 
