@@ -151,8 +151,14 @@ public class MainScreen extends JPanel {
                     orderTime = new Timestamp(System.currentTimeMillis());
                 }
                 if(!selectedFoods.entrySet().isEmpty()){
-                addToCart();
-                foodOrderScreen.displayShoppingCart();}
+                    if(!selectedFoods.values().contains(0)){
+                    addToCart();
+                    foodOrderScreen.displayShoppingCart();}
+                    else {
+                        JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);
+                    }}
+                else{JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);}
+
             }
         });
 
