@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.Food;
 
 import javax.swing.*;
@@ -11,6 +12,14 @@ public class CartScreen extends JPanel {
     private JTextField totalPriceTextField;
 //주석
     public CartScreen(Map<Food, Integer> selectedFoods) {
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 17f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
         this.selectedFoods = selectedFoods;
         setLayout(new BorderLayout());
         // Display the quantity and sum of each type of food ordered with a scroll pane in the center
@@ -25,8 +34,9 @@ public class CartScreen extends JPanel {
             Food food = entry.getKey();
             int quantity = entry.getValue();
             int totalPriceForFood = food.getFood_price() * quantity;
-            cartTextArea.append("★ 음식 ★ : " + food.getFood_name() + ", ★ 수량 ★ : " + quantity +
-                    ",★ 가격 ★ : " + totalPriceForFood + " 원\n");
+            if(quantity>0){
+                cartTextArea.append("★ 음식 ★ : " + food.getFood_name() + ", ★ 수량 ★ : " + quantity +
+                        ",★ 가격 ★ : " + totalPriceForFood + " 원\n");}
         }
         add(scrollPane, BorderLayout.CENTER);
 

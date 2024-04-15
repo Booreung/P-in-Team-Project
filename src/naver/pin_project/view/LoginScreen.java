@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.Login_ViewModel;
@@ -13,6 +14,14 @@ import java.awt.event.ActionListener;
 
 public class LoginScreen extends JPanel {
     public LoginScreen(CardLayout cardLayout, JPanel cardPanel){
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 25f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
         setLayout(new BorderLayout());
 
         //로그인 판넬의 구성 : 로고(이미지아이콘), 텍스트필드(아이디, 비번) + 라벨, 버튼판넬(로그인,회원가입,비회원 로그인)
@@ -38,18 +47,18 @@ public class LoginScreen extends JPanel {
         idLabel.setForeground(Color.decode("#FFFFFF"));
         JTextField idField = new JTextField(15);
         // 라벨의 폰트 크기 설정
-        idLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20));
+        idLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 30));
         // 텍스트 필드의 크기 설정
         idField.setPreferredSize(new Dimension(300, 30)); // 가로 크기 조절
-        idField.setFont(idField.getFont().deriveFont(Font.PLAIN, 20)); // 폰트 크기 조절
+        idField.setFont(idField.getFont().deriveFont(Font.PLAIN, 30)); // 폰트 크기 조절
 
         JLabel pwLabel = new JLabel("비밀번호");
         pwLabel.setForeground(Color.decode("#FFFFFF"));
         JPasswordField pwField = new JPasswordField(15);
         // 라벨의 폰트 크기 설정
-        pwLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 20));
+        pwLabel.setFont(idLabel.getFont().deriveFont(Font.BOLD, 30));
         pwField.setPreferredSize(new Dimension(300, 30)); // 가로 크기 조절
-        pwField.setFont(idField.getFont().deriveFont(Font.PLAIN, 20));
+        pwField.setFont(idField.getFont().deriveFont(Font.PLAIN, 30));
 
         //위의 필드들을 inputPanel에 추가
         //각자의 행값을 부여해서 위치 조정

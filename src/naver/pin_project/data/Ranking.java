@@ -8,7 +8,7 @@ public class Ranking {
     private Date gameDate;
     private int point;
 
-
+    //랭킹에 필요한 정보 유저아이디, 유저이름, 게임날짜, 게임점수
     public Ranking(String userId, String userName, Date gameDate, int point) {
         this.userId = userId;
         this.userName = userName;
