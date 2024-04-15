@@ -152,16 +152,28 @@ public class MainScreen extends JPanel {
                     orderNumber = generateRandomNumber();
                     orderTime = new Timestamp(System.currentTimeMillis());
                 }
-                addToCart();
-                foodOrderScreen.displayShoppingCart();
+                if(!selectedFoods.entrySet().isEmpty()){
+                    if(!selectedFoods.values().contains(0)){
+                    addToCart();
+                    foodOrderScreen.displayShoppingCart();}
+                    else {
+                        JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);
+                    }}
+                else{JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);}
+
             }
         });
 
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
-                cardLayout.show(cardPanel, "mypage");
+                if(loggedInUser.getUserName().equals("게스트")){
+                    JOptionPane.showMessageDialog(null,"회원가입 후 이용가능합니다.","비회원 접근",JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
+                    cardLayout.show(cardPanel, "mypage");
+                }
             }
         });
 
