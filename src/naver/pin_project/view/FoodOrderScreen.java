@@ -305,11 +305,6 @@ public class FoodOrderScreen extends JPanel {
             // 계산된 총 주문 금액을 텍스트 필드에 표시합니다.
             totalTextField.setText("◆ 총: " + total + " 원 ◆");
         }
-
-
-
-
-
     }
 
 
