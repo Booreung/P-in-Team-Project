@@ -1,17 +1,21 @@
 package src.naver.pin_project.game_feature;
 
+import src.naver.pin_project.view.MainScreen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class GameMenu extends JFrame {
-    String userId = "test"; //메인메뉴로부터 받아올 유저아이디
-    String userName = "홍길동"; //메인메뉴로부터 받아올 유저 닉네임
+
+
+    public String UserID = MainScreen.UserID;//메인메뉴로부터 받아올 유저아이디
+    public String UserName = MainScreen.UserName;//메인메뉴로부터 받아올 유저 닉네임
     //유저아이디 하나로 DB에서 받아올수 있지만 굳이.. 싶어서 메인변수 받아와도 좋을거같다!
 
     public GameMenu() {//처음 게임메뉴
-        setTitle("Main Screen");
-        setSize(800, 480);
+        setTitle("볼링게임");
+        setSize(730, 530);
 
         // 상단 이미지
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.gif");
@@ -19,10 +23,10 @@ public class GameMenu extends JFrame {
 
         // 하단 패널
         JPanel bottomPanel = new JPanel(new BorderLayout());
-        bottomPanel.setBackground(Color.DARK_GRAY);
+        bottomPanel.setBackground(Color.decode("#8A8585"));
 
         // 왼쪽 userId 표시되는 라벨
-        JLabel userIdLabel = new JLabel("User ID: " + userId);
+        JLabel userIdLabel = new JLabel(UserName+" 님 환영합니다! 즐거운 시간 되세요.");
         userIdLabel.setForeground(Color.WHITE);
         bottomPanel.add(userIdLabel, BorderLayout.WEST);
 
@@ -35,12 +39,12 @@ public class GameMenu extends JFrame {
         JButton myRecordsButton = new JButton("내 기록");
 
         // 버튼 스타일 설정
-        mainMenuButton.setBackground(Color.GRAY);
-        mainMenuButton.setForeground(Color.WHITE);
-        startGameButton.setBackground(Color.GRAY);
-        startGameButton.setForeground(Color.WHITE);
-        myRecordsButton.setBackground(Color.GRAY);
-        myRecordsButton.setForeground(Color.WHITE);
+        mainMenuButton.setBackground(Color.decode("#FCEB83"));
+        mainMenuButton.setForeground(Color.black);
+        startGameButton.setBackground(Color.decode("#B0FFA9"));
+        startGameButton.setForeground(Color.black);
+        myRecordsButton.setBackground(Color.decode("#8DFFF3"));
+        myRecordsButton.setForeground(Color.black);
 
         // 버튼 눌렸을 때 스타일 변경
         mainMenuButton.addMouseListener(new MouseAdapter() {
@@ -84,6 +88,7 @@ public class GameMenu extends JFrame {
         buttonPanel.add(myRecordsButton);
 
         bottomPanel.add(buttonPanel, BorderLayout.EAST);
+        buttonPanel.setBackground(Color.decode("#8A8585"));
 
         add(bottomPanel, BorderLayout.SOUTH);
         add(imageLabel, BorderLayout.NORTH);
@@ -104,11 +109,15 @@ public class GameMenu extends JFrame {
             }
         });
 
-        myRecordsButton.addActionListener(new ActionListener() {//게임 기록 볼수 있는창. 구현중....
+        myRecordsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new GameRecord().setVisible(true);
+                SwingUtilities.invokeLater(() -> {
+                    GameRecord gameRecord = new GameRecord();
+                    gameRecord.setVisible(true);
+                    // 호출되지 않더라도 빈 테이블을 보여주기 위해 추가
+                    gameRecord.fetchDataFromDatabase();
+                });
             }
         });
     }

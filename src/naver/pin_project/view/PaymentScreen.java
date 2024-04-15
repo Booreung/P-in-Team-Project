@@ -1,30 +1,36 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.db.OjdbcConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.imageio.ImageIO;
+
 
 // 결제 화면을 나타내는 클래스
 public class PaymentScreen extends JFrame {
+
     private JButton cardPaymentButton; // 카드 결제 버튼
     private JButton cashPaymentButton; // 현금 결제 버튼
-
     private String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf"; // 사용할 폰트 파일 경로
     private JDialog paymentDialog; // 결제 진행 상태를 나타내는 다이얼로그
 
+
     // 생성자: 결제 화면의 초기 설정
     public PaymentScreen() {
-        initializeUI();
+        initializeUI(); // UI 초기화 메서드 호출
     }
 
     // UI 초기화 메서드
     private void initializeUI() {
         setTitle("결제 화면"); // 프레임의 제목 설정
         setSize(450, 300); // 프레임의 크기 설정
-
 
         // 결제 다이얼로그 생성
         createPaymentDialog();
@@ -49,7 +55,7 @@ public class PaymentScreen extends JFrame {
 
     // 결제 다이얼로그 생성 메서드
     private void createPaymentDialog() {
-        paymentDialog = new JDialog(this, "결제 진행 상태", true);
+        paymentDialog = new JDialog(this, "결제 진행 상태", true); // 다이얼로그 생성 및 설정
         paymentDialog.setSize(300, 200); // 다이얼로그 크기 설정
         paymentDialog.setLayout(new BorderLayout()); // 레이아웃 설정
         paymentDialog.setLocationRelativeTo(this); // 다이얼로그를 프레임 중앙에 배치
@@ -60,20 +66,22 @@ public class PaymentScreen extends JFrame {
         JPanel headerPanel = new JPanel(); // 새로운 패널 생성
         JLabel headerLabel = new JLabel("결제 방법을 선택하세요"); // 라벨 생성
         setCustomFont(headerLabel, 35f); // 라벨에 사용할 폰트 설정
+        headerLabel.setForeground(Color.white);
         headerPanel.add(headerLabel); // 헤더 패널에 라벨 추가
-        headerPanel.setBackground(Color.WHITE); // 배경색 설정
+        headerPanel.setBackground((new Color(138, 133, 133))); // 배경색 설정
         return headerPanel; // 생성된 패널 반환
     }
+
 
     // 버튼 패널 생성하는 메서드
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0)); // 새로운 그리드 레이아웃 패널 생성
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // 여백 추가
-        cardPaymentButton = createButton("카드 결제", "src/naver/pin_project/lib/카드결제.png", new Color(255, 227, 243)); // 카드 결제 버튼 생성
-        cashPaymentButton = createButton("현금 결제", "src/naver/pin_project/lib/현금결제.png", new Color(208, 237, 255)); // 현금 결제 버튼 생성
+        cardPaymentButton = createButton("카드 결제", "src/naver/pin_project/lib/카드결제.png", new Color(176, 255, 169)); // 카드 결제 버튼 생성
+        cashPaymentButton = createButton("현금 결제", "src/naver/pin_project/lib/현금결제.png", new Color(252, 235, 131)); // 현금 결제 버튼 생성
         buttonPanel.add(cardPaymentButton); // 카드 결제 버튼을 버튼 패널에 추가
         buttonPanel.add(cashPaymentButton); // 현금 결제 버튼을 버튼 패널에 추가
-        buttonPanel.setBackground(Color.WHITE); // 배경색 설정
+        buttonPanel.setBackground((new Color(138,133,133))); // 배경색 설정
         return buttonPanel; // 생성된 패널 반환
     }
 
@@ -81,7 +89,7 @@ public class PaymentScreen extends JFrame {
     private JButton createButton(String text, String imagePath, Color backgroundColor) {
         JButton button;
         try {
-            BufferedImage img = ImageIO.read(new File("C:/Users/user/Desktop/네이버클라우드캠프/프로젝트 3.25~4.22/img/" + imagePath)); // 이미지 파일 읽기
+            BufferedImage img = ImageIO.read(new File(imagePath)); // 이미지 파일 읽기
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH); // 이미지 크기 조정
             ImageIcon icon = new ImageIcon(scaledImg); // 이미지 아이콘 생성
             button = new JButton(text, icon); // 텍스트와 아이콘을 가진 버튼 생성
@@ -124,6 +132,10 @@ public class PaymentScreen extends JFrame {
             try {
                 Thread.sleep(5000); // 5초 대기
                 SwingUtilities.invokeLater(() -> {
+
+                    // 장바구니 초기화
+                    initializeCart();
+
                     paymentDialog.setVisible(false); // 다이얼로그를 닫습니다.
                     setVisible(false);
                 });
@@ -146,6 +158,22 @@ public class PaymentScreen extends JFrame {
 
         paymentDialog.revalidate(); // 다이얼로그를 다시 그리도록 합니다.
         paymentDialog.setVisible(true); // 다이얼로그 표시
+    }
+
+    // 장바구니 초기화 메서드
+    private void initializeCart() {
+        try {
+            Connection conn = OjdbcConnection.getConnection(); // 데이터베이스 연결
+            Statement stmt = conn.createStatement(); // Statement 객체 생성
+
+            String query = "TRUNCATE TABLE cart"; // 장바구니 테이블 비우는 쿼리
+            stmt.executeUpdate(query); // 쿼리 실행
+
+            stmt.close(); // Statement 객체 닫기
+            conn.close(); // 데이터베이스 연결 닫기
+        } catch (SQLException e) { // SQL 예외 처리
+            e.printStackTrace(); // 예외 출력
+        }
     }
 
     // 컴포넌트에 사용할 사용자 지정 폰트 설정
