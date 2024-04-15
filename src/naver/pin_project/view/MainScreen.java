@@ -150,8 +150,9 @@ public class MainScreen extends JPanel {
                     orderNumber = generateRandomNumber();
                     orderTime = new Timestamp(System.currentTimeMillis());
                 }
+                if(!selectedFoods.entrySet().isEmpty()){
                 addToCart();
-                foodOrderScreen.displayShoppingCart();
+                foodOrderScreen.displayShoppingCart();}
             }
         });
 
