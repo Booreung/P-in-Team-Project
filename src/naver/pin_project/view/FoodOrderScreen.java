@@ -306,9 +306,7 @@ public class FoodOrderScreen extends JPanel {
             totalTextField.setText("◆ 총: " + total + " 원 ◆");
         }
 
-        totalTextField.setText("◆ 총: " + total + " 원 ◆");
-        totalTextField.setFocusable(false); // 텍스트 필드에 포커스 설정 방지
-        totalTextField.setEditable(false); // 텍스트 필드를 읽기 전용으로 설정
+
 
 
 
