@@ -66,8 +66,9 @@ public class PaymentScreen extends JFrame {
         JPanel headerPanel = new JPanel(); // 새로운 패널 생성
         JLabel headerLabel = new JLabel("결제 방법을 선택하세요"); // 라벨 생성
         setCustomFont(headerLabel, 35f); // 라벨에 사용할 폰트 설정
+        headerLabel.setForeground(Color.white);
         headerPanel.add(headerLabel); // 헤더 패널에 라벨 추가
-        headerPanel.setBackground(Color.WHITE); // 배경색 설정
+        headerPanel.setBackground((new Color(138, 133, 133))); // 배경색 설정
         return headerPanel; // 생성된 패널 반환
     }
 
@@ -76,11 +77,11 @@ public class PaymentScreen extends JFrame {
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0)); // 새로운 그리드 레이아웃 패널 생성
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // 여백 추가
-        cardPaymentButton = createButton("카드 결제", "src/naver/pin_project/lib/카드결제.png", new Color(255, 227, 243)); // 카드 결제 버튼 생성
-        cashPaymentButton = createButton("현금 결제", "src/naver/pin_project/lib/현금결제.png", new Color(208, 237, 255)); // 현금 결제 버튼 생성
+        cardPaymentButton = createButton("카드 결제", "src/naver/pin_project/lib/카드결제.png", new Color(176, 255, 169)); // 카드 결제 버튼 생성
+        cashPaymentButton = createButton("현금 결제", "src/naver/pin_project/lib/현금결제.png", new Color(252, 235, 131)); // 현금 결제 버튼 생성
         buttonPanel.add(cardPaymentButton); // 카드 결제 버튼을 버튼 패널에 추가
         buttonPanel.add(cashPaymentButton); // 현금 결제 버튼을 버튼 패널에 추가
-        buttonPanel.setBackground(Color.WHITE); // 배경색 설정
+        buttonPanel.setBackground((new Color(138,133,133))); // 배경색 설정
         return buttonPanel; // 생성된 패널 반환
     }
 
@@ -113,16 +114,17 @@ public class PaymentScreen extends JFrame {
     private void showPaymentStatus(String paymentType) {
         // 기존의 모든 컴포넌트를 제거합니다.
         paymentDialog.getContentPane().removeAll();
-        paymentDialog.getContentPane().setBackground(Color.WHITE);
+        paymentDialog.getContentPane().setBackground((new Color(138,133,133)));
 
         // 상태 라벨 생성 및 설정
         JLabel statusLabel = new JLabel("결제 진행 중...", SwingConstants.CENTER);
-        setCustomFont(statusLabel, Font.BOLD, 25);
+        setCustomFont(statusLabel, Font.BOLD, 30);
+        statusLabel.setForeground(Color.white);
         paymentDialog.add(statusLabel, BorderLayout.CENTER);
 
         // 결제 방법 라벨 생성 및 설정
         JLabel paymentTypeLabel = new JLabel("결제 방법: " + paymentType, SwingConstants.CENTER);
-        setCustomFont(paymentTypeLabel, Font.PLAIN, 20);
+        setCustomFont(paymentTypeLabel, Font.PLAIN, 25);
         paymentTypeLabel.setForeground(Color.ORANGE); // 전경색 설정
         paymentDialog.add(paymentTypeLabel, BorderLayout.NORTH);
 

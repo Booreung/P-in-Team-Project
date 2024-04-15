@@ -77,16 +77,25 @@ public class OrderListScreen extends JFrame {
         model.addColumn("총 가격");
 
         // 모델에 행 추가
-        for (OrderInfo order : ordered_list) {
-            Object[] rowData = {
-                    order.getOrdered_no(), // 주문번호
-                    formatDate(order.getOrdered_time()), // 주문시간
-                    order.getOrdered_food_name(), // 음식 이름
-                    order.getOrdered_food_price(), // 가격
-                    order.getOrdered_food_quantity(), // 수량
-                    order.getTotalPrice() // 총 가격
-            };
-            model.addRow(rowData);
+        // 생성자 내에서 주문 내역을 검사하고, 주문 내역이 없는 경우에만 경고 대화상자를 표시하고 창을 닫습니다.
+        if (ordered_list.isEmpty()) {
+            // 주문 내역이 없는 경우 경고 대화상자 표시
+            JOptionPane.showMessageDialog(this, "주문 내역이 없습니다.", "주문 내역", JOptionPane.WARNING_MESSAGE);
+            // 창을 닫고 생성자를 종료
+            return;
+        } else {
+            // 주문 내역이 있는 경우 테이블에 주문 정보를 추가합니다.
+            for (OrderInfo order : ordered_list) {
+                Object[] rowData = {
+                        order.getOrdered_no(), // 주문번호
+                        formatDate(order.getOrdered_time()), // 주문시간
+                        order.getOrdered_food_name(), // 음식 이름
+                        order.getOrdered_food_price(), // 가격
+                        order.getOrdered_food_quantity(), // 수량
+                        order.getTotalPrice() // 총 가격
+                };
+                model.addRow(rowData);
+            }
         }
 
         // 열의 셀 렌더러 설정

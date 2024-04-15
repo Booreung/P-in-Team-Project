@@ -97,8 +97,10 @@ public class MainScreen extends JPanel {
 
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton orderlistbtn = new JButton("주문내역");
+        orderlistbtn.setFont(orderlistbtn.getFont().deriveFont(Font.PLAIN, 25));
         orderlistbtn.setBackground(Color.decode("#FCEB83"));
         JButton cartbtn = new JButton("장바구니");
+        cartbtn.setFont(cartbtn.getFont().deriveFont(Font.PLAIN, 25));
         cartbtn.setBackground(Color.decode("#8DFFF3"));
         bottomPanel.add(orderlistbtn);
         bottomPanel.add(cartbtn);
@@ -151,18 +153,34 @@ public class MainScreen extends JPanel {
                     orderTime = new Timestamp(System.currentTimeMillis());
                 }
                 if(!selectedFoods.entrySet().isEmpty()){
-                addToCart();
-                foodOrderScreen.displayShoppingCart();}
+                    if(!selectedFoods.values().contains(0)){
+                    addToCart();
+                    foodOrderScreen.displayShoppingCart();}
+                    else {
+                        JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);
+                    }}
+                else{JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);}
+
             }
         });
 
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 // MyPageScreen을 JDialog로 생성하여 열기
                 MyPageScreen mypageScreen = new MyPageScreen(cardLayout, loggedInUser, cardPanel);
                 mypageScreen.setModal(true);
                 mypageScreen.setVisible(true);
+
+                if(loggedInUser.getUserName().equals("게스트")){
+                    JOptionPane.showMessageDialog(null,"회원가입 후 이용가능합니다.","비회원 접근",JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
+                    cardLayout.show(cardPanel, "mypage");
+                }
+
             }
         });
 
