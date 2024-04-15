@@ -159,8 +159,10 @@ public class MainScreen extends JPanel {
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
-                cardLayout.show(cardPanel, "mypage");
+                // MyPageScreen을 JDialog로 생성하여 열기
+                MyPageScreen mypageScreen = new MyPageScreen(cardLayout, loggedInUser, cardPanel);
+                mypageScreen.setModal(true);
+                mypageScreen.setVisible(true);
             }
         });
 
