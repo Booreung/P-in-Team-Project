@@ -10,65 +10,74 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// FoodOrder_ViewModel 클래스는 음식 메뉴 데이터를 관리하는 뷰모델 클래스입니다.
 public class FoodOrder_ViewModel {
-
+    // Food 객체를 저장하는 변수
     private Food food;
 
+    // 생성자에서 food 변수 초기화
     public FoodOrder_ViewModel() {
         this.food = food;
     }
 
-    // 음식 메뉴 가져오기 (수정된 쿼리 및 반환 유형)
+    // 데이터베이스에서 음식 메뉴 목록을 가져오는 메서드
     public List<Food> getFoodMenu() throws SQLException {
         Connection con = null;
         PreparedStatement psmt = null;
         ResultSet rs = null;
 
         try {
+            // JDBC 연결을 가져옴
             con = OjdbcConnection.getConnection();
-            String query = "SELECT * FROM Food"; // 모든 음식 항목 선택
+            // 모든 음식 항목을 선택하는 SQL 쿼리
+            String query = "SELECT * FROM Food";
             psmt = con.prepareStatement(query);
 
+            // 쿼리를 실행하고 결과 집합을 받음
             rs = psmt.executeQuery();
             List<Food> foodList = new ArrayList<>();
 
+            // 결과 집합을 반복하면서 Food 객체를 생성하고 리스트에 추가
             while (rs.next()) {
-                String foodName = rs.getString("food_name"); // 명확성을 위해 컬럼 이름 사용
+                String foodName = rs.getString("food_name");
                 int foodPrice = rs.getInt("food_price");
-                String foodImage= rs.getString("food_image");
-                boolean foodEtc= rs.getBoolean("food_etc");
-                Food retrievedFood = new Food(foodName, foodPrice, foodImage,foodEtc); // Food 객체 생성
+                String foodImage = rs.getString("food_image");
+                boolean foodEtc = rs.getBoolean("food_etc");
+                Food retrievedFood = new Food(foodName, foodPrice, foodImage, foodEtc);
                 foodList.add(retrievedFood);
             }
 
-            return foodList; // Food 객체 목록 반환
+            // Food 객체 목록을 반환
+            return foodList;
         } catch (SQLException e) {
-            throw e; // 적절한 처리를 위해 예외 다시 throw
+            // 예외가 발생하면 적절하게 처리하기 위해 다시 던짐
+            throw e;
         } finally {
-            // 보장된 정리 작업을 위해 finally 블록에서 리소스 닫기
+            // 연결된 리소스들을 닫음
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    e.printStackTrace(); // 로그하거나 적절하게 처리
+                    // 로그하거나 적절하게 처리
+                    e.printStackTrace();
                 }
             }
             if (psmt != null) {
                 try {
                     psmt.close();
                 } catch (SQLException e) {
-                    e.printStackTrace(); // 로그하거나 적절하게 처리
+                    // 로그하거나 적절하게 처리
+                    e.printStackTrace();
                 }
             }
             if (con != null) {
                 try {
                     con.close();
                 } catch (SQLException e) {
-                    e.printStackTrace(); // 로그하거나 적절하게 처리
+                    // 로그하거나 적절하게 처리
+                    e.printStackTrace();
                 }
             }
         }
     }
 }
-
-

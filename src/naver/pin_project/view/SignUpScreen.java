@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.SignUp_ViewModel;
@@ -27,7 +28,7 @@ public class SignUpScreen extends JDialog {
 
     public SignUpScreen() {
         setTitle("회원가입");
-        setSize(500, 400);
+        setSize(500,400);
         setLayout(new BorderLayout());
         //메인 패널 생성
         JPanel mainPanel = new JPanel(new BorderLayout()); // 메인패널 생성
@@ -65,8 +66,10 @@ public class SignUpScreen extends JDialog {
         textFieldPanel.add(usernameLabel, gbc);
         gbc.gridx = 1;
         usernameField = new JTextField(15);
+        usernameField.setForeground(Color.WHITE);
         textFieldPanel.add(usernameField, gbc);
         usernameLabel.setFont(usernameLabel.getFont().deriveFont(16f));
+
 
 
         // 아이디 텍스트 필드
@@ -93,6 +96,7 @@ public class SignUpScreen extends JDialog {
         textFieldPanel.add(buttonpanel, gbc);
 
 
+
         //비밀번호 텍스트 필드
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -115,6 +119,7 @@ public class SignUpScreen extends JDialog {
         confirmPasswordField = new JPasswordField(15);
         textFieldPanel.add(confirmPasswordField, gbc);
         pwchecdkLabel.setFont(pwchecdkLabel.getFont().deriveFont(16f));
+
 
 
         // 생년월일 입력 텍스트 필드
@@ -160,7 +165,6 @@ public class SignUpScreen extends JDialog {
         // 휴대전화번호 입력 필드를 위한 패널
         JPanel phonePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
         phonePanel.setBackground(Color.decode("#8A8585")); // 패널의 배경색 설정
-
         // 휴대전화번호 첫 번째 부분 입력 필드
         phoneField1 = new JTextField(4);
         phonePanel.add(phoneField1);
@@ -175,6 +179,8 @@ public class SignUpScreen extends JDialog {
         gbc.gridwidth = 1;
         textFieldPanel.add(phonePanel, gbc);
         phonePanel.setFont(phonePanel.getFont().deriveFont(16f));
+
+
 
         // "인증번호 받기" 버튼 추가
         gbc.gridx = 2;
@@ -250,11 +256,11 @@ public class SignUpScreen extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 // 여기에 인증번호를 받는 로직을 구현합니다.
                 String phone =
-                        phoneField1.getText() + "-"
-                                + phoneField2.getText() + "-"
-                                + phoneField3.getText();
+                        phoneField1.getText()+"-"
+                                +phoneField2.getText()+"-"
+                                +phoneField3.getText();
                 JOptionPane.showMessageDialog(SignUpScreen.this,
-                        phone + "으로 인증번호가 발송되었습니다.",
+                        phone+"으로 인증번호가 발송되었습니다.",
                         "인증번호 전송",
                         JOptionPane.INFORMATION_MESSAGE);
             }
@@ -315,7 +321,6 @@ public class SignUpScreen extends JDialog {
         }
         return true;
     }
-
 
     private void checkUserId() {
         String userid = idField.getText();

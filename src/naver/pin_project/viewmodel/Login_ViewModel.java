@@ -17,6 +17,7 @@ public class Login_ViewModel {
 
     //로그인 동작
     public boolean isValidUser(){
+        //간단한 쿼리문 작업 : 코드만 봐도 충분히 이해할 수 있다고 판단
         Connection con = null;
         String query = "select * from user where userid = ? and userpw =?";
 

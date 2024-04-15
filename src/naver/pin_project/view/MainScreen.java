@@ -2,10 +2,7 @@ package src.naver.pin_project.view;
 
 
 
-import src.naver.pin_project.data.Food;
-import src.naver.pin_project.data.OrderInfo;
-import src.naver.pin_project.data.Ranking;
-import src.naver.pin_project.data.User;
+import src.naver.pin_project.data.*;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.db.OjdbcConnection;
 import src.naver.pin_project.game_feature.GameMenu;

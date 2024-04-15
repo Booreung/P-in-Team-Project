@@ -9,6 +9,7 @@ public class OrderInfo {
     private int ordered_food_price;
     private int ordered_food_quantity;
 
+    //주문내역에 필요한 정보 주문시간, 주문번호, 주문한음식이름, 주문한음식가격, 주문한음식수량
     public OrderInfo(Date ordered_time, int ordered_no, String ordered_food_name, int ordered_food_price, int ordered_food_quantity) {
         this.ordered_time = ordered_time;
         this.ordered_no = ordered_no;

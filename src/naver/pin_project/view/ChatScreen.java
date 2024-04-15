@@ -25,7 +25,7 @@ public class ChatScreen extends JFrame {
 
         messageField = new JTextField(30);
         Font textFieldFont = messageField.getFont();
-        messageField.setFont(new Font(textFieldFont.getName(), textFieldFont.getStyle(), 16));
+        messageField.setFont(new Font(textFieldFont.getName(), textFieldFont.getStyle(), 20));
         messageField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 sendMessage();
