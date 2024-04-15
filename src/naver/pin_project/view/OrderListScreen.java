@@ -16,21 +16,30 @@ import java.util.ArrayList;
 
 public class OrderListScreen extends JFrame {
 
+    // OrderListScreen 클래스 생성자
     public OrderListScreen(ArrayList<OrderInfo> ordered_list) {
-        setTitle("주문 내역"); // 프레임 제목 설정
-        setSize(750, 460); // 프레임 크기 설정
+        // 프레임 제목 설정
+        setTitle("주문 내역");
+        // 프레임 크기 설정
+        setSize(750, 460);
+        // 화면 중앙에 프레임 위치 설정
         setLocationRelativeTo(null);
 
-        // 패널 생성
+        // 메인 패널 생성
         JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(new Color(138, 133, 133)); // 배경색 설정
+        // 메인 패널 배경색 설정
+        mainPanel.setBackground(new Color(138, 133, 133));
 
-        // 레이블 생성
+        // 제목 레이블 생성
         JLabel titleLabel = new JLabel("주문 내역");
-        titleLabel.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 30f)); // 커스텀 폰트 설정
+        // 제목 레이블 폰트 설정
+        titleLabel.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 30f));
+        // 제목 레이블 가운데 정렬
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        titleLabel.setForeground(Color.WHITE); // 폰트 색상 설정
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 여백 설정
+        // 제목 레이블 폰트 색상 설정
+        titleLabel.setForeground(Color.WHITE);
+        // 제목 레이블 여백 설정
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // 테이블 생성
         DefaultTableModel model = new DefaultTableModel() {
@@ -40,16 +49,23 @@ public class OrderListScreen extends JFrame {
             }
         };
         JTable table = new JTable(model);
-        table.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 16f)); // 커스텀 폰트 설정
+        // 테이블 폰트 설정
+        table.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 16f));
+        // 테이블 셀 높이 설정
         table.setRowHeight(30);
-        table.setBackground(new Color(138,133,133)); // 테이블 배경색 설정
+        // 테이블 배경색 설정
+        table.setBackground(new Color(138,133,133));
 
         // 테이블 헤더 설정
         JTableHeader header = table.getTableHeader();
-        header.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 16f)); // 커스텀 폰트 설정
-        header.setForeground(Color.black); // 헤더 폰트 색상 설정
 
-        header.setBackground(new Color(252, 235, 131)); // 헤더 배경색 설정
+        // 테이블 헤더 폰트 설정
+        header.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 16f));
+        // 테이블 헤더 폰트 색상 설정
+        header.setForeground(Color.black);
+        // 테이블 헤더 배경색 설정
+        header.setBackground(new Color(252, 235, 131));
+        // 테이블 헤더 테두리 설정
         header.setBorder(new LineBorder(new Color(237, 180, 81), 1));
 
         // 모델에 열 추가
@@ -75,7 +91,9 @@ public class OrderListScreen extends JFrame {
 
         // 열의 셀 렌더러 설정
         TableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        // 셀 가운데 정렬
         ((DefaultTableCellRenderer) centerRenderer).setHorizontalAlignment(SwingConstants.CENTER);
+        // 테이블 각 열에 적용
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
             table.setBackground(Color.white);
@@ -84,22 +102,31 @@ public class OrderListScreen extends JFrame {
 
         // 스크롤 가능한 패널에 테이블 추가
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.getViewport().setBackground(new Color(138, 133, 133)); // 패널 배경색 설정
+        // 패널 배경색 설정
+        scrollPane.getViewport().setBackground(new Color(138, 133, 133));
+        // 패널 테두리 설정
         scrollPane.setBorder((new LineBorder(new Color(138,133,133),1)));
-
 
         // 뒤로가기 버튼 생성
         JButton backButton = new JButton("뒤로가기");
-        backButton.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 20f)); // 커스텀 폰트 설정
+        // 버튼 폰트 설정
+        backButton.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 20f));
+        // 버튼 배경색 설정
         backButton.setBackground(new Color(176, 255, 169));
+        // 버튼 폰트 색상 설정
         backButton.setForeground(Color.BLACK);
+        // 버튼 테두리 설정
         backButton.setBorder(BorderFactory.createLineBorder(new Color(38, 171, 50), 1));
+        // 버튼 크기 설정
         backButton.setPreferredSize(new Dimension(120, 40));
-        backButton.addActionListener(e -> dispose()); // 창 닫기
+        // 뒤로가기 버튼 클릭 시 창 닫기
+        backButton.addActionListener(e -> dispose());
 
         // 버튼 패널 생성
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.setBackground(new Color(138, 133, 133)); // 배경색 설정
+        // 패널 배경색 설정
+        buttonPanel.setBackground(new Color(138, 133, 133));
+        // 버튼 패널에 뒤로가기 버튼 추가
         buttonPanel.add(backButton);
 
         // 메인 패널에 컴포넌트 추가
@@ -108,7 +135,7 @@ public class OrderListScreen extends JFrame {
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         getContentPane().add(mainPanel);
-        setVisible(true);
+        setVisible(true); // 프레임 표시
     }
 
     // 날짜를 문자열로 포맷하는 메서드

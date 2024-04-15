@@ -15,16 +15,16 @@ public class Ranking_ViewModel {
 
     // 랭킹 정보를 가져오는 메서드
     public static List<List<Ranking>> getRankingData() {
-        // 반환할 랭킹 데이터를 저장할 리스트 생성
+        // 랭킹 데이터를 저장할 리스트 생성
         List<List<Ranking>> rankingData = new ArrayList<>();
         // 실시간 랭킹 데이터를 저장할 리스트 생성
         List<Ranking> realTimeRankingList = new ArrayList<>();
         // 월별 랭킹 데이터를 저장할 리스트 생성
         List<Ranking> monthlyRankingList = new ArrayList<>();
 
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        Connection conn = null;  //데이터베이스 연결하기위함
+        PreparedStatement stmt = null;  //sql쿼리 실행하기위함
+        ResultSet rs = null;  //sql쿼리 결과를 나타내기위함
 
         try {
             // 데이터베이스 연결
@@ -50,7 +50,7 @@ public class Ranking_ViewModel {
             e.printStackTrace();
         } finally {
             try {
-                // 사용한 자원 반환
+                // 사용한거 닫기
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
                 if (conn != null) conn.close();

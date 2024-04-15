@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.Food;
 
 import javax.swing.*;
@@ -15,7 +16,16 @@ public class CartScreen extends JPanel {
 
     // CartScreen 클래스의 생성자입니다. (키워드: 생성자)
     public CartScreen(Map<Food, Integer> selectedFoods) {
-        // 선택된 음식과 수량 Map 초기화 (키워드: 초기화)
+
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 17f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
+
         this.selectedFoods = selectedFoods;
         // 레이아웃 설정 (키워드: 레이아웃)
         setLayout(new BorderLayout());
@@ -38,12 +48,14 @@ public class CartScreen extends JPanel {
         // 선택된 음식 정보 표시
         // selectedFoods 맵에 저장된 모든 키-값 쌍을 반복하면서 처리합니다. 이때, 키는 Food 객체이고, 값은 해당 음식을 선택한 수량입니다.
         for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
+
             Food food = entry.getKey(); // 선택된 음식 정보를 가져옵니다.
             int quantity = entry.getValue(); // 선택한 음식의 수량을 가져옵니다.
             int totalPriceForFood = food.getFood_price() * quantity; // 해당 음식의 총 가격을 계산합니다 (단가 * 수량).
             if(quantity>0){ // 만약 선택한 음식의 수량이 0보다 크면
                 cartTextArea.append("★ 음식 ★ : " + food.getFood_name() + ", ★ 수량 ★ : " + quantity +
                         ",★ 가격 ★ : " + totalPriceForFood + " 원\n");} // 장바구니 텍스트 영역에 음식의 이름, 수량, 총 가격을 추가합니다.
+
         }
         add(scrollPane, BorderLayout.CENTER); // 스크롤 패널을 화면 중앙에 추가합니다.
 

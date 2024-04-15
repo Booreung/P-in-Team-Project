@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.SignUp_ViewModel;
@@ -26,6 +27,14 @@ public class SignUpScreen extends JDialog {
     private JButton sendVerificationCodeButton; // 인증번호 받기 버튼
 
     public SignUpScreen() {
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 18f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
         setTitle("회원가입");
         setSize(500,400);
         setLayout(new BorderLayout());
@@ -65,9 +74,9 @@ public class SignUpScreen extends JDialog {
         textFieldPanel.add(usernameLabel, gbc);
         gbc.gridx = 1;
         usernameField = new JTextField(15);
-        usernameField.setForeground(Color.WHITE);
+        usernameField.setForeground(Color.black);
         textFieldPanel.add(usernameField, gbc);
-        usernameLabel.setFont(usernameLabel.getFont().deriveFont(16f));
+        usernameLabel.setFont(usernameLabel.getFont().deriveFont(18f));
 
 
 
@@ -80,7 +89,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridx = 1;
         idField = new JTextField(15);
         textFieldPanel.add(idField, gbc);
-        idLabel.setFont(idLabel.getFont().deriveFont(16f));
+        idLabel.setFont(idLabel.getFont().deriveFont(18f));
 
 
         // 아이디 중복 확인 버튼
@@ -105,7 +114,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridx = 1;
         passwordField = new JPasswordField(15);
         textFieldPanel.add(passwordField, gbc);
-        pwLabel.setFont(idLabel.getFont().deriveFont(16f));
+        pwLabel.setFont(idLabel.getFont().deriveFont(18f));
 
 
         // 비밀번호 확인 텍스트 필드
@@ -117,7 +126,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridx = 1;
         confirmPasswordField = new JPasswordField(15);
         textFieldPanel.add(confirmPasswordField, gbc);
-        pwchecdkLabel.setFont(pwchecdkLabel.getFont().deriveFont(16f));
+        pwchecdkLabel.setFont(pwchecdkLabel.getFont().deriveFont(18f));
 
 
 
@@ -128,7 +137,7 @@ public class SignUpScreen extends JDialog {
         birthLabel.setForeground(Color.WHITE);
         textFieldPanel.add(birthLabel, gbc);
         gbc.gridx = 1;
-        birthLabel.setFont(birthLabel.getFont().deriveFont(16f));
+        birthLabel.setFont(birthLabel.getFont().deriveFont(18f));
 
         // placehold 같은 기능 추가
         JTextField birthDateField = new JTextField("YYYY-MM-DD 형식으로 입력하세요");
@@ -159,7 +168,7 @@ public class SignUpScreen extends JDialog {
         JLabel phonenumLabel = new JLabel("휴대전화번호", SwingConstants.LEFT);
         phonenumLabel.setForeground(Color.WHITE);
         textFieldPanel.add(phonenumLabel, gbc);
-        phonenumLabel.setFont(phonenumLabel.getFont().deriveFont(16f));
+        phonenumLabel.setFont(phonenumLabel.getFont().deriveFont(18f));
 
         // 휴대전화번호 입력 필드를 위한 패널
         JPanel phonePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
@@ -177,7 +186,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridy = 5;
         gbc.gridwidth = 1;
         textFieldPanel.add(phonePanel, gbc);
-        phonePanel.setFont(phonePanel.getFont().deriveFont(16f));
+        phonePanel.setFont(phonePanel.getFont().deriveFont(18f));
 
 
 
@@ -190,7 +199,7 @@ public class SignUpScreen extends JDialog {
         sendVerificationCodeButton.setPreferredSize(new Dimension(100, 30)); // 버튼 크기 설정
         textFieldPanel.add(sendVerificationCodeButton, gbc);
         gbc.gridwidth = 1;
-        sendVerificationCodeButton.setFont(sendVerificationCodeButton.getFont().deriveFont(11f));
+        sendVerificationCodeButton.setFont(sendVerificationCodeButton.getFont().deriveFont(18f));
 
 
         // 인증번호 입력 텍스트필드
@@ -198,7 +207,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridy = 6;
         JLabel verificationcodeLable = new JLabel("인증번호", SwingConstants.LEFT);
         verificationcodeLable.setForeground(Color.WHITE);
-        verificationcodeLable.setFont(verificationcodeLable.getFont().deriveFont(16f));
+        verificationcodeLable.setFont(verificationcodeLable.getFont().deriveFont(18f));
 
         textFieldPanel.add(verificationcodeLable, gbc);
         gbc.gridx = 1;
@@ -216,12 +225,12 @@ public class SignUpScreen extends JDialog {
 
         JButton signupButton = new JButton("회원가입");
         signupButton.setBackground(Color.decode("#FCEB83")); // 회원가입 버튼 색
-        signupButton.setFont(signupButton.getFont().deriveFont(13f));
+        signupButton.setFont(signupButton.getFont().deriveFont(18f));
 
 
         JButton cancelButton = new JButton("취   소");
         cancelButton.setBackground(Color.decode("#8DFFF3")); // 취소 버튼 색
-        cancelButton.setFont(cancelButton.getFont().deriveFont(13f));
+        cancelButton.setFont(cancelButton.getFont().deriveFont(18f));
 
 
         buttonPanel.add(signupButton);

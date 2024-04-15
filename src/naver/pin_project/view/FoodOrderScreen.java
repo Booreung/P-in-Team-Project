@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.Food;
 import src.naver.pin_project.viewmodel.FoodOrder_ViewModel;
 
@@ -31,7 +33,18 @@ public class FoodOrderScreen extends JPanel {
 
     // FoodOrderScreen 클래스의 생성자입니다. (키워드: 생성자)
     public FoodOrderScreen(int width, int height) {
+
         // 카드 레이아웃과 카드 패널 초기화 (키워드: 초기화)
+
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 15f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
+
         this.cardLayout = new CardLayout();
         this.cardPanel = new JPanel(cardLayout);
 
@@ -156,9 +169,17 @@ public class FoodOrderScreen extends JPanel {
             totalTextField = new JTextField("◆ 총: 0 원 ◆");
             // 텍스트 필드의 크기를 설정합니다.
             totalTextField.setPreferredSize(new Dimension(200, 20));
+
             // 텍스트 필드의 정렬 방향을 중앙으로 설정합니다.
             totalTextField.setHorizontalAlignment(JTextField.CENTER);
             // 텍스트 필드를 이 패널의 상단에 추가합니다.
+
+            totalTextField.setEditable(false);
+            totalTextField.setFocusable(false);
+            totalTextField.setHorizontalAlignment(JTextField.CENTER);
+            totalTextField.setEditable(false); // 텍스트 필드를 읽기 전용으로 설정
+            totalTextField.setFocusable(false); // 포커스 설정 방지
+
             add(totalTextField, BorderLayout.NORTH);
 
         // SQL 예외가 발생하면 적절하게 처리합니다.
@@ -284,6 +305,13 @@ public class FoodOrderScreen extends JPanel {
             // 계산된 총 주문 금액을 텍스트 필드에 표시합니다.
             totalTextField.setText("◆ 총: " + total + " 원 ◆");
         }
+
+        totalTextField.setText("◆ 총: " + total + " 원 ◆");
+        totalTextField.setFocusable(false); // 텍스트 필드에 포커스 설정 방지
+        totalTextField.setEditable(false); // 텍스트 필드를 읽기 전용으로 설정
+
+
+
     }
 
 
