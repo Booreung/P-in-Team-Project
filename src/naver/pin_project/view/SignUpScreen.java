@@ -66,7 +66,6 @@ public class SignUpScreen extends JDialog {
         textFieldPanel.add(usernameLabel, gbc);
         gbc.gridx = 1;
         usernameField = new JTextField(15);
-        usernameField.setForeground(Color.WHITE);
         textFieldPanel.add(usernameField, gbc);
         usernameLabel.setFont(usernameLabel.getFont().deriveFont(16f));
 
