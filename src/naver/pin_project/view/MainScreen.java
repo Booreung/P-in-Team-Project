@@ -97,8 +97,10 @@ public class MainScreen extends JPanel {
 
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton orderlistbtn = new JButton("주문내역");
+        orderlistbtn.setFont(orderlistbtn.getFont().deriveFont(Font.PLAIN, 25));
         orderlistbtn.setBackground(Color.decode("#FCEB83"));
         JButton cartbtn = new JButton("장바구니");
+        cartbtn.setFont(cartbtn.getFont().deriveFont(Font.PLAIN, 25));
         cartbtn.setBackground(Color.decode("#8DFFF3"));
         bottomPanel.add(orderlistbtn);
         bottomPanel.add(cartbtn);
