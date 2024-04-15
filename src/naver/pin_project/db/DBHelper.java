@@ -16,11 +16,13 @@ public class DBHelper {
         ResultSet rs = null;
         User user = null;
 
+        //로그인한 유저의 정보를 가져오기 위한 코드 : 메인 화면에 사용자의 정보 전달을 위해 사용
         try {
             con = OjdbcConnection.getConnection();
             String query = "SELECT * FROM user WHERE userid = ?";
             psmt = con.prepareStatement(query);
             psmt.setString(1,userId);
+            //select 쿼리문을 사용했기때문에 ResultSet을 사용
             rs = psmt.executeQuery();
 
             if(rs.next()){

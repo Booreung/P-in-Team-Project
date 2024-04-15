@@ -17,6 +17,8 @@ public class PinApp extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        //메인 어플리케이션 동작에 있어 Start, Login화면을 시작으로 메인까지 연결
+
         //CardLayout 설정
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
@@ -32,10 +34,10 @@ public class PinApp extends JFrame {
         add(cardPanel);
     }
     public static void main(String[] args) {
+        //단일 스레드를 실행하기 위한 메소드 (공식임)
         SwingUtilities.invokeLater(() -> {
             PinApp app = new PinApp();
             app.setVisible(true);
-
         });
     }
 }
