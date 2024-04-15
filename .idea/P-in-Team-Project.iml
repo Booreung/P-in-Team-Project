@@ -9,6 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-j-8.2.0" level="project" />
     <orderEntry type="library" name="mysql-connector-j-8.0.33" level="project" />
+    <orderEntry type="library" name="mysql-connector-j-8.3.0" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="608c2295-31c6-4eb9-9d97-38112a712345" />
