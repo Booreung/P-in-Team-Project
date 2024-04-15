@@ -34,8 +34,9 @@ public class CartScreen extends JPanel {
             Food food = entry.getKey();
             int quantity = entry.getValue();
             int totalPriceForFood = food.getFood_price() * quantity;
-            cartTextArea.append("★ 음식 ★ : " + food.getFood_name() + ", ★ 수량 ★ : " + quantity +
-                    ",★ 가격 ★ : " + totalPriceForFood + " 원\n");
+            if(quantity>0){
+                cartTextArea.append("★ 음식 ★ : " + food.getFood_name() + ", ★ 수량 ★ : " + quantity +
+                        ",★ 가격 ★ : " + totalPriceForFood + " 원\n");}
         }
         add(scrollPane, BorderLayout.CENTER);
 
