@@ -167,6 +167,12 @@ public class MainScreen extends JPanel {
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
+                // MyPageScreen을 JDialog로 생성하여 열기
+                MyPageScreen mypageScreen = new MyPageScreen(cardLayout, loggedInUser, cardPanel);
+                mypageScreen.setModal(true);
+                mypageScreen.setVisible(true);
+
                 if(loggedInUser.getUserName().equals("게스트")){
                     JOptionPane.showMessageDialog(null,"회원가입 후 이용가능합니다.","비회원 접근",JOptionPane.WARNING_MESSAGE);
                 }
@@ -174,6 +180,7 @@ public class MainScreen extends JPanel {
                     cardPanel.add(new MyPageScreen(cardLayout, loggedInUser, cardPanel),"mypage");
                     cardLayout.show(cardPanel, "mypage");
                 }
+
             }
         });
 

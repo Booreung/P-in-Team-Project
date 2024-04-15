@@ -1,4 +1,5 @@
 package src.naver.pin_project.view;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +21,7 @@ public class ChatScreen extends JFrame {
         JScrollPane chatScrollPane = new JScrollPane(chatArea);
         add(chatScrollPane, BorderLayout.CENTER);
         JPanel sendPanel = new JPanel(new BorderLayout());
-        sendPanel.setPreferredSize(new Dimension(getWidth(),40 ));// 왼쪽 정렬 FlowLayout 사용
+        sendPanel.setPreferredSize(new Dimension(getWidth(), 40));// 왼쪽 정렬 FlowLayout 사용
 
         messageField = new JTextField(30);
         Font textFieldFont = messageField.getFont();
@@ -41,8 +42,8 @@ public class ChatScreen extends JFrame {
             }
         });
 
-        sendPanel.add(messageField,BorderLayout.CENTER);
-        sendPanel.add(sendButton,BorderLayout.EAST);
+        sendPanel.add(messageField, BorderLayout.CENTER);
+        sendPanel.add(sendButton, BorderLayout.EAST);
         add(sendPanel, BorderLayout.SOUTH);
 
         pack();
@@ -64,6 +65,7 @@ public class ChatScreen extends JFrame {
             ex.printStackTrace();
         }
     }
+
     // 메시지 전송
     private void sendMessage() {
         String message = messageField.getText();
