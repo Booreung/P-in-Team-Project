@@ -151,8 +151,9 @@ public class MainScreen extends JPanel {
                     orderTime = new Timestamp(System.currentTimeMillis());
                 }
                 if(!selectedFoods.entrySet().isEmpty()){
-                addToCart();
-                foodOrderScreen.displayShoppingCart();}
+                    if(!selectedFoods.values().contains(0)){
+                    addToCart();
+                    foodOrderScreen.displayShoppingCart();}}
             }
         });
 
