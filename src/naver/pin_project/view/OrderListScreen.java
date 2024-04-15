@@ -48,6 +48,7 @@ public class OrderListScreen extends JFrame {
         JTableHeader header = table.getTableHeader();
         header.setFont(getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 16f)); // 커스텀 폰트 설정
         header.setForeground(Color.black); // 헤더 폰트 색상 설정
+
         header.setBackground(new Color(252, 235, 131)); // 헤더 배경색 설정
         header.setBorder(new LineBorder(new Color(237, 180, 81), 1));
 
