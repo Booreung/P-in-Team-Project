@@ -48,6 +48,7 @@ public class ChatScreen extends JFrame {
 
         pack();
         setVisible(true);
+        setLocationRelativeTo(null);
 
 
         //ChatClient 고객이 서버에게 연결
