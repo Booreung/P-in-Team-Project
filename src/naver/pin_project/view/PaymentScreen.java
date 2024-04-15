@@ -114,16 +114,17 @@ public class PaymentScreen extends JFrame {
     private void showPaymentStatus(String paymentType) {
         // 기존의 모든 컴포넌트를 제거합니다.
         paymentDialog.getContentPane().removeAll();
-        paymentDialog.getContentPane().setBackground(Color.WHITE);
+        paymentDialog.getContentPane().setBackground((new Color(138,133,133)));
 
         // 상태 라벨 생성 및 설정
         JLabel statusLabel = new JLabel("결제 진행 중...", SwingConstants.CENTER);
-        setCustomFont(statusLabel, Font.BOLD, 25);
+        setCustomFont(statusLabel, Font.BOLD, 30);
+        statusLabel.setForeground(Color.white);
         paymentDialog.add(statusLabel, BorderLayout.CENTER);
 
         // 결제 방법 라벨 생성 및 설정
         JLabel paymentTypeLabel = new JLabel("결제 방법: " + paymentType, SwingConstants.CENTER);
-        setCustomFont(paymentTypeLabel, Font.PLAIN, 20);
+        setCustomFont(paymentTypeLabel, Font.PLAIN, 25);
         paymentTypeLabel.setForeground(Color.ORANGE); // 전경색 설정
         paymentDialog.add(paymentTypeLabel, BorderLayout.NORTH);
 
