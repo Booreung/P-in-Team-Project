@@ -113,7 +113,7 @@ public class MainScreen extends JPanel {
 
         add(bottomPanel, BorderLayout.SOUTH);
 
-        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/P-in 팀로고 1.png");
+        ImageIcon profileIcon = new ImageIcon("src/naver/pin_project/lib/팀로고 1.png");
         JLabel profileLabel = new JLabel(profileIcon);
 
         profileLabel.setToolTipText("프로필 보기"); // 마우스 오버시 툴팁 설정
