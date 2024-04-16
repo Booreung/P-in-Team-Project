@@ -1,6 +1,5 @@
 package src.naver.pin_project.view;
 
-import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.MyPage_ViewModel;
@@ -17,15 +16,7 @@ public class MyPageScreen extends JFrame {
     private JTextField inputPw;
 
     public MyPageScreen(CardLayout cardLayout,User loggedInUser,JPanel cardPanel) {
-
-        // 폰트 파일 경로
-        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
-        // 원하는 폰트 크기로 폰트 로드
-        Font customFont = CustomFont.loadFont(fontPath, 20f);
-        // UI에 폰트 적용
-        CustomFont.setUIFont(customFont);
-
-        setSize(500, 350); //프레임 크기 설정
+        setSize(500, 300);//프레임 크기 설정
         setLocationRelativeTo(null); // 화면 가운데에 위치하도록 설정
         setBackground(Color.decode("#8A8585")); //배경색 설정
 
@@ -47,7 +38,7 @@ public class MyPageScreen extends JFrame {
         inputPw = new JTextField(10);
         inputPw.setText(newestUser.getPassword());
 
-        //이미지 출력 부분
+        // 이미지 출력 부분
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/lib/mymelody.png");
         Image image = imageIcon.getImage(); // Image 객체로 변환
         Image newImage = image.getScaledInstance(70, 50, Image.SCALE_SMOOTH); // 크기 조정
@@ -81,7 +72,7 @@ public class MyPageScreen extends JFrame {
         pwPanel.add(inputPw);
         pwPanel.setBackground(Color.decode("#8A8585"));
 
-        //입력 폼 패널 생성
+        //압력 폼 패널 생성
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(4, 1));
         formPanel.add(imagePanel);
@@ -93,21 +84,21 @@ public class MyPageScreen extends JFrame {
         //컨텐츠 패널 생성
         JPanel contentPanel = new JPanel(new FlowLayout());
         contentPanel.setBackground(Color.decode("#8A8585"));
-        contentPanel.add(formPanel);
+        contentPanel.add(formPanel); //컨텐츠패널에 폼패널(입력폼+이미지폼) 추가
 
-        //수정버튼 생성
+        // 수정버튼 생성
         JButton update = new JButton("수정");
         update.setBackground(Color.decode("#FCEB83"));
 
-        //삭제버튼 생성
+        // 삭제버튼 생성
         JButton delete = new JButton("삭제");
         delete.setBackground(Color.decode("#8DFFF3"));
 
-        //버튼 패널 생성
+        // 버튼 패널 생성
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.setBackground(Color.decode("#8A8585"));// FlowLayout 사용하여 버튼들이 화면 가운데에 위치하도록 설정
 
-        //버튼 패널에 수정, 삭제 버튼 추가
+        // 버튼 패널에 버튼 추가
         buttonPanel.add(update);
         buttonPanel.add(delete);
 
@@ -116,12 +107,11 @@ public class MyPageScreen extends JFrame {
         add(contentPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        setVisible(true);  //프레임을 보이도록 설정
+        setVisible(true); //프레임을 보이도록 설정
 
         MyPage_ViewModel myPageFuc = new MyPage_ViewModel(); //MyPage_ViewModel 객체 생성
 
         String msgId = inputId.getText(); //입력된 아이디 값 가져오기
-
 
         //업데이트 버튼 클릭했을때
         update.addActionListener(new ActionListener() {
@@ -131,25 +121,23 @@ public class MyPageScreen extends JFrame {
                 String msgName = inputName.getText();
                 String msgPw = inputPw.getText();
 
-                myPageFuc.update(msgId, msgName,msgPw, newmsgId); //update 함수 호출 / 필요한 파라미터(변수)를 넣어줌
+                myPageFuc.update(msgId, msgName,msgPw, newmsgId); //update함수호출 / 필요한 파라미터(변수)를 넣어줌
 
                 dispose(); //현재 프레임 창 닫기
             }
         });
 
-
         //삭제버튼 눌렀을때
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean deleted = myPageFuc.delete(msgId); // delete 함수 호출
 
-                // 삭제가 성공한 경우에만 로그인 화면으로 이동 및 현재 창 닫기
-                if (deleted) {
-                    cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
-                    cardLayout.show(cardPanel,"login");
-                    dispose(); // 현재 프레임 창 닫기
-                }
+                myPageFuc.delete(msgId); //delete 함수 호출
+                dispose(); //현재 프레임 닫기
+
+                //회원이 삭제되면 로그인화면으로 이동
+                cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
+                cardLayout.show(cardPanel,"login");
             }
         });
     }
