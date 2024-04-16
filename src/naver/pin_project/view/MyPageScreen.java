@@ -1,5 +1,6 @@
 package src.naver.pin_project.view;
 
+import src.naver.pin_project.data.CustomFont;
 import src.naver.pin_project.data.User;
 import src.naver.pin_project.db.DBHelper;
 import src.naver.pin_project.viewmodel.MyPage_ViewModel;

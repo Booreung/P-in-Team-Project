@@ -144,25 +144,46 @@ public class MainScreen extends JPanel {
 
         add(westPanel, BorderLayout.WEST);
 
+        // 키워드: 장바구니 버튼 액션리스너 추가
         cartbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // 키워드: 선택된 음식들을 전체 선택된 음식 리스트에 추가
                 selectedFoods.putAll(foodOrderScreen.getSelectedFoods());
+                // 키워드: 주문 번호가 아직 생성되지 않았다면, 새로운 주문 번호와 주문 시간 생성
                 if (orderNumber == -1) {
-                    orderNumber = generateRandomNumber();
-                    orderTime = new Timestamp(System.currentTimeMillis());
+                    orderNumber = generateRandomNumber(); // 주문 번호 생성
+                    orderTime = new Timestamp(System.currentTimeMillis()); // 주문 시간 생성
                 }
+                // 키워드: 선택된 음식이 있을 경우 처리
                 if(!selectedFoods.entrySet().isEmpty()){
+                    int total = 0; // 총 금액을 저장할 변수
+                    // 선택된 음식들의 리스트를 순회하며, 각 음식의 가격과 수량을 곱해 총 금액 계산
+                    for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
+                        Food food = entry.getKey(); // 음식 정보 가져오기
+                        int quantity = entry.getValue(); // 선택된 음식의 수량
+                        total += food.getFood_price() * quantity; // 음식 가격과 수량 곱해 총 금액에 더하기
+                    }
+                    // 키워드: 수량이 0이 아닌 음식이 있는지, 총 금액이 0 이상인지 확인 후 처리
                     if(!selectedFoods.values().contains(0)){
-                    addToCart();
-                    foodOrderScreen.displayShoppingCart();}
+                        addToCart(); // 장바구니에 추가
+                        foodOrderScreen.displayShoppingCart(); // 장바구니 화면 표시
+                    }
+                    else if(total>0){
+                        addToCart(); // 장바구니에 추가
+                        foodOrderScreen.displayShoppingCart(); // 장바구니 화면 표시
+                    }
                     else {
+                        // 키워드: 선택된 메뉴가 없는 경우 경고 메시지 출력
                         JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);
                     }}
-                else{JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);}
-
+                else{
+                    // 키워드: 선택된 메뉴가 없는 경우 경고 메시지 출력
+                    JOptionPane.showMessageDialog(null, "선택된 메뉴가 없습니다. 메뉴를 선택해주세요", "메뉴선택오류", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
+
 
         profileLabel.addMouseListener(new MouseAdapter() {
             @Override
