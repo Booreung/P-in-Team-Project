@@ -37,6 +37,7 @@ public class SignUpScreen extends JDialog {
         setTitle("회원가입");
         setSize(500,400);
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
         //메인 패널 생성
         JPanel mainPanel = new JPanel(new BorderLayout()); // 메인패널 생성
 
