@@ -177,6 +177,7 @@ public class StaffCallScreen extends JDialog {
 
         JPanel staffOrderPanel = new JPanel(new BorderLayout());
         staffOrderPanel.setBackground(Color.WHITE);
+
         JPanel staffOrderPanel1= new JPanel();
         staffOrderPanel1.setLayout(new BoxLayout(staffOrderPanel1, BoxLayout.Y_AXIS));
         staffOrderLabel = new JLabel("왼쪽에서\n");
@@ -189,6 +190,7 @@ public class StaffCallScreen extends JDialog {
         staffOrderPanel1.add(staffOrderLabel2);
         staffOrderPanel.add(staffOrderPanel1, BorderLayout.CENTER);
         staffOrderPanel1.add(Box.createVerticalGlue());
+
 
         mainPanel.add(staffOrderPanel, BorderLayout.EAST);
 

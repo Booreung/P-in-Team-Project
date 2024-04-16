@@ -175,7 +175,6 @@ public class MainScreen extends JPanel {
                 else{
                     // MyPageScreen을 JDialog로 생성하여 열기
                     MyPageScreen mypageScreen = new MyPageScreen(cardLayout, loggedInUser, cardPanel);
-                    mypageScreen.setModal(true);
                     mypageScreen.setVisible(true);
                 }
 
