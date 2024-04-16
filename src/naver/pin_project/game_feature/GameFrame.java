@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static src.naver.pin_project.game_feature.GameMenu.resizeImageIcon;
+
 public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     GameDTO gameDto = new GameDTO(); //게임 데이터 저장하는 객체 생성
     GameMenu gameMenu = new GameMenu(); //게임메뉴창으로 다시 돌아가기위해
@@ -18,17 +20,45 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public GameFrame() {
         setTitle("Game");
         setSize(730, 530);
+        setLocationRelativeTo(null);
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/b_menu.jpg");
         JLabel imageLabel = new JLabel(imageIcon);//게임 실행창 게임메뉴
+
+
 
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setBackground(Color.decode("#8A8585"));
 
-        JButton backButton = new JButton("뒤로가기");
-        JButton exitButton = new JButton("게임종료");
-        JButton gameButton = new JButton("볼링치기");
+        ImageIcon backBtn = new ImageIcon("src/naver/pin_project/game_feature/img_asset/BACK.png");
+        ImageIcon backBtn_press = new ImageIcon("src/naver/pin_project/game_feature/img_asset/BACK_PRESS.png");
+        ImageIcon endGameBtn = new ImageIcon("src/naver/pin_project/game_feature/img_asset/END_GAME.png");
+        ImageIcon endGameBtn_press = new ImageIcon("src/naver/pin_project/game_feature/img_asset/END_GAME_PRESS.png");
+        ImageIcon bowlingBtn = new ImageIcon("src/naver/pin_project/game_feature/img_asset/BALL.png");
+        ImageIcon bowlingBtn_press = new ImageIcon("src/naver/pin_project/game_feature/img_asset/BALL_PRESS.png");
+
+        backBtn = resizeImageIcon(backBtn, 120, 50);
+        backBtn_press = resizeImageIcon(backBtn_press, 120, 50);
+        endGameBtn = resizeImageIcon(endGameBtn, 120, 50);
+        endGameBtn_press = resizeImageIcon(endGameBtn_press, 120, 50);
+        bowlingBtn = resizeImageIcon(bowlingBtn, 120, 50);
+        bowlingBtn_press = resizeImageIcon(bowlingBtn_press, 120, 50);
+
+        JButton backButton = new JButton(backBtn);
+        backButton.setBorderPainted(false);
+        backButton.setPreferredSize(new Dimension(120, 50));
+        backButton.setRolloverIcon(backBtn_press);
+        JButton exitButton = new JButton(endGameBtn);
+        exitButton.setBorderPainted(false);
+        exitButton.setPreferredSize(new Dimension(120, 50));
+        exitButton.setRolloverIcon(endGameBtn_press);
+        JButton gameButton = new JButton(bowlingBtn);
+        gameButton.setBorderPainted(false);
+        gameButton.setPreferredSize(new Dimension(120, 50));
+        gameButton.setRolloverIcon(bowlingBtn_press);
+
+        /*
         backButton.setBackground(Color.decode("#FCEB83")); // 그레이 버튼
         backButton.setForeground(Color.black);
         exitButton.setBackground(Color.decode("#B0FFA9"));
@@ -59,7 +89,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
                 // ...
             }
         });
-
+*/
         buttonPanel.add(backButton);
         buttonPanel.add(exitButton);
         buttonPanel.add(gameButton);
@@ -99,8 +129,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     public void result_game(){
         JFrame frame = new JFrame("게임결과!!");
         frame.setSize(800, 480);
-
-
+        frame.setLocationRelativeTo(null);
         JButton cButton = new JButton("확인");
         cButton.setBackground(Color.decode("#B0FFA9"));
         cButton.setForeground(Color.black);
@@ -190,6 +219,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         frame.setTitle("볼링치는중...");
         frame.setSize(400, 200);
         frame.setBackground(Color.decode("#8A8585"));
+        frame.setLocationRelativeTo(null);
         //frame.setLocationRelativeTo(null);
 
         loadingBar = new JProgressBar();
