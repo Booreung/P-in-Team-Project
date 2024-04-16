@@ -215,6 +215,7 @@ public class FoodOrderScreen extends JPanel {
                                 // 컴포넌트가 JLabel인 경우만 처리합니다.
                                 if (buttonComponent instanceof JLabel) {
                                     JLabel label = (JLabel) buttonComponent;
+                                    if(label.getText().equals("재고 없음")){continue;}
                                     // 라벨의 텍스트 색상을 흰색으로 설정합니다.
                                     label.setForeground(Color.white);
                                     // 라벨의 텍스트를 "0"으로 설정합니다.
@@ -246,7 +247,6 @@ public class FoodOrderScreen extends JPanel {
             frame.setVisible(true);
             // 프레임을 화면의 중앙에 위치시킵니다. (키워드: 프레임 위치 설정)
             frame.setLocationRelativeTo(null);
-
             // 현재 선택된 모든 음식들에 대한 수량 라벨을 기본 값으로 초기화합니다. (키워드: 수량 라벨 초기화)
             resetQuantityLabels();
         }
@@ -305,11 +305,6 @@ public class FoodOrderScreen extends JPanel {
             // 계산된 총 주문 금액을 텍스트 필드에 표시합니다.
             totalTextField.setText("◆ 총: " + total + " 원 ◆");
         }
-
-
-
-
-
     }
 
 

@@ -182,6 +182,7 @@ public class StaffCallScreen extends JDialog {
                 " 요청하실 항목을<br/>" +
                 " 선택<font color='gray'>해주세요</font></span></div></html>");
 
+
         staffOrderPanel.add(staffOrderLabel, BorderLayout.CENTER);
 
         mainPanel.add(staffOrderPanel, BorderLayout.EAST);
