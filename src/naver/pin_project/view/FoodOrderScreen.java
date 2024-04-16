@@ -174,8 +174,6 @@ public class FoodOrderScreen extends JPanel {
             totalTextField.setHorizontalAlignment(JTextField.CENTER);
             // 텍스트 필드를 이 패널의 상단에 추가합니다.
 
-            totalTextField.setEditable(false);
-            totalTextField.setFocusable(false);
             totalTextField.setHorizontalAlignment(JTextField.CENTER);
             totalTextField.setEditable(false); // 텍스트 필드를 읽기 전용으로 설정
             totalTextField.setFocusable(false); // 포커스 설정 방지
