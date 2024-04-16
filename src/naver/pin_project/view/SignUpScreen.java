@@ -27,7 +27,6 @@ public class SignUpScreen extends JDialog {
     private JButton sendVerificationCodeButton; // 인증번호 받기 버튼
 
     public SignUpScreen() {
-
         // 폰트 파일 경로
         String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
         // 원하는 폰트 크기로 폰트 로드
@@ -38,7 +37,6 @@ public class SignUpScreen extends JDialog {
         setTitle("회원가입");
         setSize(500,400);
         setLayout(new BorderLayout());
-        setLocationRelativeTo(null);
         //메인 패널 생성
         JPanel mainPanel = new JPanel(new BorderLayout()); // 메인패널 생성
 
@@ -75,7 +73,6 @@ public class SignUpScreen extends JDialog {
         textFieldPanel.add(usernameLabel, gbc);
         gbc.gridx = 1;
         usernameField = new JTextField(15);
-        usernameField.setForeground(Color.black);
         textFieldPanel.add(usernameField, gbc);
         usernameLabel.setFont(usernameLabel.getFont().deriveFont(18f));
 

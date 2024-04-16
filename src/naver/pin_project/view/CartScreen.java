@@ -16,8 +16,6 @@ public class CartScreen extends JPanel {
 
     // CartScreen 클래스의 생성자입니다. (키워드: 생성자)
     public CartScreen(Map<Food, Integer> selectedFoods) {
-
-
         // 폰트 파일 경로
         String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
         // 원하는 폰트 크기로 폰트 로드
@@ -88,6 +86,7 @@ public class CartScreen extends JPanel {
         // payButton을 클릭하면 "결제창이 열립니다"라는 메시지를 보여주고, PaymentScreen을 새로 생성하여 결제 화면을 보여줍니다. (키워드: 결제 화면 열기)
         payButton.addActionListener(e -> {
             // 결제 화면 열기 (키워드: 결제 화면)
+            SwingUtilities.getWindowAncestor(this).dispose();//결제창을 열 때 CartScreen을 닫는 기능
             JOptionPane.showMessageDialog(this, "결제창이 열립니다");
             new PaymentScreen();
         });

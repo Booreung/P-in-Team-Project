@@ -9,14 +9,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MyPageScreen extends JFrame {
-    // 필드 정의하기
+public class MyPageScreen extends JDialog {    // 필드 정의하기
     private JTextField inputId;
     private JTextField inputName;
     private JTextField inputPw;
 
-    public MyPageScreen(CardLayout cardLayout,User loggedInUser,JPanel cardPanel) {
-        setSize(500, 300);//프레임 크기 설정
+
+    public MyPageScreen(CardLayout cardLayout, User loggedInUser, JPanel cardPanel) {
+
+        // 폰트 파일 경로
+        String fontPath = "src/naver/pin_project/lib/온글잎밑미.ttf";
+        // 원하는 폰트 크기로 폰트 로드
+        Font customFont = CustomFont.loadFont(fontPath, 20f);
+        // UI에 폰트 적용
+        CustomFont.setUIFont(customFont);
+
+        setSize(500, 350);
+
         setLocationRelativeTo(null); // 화면 가운데에 위치하도록 설정
         setBackground(Color.decode("#8A8585")); //배경색 설정
 

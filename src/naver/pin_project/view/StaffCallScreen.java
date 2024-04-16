@@ -18,7 +18,9 @@ public class StaffCallScreen extends JDialog {
     private JButton button4;
     private JButton button5;
     private JButton button6;
-    private JLabel staffOrderLabel;
+   private JLabel staffOrderLabel;
+   private JLabel staffOrderLabel1;
+   private JLabel staffOrderLabel2;
     private ChatScreen chatScreen;
 
     private MainScreen mainScreen;
@@ -176,13 +178,19 @@ public class StaffCallScreen extends JDialog {
         JPanel staffOrderPanel = new JPanel(new BorderLayout());
         staffOrderPanel.setBackground(Color.WHITE);
 
-        staffOrderLabel = new JLabel("<html><div style='text-align:center;'>" +
-                "<span style='font-size:20pt; color:orange;'>" +
-                "<font color='gray'>왼쪽에서</font><br/>" +
-                " 요청하실 항목을<br/>" +
-                " 선택<font color='gray'>해주세요</font></span></div></html>");
+        JPanel staffOrderPanel1= new JPanel();
+        staffOrderPanel1.setLayout(new BoxLayout(staffOrderPanel1, BoxLayout.Y_AXIS));
+        staffOrderLabel = new JLabel("왼쪽에서\n");
+        staffOrderLabel1= new JLabel("요청하실 항목을\n");
+        staffOrderLabel2= new JLabel("선택해주세요.");
+        staffOrderLabel1.setForeground(Color.orange);
+        staffOrderPanel1.add(Box.createVerticalGlue());
+        staffOrderPanel1.add(staffOrderLabel);
+        staffOrderPanel1.add(staffOrderLabel1);
+        staffOrderPanel1.add(staffOrderLabel2);
+        staffOrderPanel.add(staffOrderPanel1, BorderLayout.CENTER);
+        staffOrderPanel1.add(Box.createVerticalGlue());
 
-        staffOrderPanel.add(staffOrderLabel, BorderLayout.CENTER);
 
         mainPanel.add(staffOrderPanel, BorderLayout.EAST);
 
