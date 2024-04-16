@@ -32,7 +32,7 @@ public class RankingScreen extends JFrame {
         String[] columnNames = {"유저 아이디", "유저 이름", "게임 날짜", "점수"};
 
         // 테이블 열 제목에 사용할 폰트 설정
-        Font tableFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 15f);
+        Font tableFont = getCustomFont("src/naver/pin_project/lib/온글잎밑미.ttf", 14f);
 
         // 실시간 랭킹과 이달의 랭킹을 위한 DefaultTableModel 생성
         DefaultTableModel realTimeModel = new DefaultTableModel(columnNames, 0);
