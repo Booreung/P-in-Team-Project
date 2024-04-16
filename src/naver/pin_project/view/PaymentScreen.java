@@ -131,7 +131,7 @@ public class PaymentScreen extends JFrame {
         // 5초 후에 다이얼로그를 닫기 위한 스레드 생성 및 실행
         Thread dialogCloseThread = new Thread(() -> {
             try {
-                Thread.sleep(5000); // 5초 대기
+                Thread.sleep(3000); // 3초 대기
                 SwingUtilities.invokeLater(() -> {
 
                     // 장바구니 초기화
