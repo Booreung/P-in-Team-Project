@@ -131,14 +131,16 @@ public class MyPageScreen extends JFrame {
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                boolean deleted = myPageFuc.delete(msgId); // delete 함수 호출
 
-                myPageFuc.delete(msgId); //delete 함수 호출
-                dispose(); //현재 프레임 닫기
-
-                //회원이 삭제되면 로그인화면으로 이동
-                cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
-                cardLayout.show(cardPanel,"login");
+                // 삭제가 성공한 경우에만 로그인 화면으로 이동 및 현재 창 닫기
+                if (deleted) {
+                    cardPanel.add(new LoginScreen(cardLayout, cardPanel), "login");
+                    cardLayout.show(cardPanel,"login");
+                    dispose(); // 현재 프레임 창 닫기
+                }
             }
         });
+
     }
 }
