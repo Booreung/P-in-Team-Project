@@ -143,7 +143,7 @@ public class SignUpScreen extends JDialog {
         birthDateField.setForeground(Color.GRAY);
         birthDateField.addFocusListener(new FocusAdapter() {
             @Override
-            public void focusGained(FocusEvent e) {
+            public void focusGained(FocusEvent e) {    // 텍스트 필드에 포커스를 주면, placeholder 텍스트가 사라지고 텍스트 색상이 검정색으로 변경
                 if (birthDateField.getText().equals("YYYY-MM-DD 형식으로 입력하세요")) {
                     birthDateField.setText("");
                     birthDateField.setForeground(Color.BLACK);
@@ -151,7 +151,7 @@ public class SignUpScreen extends JDialog {
             }
 
             @Override
-            public void focusLost(FocusEvent e) {
+            public void focusLost(FocusEvent e) {   // 포커스를 잃으면, 텍스트 필드가 비어 있을 경우 다시 힌트 텍스트를 표시하고 색상을 회색으로 변경
                 if (birthDateField.getText().isEmpty()) {
                     birthDateField.setForeground(Color.GRAY);
                     birthDateField.setText("YYYY-MM-DD 형식으로 입력하세요");
@@ -277,15 +277,17 @@ public class SignUpScreen extends JDialog {
         signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (checkInputFields() && checkPassword()) {
+                if (checkInputFields() && checkPassword()) {        // 입력 필드의 값이 유효한지 확인하고, 비밀번호가 일치하는지 검사
                     String username = usernameField.getText();
                     String userId = idField.getText();
                     String password = new String(passwordField.getPassword());
 
-                    SignUp_ViewModel joinViewmodel = new SignUp_ViewModel();
+                    SignUp_ViewModel joinViewmodel = new SignUp_ViewModel();            // 회원가입을 처리하는 ViewModel 클래스의 인스턴스를 생성
                     try {
+                        // 회원가입 정보를 데이터베이스에 등록, 결과를 rowsAffected 변수에 저장
                         int rowsAffected = joinViewmodel.registerUser(userId, username, password);
                         if (rowsAffected > 0) {
+                            // 회원가입이 성공적으로 완료되면 메시지를 표시하고 다이얼로그를 닫음
                             JOptionPane.showMessageDialog(SignUpScreen.this,
                                     username + " 님의 회원가입이 완료되었습니다.",
                                     "회원가입 완료",
@@ -319,6 +321,8 @@ public class SignUpScreen extends JDialog {
         String phone = phoneField1.getText() + "-" + phoneField2.getText() + "-" + phoneField3.getText();
         String verificationCode = verificationCodeField.getText();
 
+
+        // 하나라도 비어 있는 필드가 있으면 경고 메시지를 표시하고 false를 반환
         if (username.isEmpty() || userId.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phone.isEmpty() || verificationCode.isEmpty()) {
             JOptionPane.showMessageDialog(SignUpScreen.this,
                     "모든 입력란을 작성해주세요.",
@@ -331,7 +335,10 @@ public class SignUpScreen extends JDialog {
 
     private void checkUserId() {
         String userid = idField.getText();
+        // 입력된 아이디를 가져오고
         User duplicate_user = DBHelper.getUserInfoFromDB(userid);
+        // 데이터베이스에서 중복된 아이디를 검색
+        // 비밀번호 파트도 동일
 
         if (duplicate_user != null && duplicate_user.getUserId().equals(userid)) {
             JOptionPane.showMessageDialog(this,

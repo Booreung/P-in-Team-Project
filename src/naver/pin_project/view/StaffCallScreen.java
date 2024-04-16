@@ -43,6 +43,7 @@ public class StaffCallScreen extends JDialog {
         topPanel.setBackground(Color.BLACK);
         topPanel.setPreferredSize(new Dimension(getWidth(), 40));
 
+        // 좌측 상단 P-in 로고
         JLabel titleLabel = new JLabel("P-in");
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel, BorderLayout.WEST);
@@ -57,15 +58,15 @@ public class StaffCallScreen extends JDialog {
             }
         });
 
-        topPanel.add(cancelButton, BorderLayout.EAST);
+        topPanel.add(cancelButton, BorderLayout.EAST); // 닫기 버튼 우측에 배치
 
-        add(topPanel, BorderLayout.NORTH);
+        add(topPanel, BorderLayout.NORTH); // 상단 패널을 다이얼로그에 추가
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        add(mainPanel);
+        JPanel mainPanel = new JPanel(new BorderLayout()); // 메인 패널 생성
+        add(mainPanel); // 메인 패널을 다이얼로그에 추가
 
         buttonPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        GridBagConstraints gbc = new GridBagConstraints(); // GridBagLayout의 컴포넌트를 배치 및 크기조절 제약 조건 설정 변수
         buttonPanel.setBackground(Color.decode("#8A8585"));
 
         gbc.gridx = 0;
@@ -175,24 +176,30 @@ public class StaffCallScreen extends JDialog {
 
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
 
-        JPanel staffOrderPanel = new JPanel(new BorderLayout());
-        staffOrderPanel.setBackground(Color.WHITE);
+        // 오른쪽에 위치할 staffOrderPanel을 생성하고 배치
+        JPanel staffOrderPanel = new JPanel(new BorderLayout()); // BorderLayout을 사용하여 패널을 생성
+        staffOrderPanel.setBackground(Color.WHITE); // 패널의 배경색을 흰색으로 설정
 
-        JPanel staffOrderPanel1= new JPanel();
-        staffOrderPanel1.setLayout(new BoxLayout(staffOrderPanel1, BoxLayout.Y_AXIS));
-        staffOrderLabel = new JLabel("왼쪽에서\n");
-        staffOrderLabel1= new JLabel("요청하실 항목을\n");
-        staffOrderLabel2= new JLabel("선택해주세요.");
-        staffOrderLabel1.setForeground(Color.orange);
-        staffOrderPanel1.add(Box.createVerticalGlue());
-        staffOrderPanel1.add(staffOrderLabel);
-        staffOrderPanel1.add(staffOrderLabel1);
-        staffOrderPanel1.add(staffOrderLabel2);
-        staffOrderPanel.add(staffOrderPanel1, BorderLayout.CENTER);
-        staffOrderPanel1.add(Box.createVerticalGlue());
+// staffOrderPanel 내에 세로로 컴포넌트를 배치할 staffOrderPanel1을 생성
+        JPanel staffOrderPanel1 = new JPanel();
+        staffOrderPanel1.setLayout(new BoxLayout(staffOrderPanel1, BoxLayout.Y_AXIS)); // BoxLayout을 사용하여 세로 방향으로 배치
 
+// 요청 안내용을 담을 JLabel들을 생성
+        JLabel staffOrderLabel = new JLabel("왼쪽에서\n");
+        JLabel staffOrderLabel1 = new JLabel("요청하실 항목을\n");
+        JLabel staffOrderLabel2 = new JLabel("선택해주세요.");
 
-        mainPanel.add(staffOrderPanel, BorderLayout.EAST);
+        staffOrderLabel1.setForeground(Color.orange); // staffOrderLabel1의 텍스트 색상을 주황색으로 설정
+
+        staffOrderPanel1.add(Box.createVerticalGlue()); // BoxLayout에서의 유연한 여백을 추가
+        staffOrderPanel1.add(staffOrderLabel); // staffOrderPanel1에 staffOrderLabel을 추가
+        staffOrderPanel1.add(staffOrderLabel1); // staffOrderPanel1에 staffOrderLabel1을 추가
+        staffOrderPanel1.add(staffOrderLabel2); // staffOrderPanel1에 staffOrderLabel2을 추가
+        staffOrderPanel1.add(Box.createVerticalGlue()); // BoxLayout에서의 여백을 추가
+
+        staffOrderPanel.add(staffOrderPanel1, BorderLayout.CENTER); // staffOrderPanel1을 staffOrderPanel의 중앙에 배치
+
+        mainPanel.add(staffOrderPanel, BorderLayout.EAST); // mainPanel의  우측에 staffOrderPanel을 추가
 
         setVisible(true);
     }
