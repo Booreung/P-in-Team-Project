@@ -17,10 +17,12 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     ArrayList<String> sum_scores = new ArrayList<>();// 공을 다 굴리고 총합점수
     DBConnector dbConnector = new DBConnector();//디비 객체 생성
     private JProgressBar loadingBar;
+    private Timer timer, clickdelay;
     public GameFrame() {
         setTitle("Game");
         setSize(730, 530);
         setLocationRelativeTo(null);
+        setResizable(false);
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/b_menu.jpg");
         JLabel imageLabel = new JLabel(imageIcon);//게임 실행창 게임메뉴
 
@@ -58,38 +60,6 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         gameButton.setPreferredSize(new Dimension(120, 50));
         gameButton.setRolloverIcon(bowlingBtn_press);
 
-        /*
-        backButton.setBackground(Color.decode("#FCEB83")); // 그레이 버튼
-        backButton.setForeground(Color.black);
-        exitButton.setBackground(Color.decode("#B0FFA9"));
-        exitButton.setForeground(Color.black);
-        gameButton.setBackground(Color.decode("#8DFFF3"));
-        gameButton.setForeground(Color.black);
-
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                backButton.setBackground(Color.DARK_GRAY); // 누르면 다크 그레이로 변경
-                // ...
-            }
-        });
-
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                exitButton.setBackground(Color.DARK_GRAY); // 누르면 다크 그레이로 변경
-                // ...
-            }
-        });
-
-        gameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameButton.setBackground(Color.DARK_GRAY); // 누르면 다크 그레이로 변경
-                // ...
-            }
-        });
-*/
         buttonPanel.add(backButton);
         buttonPanel.add(exitButton);
         buttonPanel.add(gameButton);
@@ -113,11 +83,15 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         gameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*Component removeBackground = imageLabel;
-                Container container = getContentPane();
-                container.remove(removeBackground);
-                container.remove(buttonPanel);*/
-
+                gameButton.setEnabled(false);
+                clickdelay = new Timer(4000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        gameButton.setEnabled(true);
+                    }
+                });
+                clickdelay.setRepeats(false); // 한 번만 실행되도록 설정
+                clickdelay.start();
                 SwingUtilities.invokeLater(() -> {
                     LoadingAnimation();
                 });
@@ -130,10 +104,10 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         JFrame frame = new JFrame("게임결과!!");
         frame.setSize(800, 480);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         JButton cButton = new JButton("확인");
         cButton.setBackground(Color.decode("#B0FFA9"));
         cButton.setForeground(Color.black);
-        JPanel buttonPanel = new JPanel();
 
         frame.getContentPane().add(createScorecard(1, gameMenu.UserName), BorderLayout.CENTER);//메뉴에서 받아온 아이디
         frame.getContentPane().add(cButton, BorderLayout.SOUTH);
@@ -189,7 +163,6 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
             jTextField.setEditable(false);
             //String a = scores[j];
             //System.out.println(j + "째 배열: " + scores[j] + " , " + (j + 1) + "째 배열: " + scores[j + 1]);
-            //jTextField.setText(a);
             String score_element = scores.remove(0);
             jTextField.setText(score_element);
             jTextField.setBackground(Color.ORANGE);
@@ -221,29 +194,32 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         frame.setBackground(Color.decode("#8A8585"));
         frame.setLocationRelativeTo(null);
         //frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
 
         loadingBar = new JProgressBar();
         loadingBar.setStringPainted(true);
         frame.getContentPane().add(loadingBar, BorderLayout.CENTER);
         //frame.pack();
         frame.setVisible(true);
-
-        Timer timer = new Timer(5, new ActionListener() {
+        timer=null;
+        timer = new Timer(5, new ActionListener() {
             int progress = 0;
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 progress++;
                 loadingBar.setValue(progress * 100 / 100); // 0~100 사이 값으로 설정
-                loadingBar.setString(progress + "....    공이 굴러가구 있습니다!!!");
+                loadingBar.setString(progress + "%  .... 공이 굴러가구 있습니다!!!");
                 loadingBar.setBackground(Color.decode("#8A8585"));
                 loadingBar.setForeground(Color.decode("#FCEB83"));
 
 
                 if (progress == 100) {
                     frame.dispose();
+                    timer.stop();
                     //new GameFrame().setVisible(true);
                     try {
+
                         ball();// 윈도우를 닫습니다.
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
