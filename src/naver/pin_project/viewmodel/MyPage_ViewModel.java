@@ -41,7 +41,8 @@ public class MyPage_ViewModel {
                 return false;
             }
         } catch (Exception e2) {
-            e2.printStackTrace();
+            //e2.printStackTrace();
+            JOptionPane.showMessageDialog(null,"이미 존재하는 아이디입니다.");
             return false;
         }
 

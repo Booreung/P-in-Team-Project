@@ -131,9 +131,11 @@ public class MyPageScreen extends JDialog {    // 필드 정의하기
                 String msgName = inputName.getText();
                 String msgPw = inputPw.getText();
 
-                myPageFuc.update(msgId, msgName,msgPw, newmsgId); //update함수호출 / 필요한 파라미터(변수)를 넣어줌
+                boolean updated =  myPageFuc.update(msgId, msgName,msgPw, newmsgId); //update함수호출 / 필요한 파라미터(변수)를 넣어줌
 
-                dispose(); //현재 프레임 창 닫기
+                if(updated){
+                    dispose();//현재 프레임 창 닫기
+                }
             }
         });
 
