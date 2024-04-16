@@ -12,10 +12,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Chat_ViewModel {
-    private static ServerSocket serverSocket;
-    private static boolean isServerRunning;
-    private static List<ClientHandler> clientHandlers = new ArrayList<>();
+    private static ServerSocket serverSocket; // 서버소켓
+    private static boolean isServerRunning; // 서버 실행 여부
+    private static List<ClientHandler> clientHandlers = new ArrayList<>(); //클라이언트 목록
 
+    //서버 시작 메소드
     public static void startServer() {
         isServerRunning = true;
         System.out.println("서버에 접속중입니다.");
@@ -61,6 +62,7 @@ public class Chat_ViewModel {
             this.clientSocket = clientSocket;
         }
 
+        //스레드 실행
         public void run() {
             try {
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -74,9 +76,10 @@ public class Chat_ViewModel {
                     // 직원의 답변 메시지
                     String replyMessage = consoleReader.readLine();
                     out.println(replyMessage);
+                    //클라이언트에게 답변 전송
                 }
 
-                // 소켓 닫기
+                // 소켓 & 스트림 닫기
                 out.close();
                 in.close();
                 clientSocket.close();
