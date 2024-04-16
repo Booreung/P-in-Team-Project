@@ -264,39 +264,56 @@ public class MainScreen extends JPanel {
 
 
 
+    // 장바구니에 선택한 음식을 추가하는 메서드
     private void addToCart() {
+        // 데이터베이스 연결 객체
         Connection conn = null;
+        // 주문번호 생성을 위한 랜덤 숫자
         int newOrderNumber = generateRandomNumber();
+        // 주문 시간 기록을 위한 타임스탬프
         Timestamp newOrderTime = new Timestamp(System.currentTimeMillis());
 
         try {
+            // 데이터베이스 연결
             conn = OjdbcConnection.getConnection();
+            // 선택된 음식에 대해 반복
             for (Map.Entry<Food, Integer> entry : selectedFoods.entrySet()) {
                 Food food = entry.getKey();
                 int quantity = entry.getValue();
+                // 수량이 0보다 큰 경우에만 장바구니에 추가
                 if (quantity > 0) {
+                    // 장바구니에 추가하는 DBHelper 메서드 호출
                     DBHelper.addToCart(conn, food.getFood_name(), quantity, food.getFood_price(), newOrderNumber, newOrderTime);
+                    // 주문 정보를 리스트에 추가
                     ordered_list.add(new OrderInfo(newOrderTime, newOrderNumber, food.getFood_name(), food.getFood_price(), quantity));
                 }
             }
+            // 장바구니에 추가되었음을 알리는 메시지
             JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다.");
+            // 선택된 음식 목록 클리어
             selectedFoods.clear();
 
         } catch (SQLException ex) {
+            // 오류 발생 시, 오류 내용 출력
             ex.printStackTrace();
         } finally {
+            // 데이터베이스 연결이 null이 아니면, 연결 종료
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
+                    // 연결 종료 중 오류 발생 시, 오류 내용 출력
                     ex.printStackTrace();
                 }
             }
         }
     }
 
+    // 랜덤 숫자 생성 메서드
     private int generateRandomNumber() {
+        // 랜덤 객체 생성
         Random random = new Random();
+        // 1억 미만의 랜덤한 숫자 반환
         return random.nextInt(90000000) + 10000000;
     }
 
