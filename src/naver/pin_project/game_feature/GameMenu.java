@@ -75,6 +75,7 @@ public class GameMenu extends JFrame {
         setTitle("볼링게임");
         setSize(730, 530);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         // 상단 이미지
         ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.gif");
