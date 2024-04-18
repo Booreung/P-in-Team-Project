@@ -78,7 +78,7 @@ public class GameMenu extends JFrame {
         setResizable(false);
 
         // 상단 이미지
-        ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.gif");
+        ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/bowling.png");
         JLabel imageLabel = new JLabel(imageIcon);
 
         /*
@@ -128,63 +128,12 @@ public class GameMenu extends JFrame {
         myRecordsButton.setPreferredSize(new Dimension(120, 50));
         myRecordsButton.setRolloverIcon(myRecordBtn_press);
 
-
-
-        /*
-        // 버튼 스타일 설정
-        mainMenuButton.setBackground(Color.decode("#FCEB83"));
-        mainMenuButton.setForeground(Color.black);
-        startGameButton.setBackground(Color.decode("#B0FFA9"));
-        startGameButton.setForeground(Color.black);
-        myRecordsButton.setBackground(Color.decode("#8DFFF3"));
-        myRecordsButton.setForeground(Color.black);
-*/
-        /*
-        // 버튼 눌렸을 때 스타일 변경
-        mainMenuButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                mainMenuButton.setBackground(Color.DARK_GRAY);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                mainMenuButton.setBackground(Color.GRAY);
-            }
-        });
-
-        startGameButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                startGameButton.setBackground(Color.DARK_GRAY);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                startGameButton.setBackground(Color.GRAY);
-            }
-        });
-
-        myRecordsButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                myRecordsButton.setBackground(Color.DARK_GRAY);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                myRecordsButton.setBackground(Color.GRAY);
-            }
-        });
-
-         */
-
         buttonPanel.add(mainMenuButton);
         buttonPanel.add(startGameButton);
         buttonPanel.add(myRecordsButton);
 
         bottomPanel.add(buttonPanel, BorderLayout.EAST);
-        buttonPanel.setBackground(Color.decode("#282828"));
+        buttonPanel.setBackground(Color.decode("#344534"));
 
         add(bottomPanel, BorderLayout.SOUTH);
         add(imageLabel, BorderLayout.NORTH);
