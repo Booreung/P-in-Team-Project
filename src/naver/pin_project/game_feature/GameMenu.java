@@ -1,5 +1,6 @@
 package src.naver.pin_project.game_feature;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import src.naver.pin_project.view.MainScreen;
 
 import javax.swing.*;
@@ -71,7 +72,12 @@ public class GameMenu extends JFrame {
     public String UserName = MainScreen.UserID;//메인메뉴로부터 받아올 유저 닉네임
     //유저아이디 하나로 DB에서 받아올수 있지만 굳이.. 싶어서 메인변수 받아와도 좋을거같다!
 
-    public GameMenu() {//처음 게임메뉴
+    public GameMenu() {
+        try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }//처음 게임메뉴
         setTitle("볼링게임");
         setSize(730, 530);
         setLocationRelativeTo(null);

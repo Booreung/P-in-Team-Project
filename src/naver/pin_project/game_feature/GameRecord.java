@@ -1,5 +1,6 @@
 package src.naver.pin_project.game_feature;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import src.naver.pin_project.view.MainScreen;
 
 import java.awt.*;
@@ -14,6 +15,11 @@ public class GameRecord extends JFrame {
     public String UserName = MainScreen.UserName;//메인메뉴로부터 받아올 유저 닉네임
 
     public GameRecord() {
+        try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         setTitle(UserName+"님의 기록");
         setSize(800, 480);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
