@@ -23,7 +23,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         setSize(730, 530);
         setLocationRelativeTo(null);
         setResizable(false);
-        ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/b_menu.jpg");
+        ImageIcon imageIcon = new ImageIcon("src/naver/pin_project/game_feature/img_asset/frame_menu.png");
         JLabel imageLabel = new JLabel(imageIcon);//게임 실행창 게임메뉴
 
 
@@ -31,7 +31,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.setBackground(Color.decode("#8A8585"));
+        buttonPanel.setBackground(Color.decode("#7E625A"));
 
         ImageIcon backBtn = new ImageIcon("src/naver/pin_project/game_feature/img_asset/BACK.png");
         ImageIcon backBtn_press = new ImageIcon("src/naver/pin_project/game_feature/img_asset/BACK_PRESS.png");
@@ -263,7 +263,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
                 //scores[count+1]=String.valueOf('/');
                 //System.out.println(count+"째 배열: "+scores[count]+" , "+(count+1)+"째 배열: "+scores[count+1]);
                 scores.add("X");
-                scores.add("/");
+                scores.add(" ");
                 sum_scores.add(String.valueOf(totalScore));
 
 
@@ -274,7 +274,11 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
                 //scores[count+1]=String.valueOf(secondRoll);
                 //System.out.println(count+"째 배열: "+scores[count]+" , "+(count+1)+"째 배열: "+scores[count+1]);
                 scores.add(String.valueOf(firstRoll));
-                scores.add(String.valueOf(secondRoll));
+                if(String.valueOf(secondRoll).equals("0")){
+                    scores.add("/");
+                }else {
+                    scores.add(String.valueOf(secondRoll));
+                }
 
 
 

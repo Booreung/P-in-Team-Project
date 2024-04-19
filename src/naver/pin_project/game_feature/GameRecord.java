@@ -5,6 +5,7 @@ import src.naver.pin_project.view.MainScreen;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.sql.*;
 
 public class GameRecord extends JFrame {
@@ -19,14 +20,18 @@ public class GameRecord extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
+
+
         // Create the table model
         String[] columnNames = {"유저아이디", "게임코드", "게임날짜", "점수"};
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         table.setPreferredScrollableViewportSize(new Dimension(750, 400));
-        table.setBackground(Color.decode("#8A8585"));
-        table.setForeground(Color.white);
+        table.setBackground(Color.decode("#5B5D61"));
+        table.setForeground(Color.decode("#FFFFC0"));
+        table.setGridColor(Color.decode("#3D3E41"));
         table.setRowHeight(30);
+        setColumnHeaderBackgroundColor(Color.decode("#88DBFF"));
 
         // Create the update button
         JButton updateButton = new JButton("업데이트");
@@ -39,8 +44,12 @@ public class GameRecord extends JFrame {
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
         contentPane.add(new JScrollPane(table));
         contentPane.add(updateButton);
-        contentPane.setBackground(Color.decode("#8A8585"));
+        contentPane.setBackground(Color.decode("#5B5D61"));
         setContentPane(contentPane);
+    }
+    private void setColumnHeaderBackgroundColor(Color color) {
+        JTableHeader header = table.getTableHeader();
+        header.setBackground(color);
     }
 
     public void fetchDataFromDatabase() {
