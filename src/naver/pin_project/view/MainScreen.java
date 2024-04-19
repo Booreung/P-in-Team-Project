@@ -55,9 +55,13 @@ public class MainScreen extends JPanel {
         buttonPanel.setBackground(Color.decode("#8A8585"));
 
         callbtn.setBackground(Color.decode("#B0FFA9"));
+        callbtn.setForeground(Color.black);
         rankbtn.setBackground(Color.decode("#B0FFA9"));
+        rankbtn.setForeground(Color.black);
         myrecordbtn.setBackground(Color.decode("#B0FFA9"));
+        myrecordbtn.setForeground(Color.black);
         gameStartbtn.setBackground(Color.decode("#B0FFA9"));
+        gameStartbtn.setForeground(Color.black);
 
         Dimension buttonSize = new Dimension(150, 40);
         callbtn.setPreferredSize(buttonSize);
@@ -99,9 +103,11 @@ public class MainScreen extends JPanel {
         JButton orderlistbtn = new JButton("주문내역");
         orderlistbtn.setFont(orderlistbtn.getFont().deriveFont(Font.PLAIN, 25));
         orderlistbtn.setBackground(Color.decode("#FCEB83"));
+        orderlistbtn.setForeground(Color.black);
         JButton cartbtn = new JButton("장바구니");
         cartbtn.setFont(cartbtn.getFont().deriveFont(Font.PLAIN, 25));
         cartbtn.setBackground(Color.decode("#8DFFF3"));
+        cartbtn.setForeground(Color.black);
         bottomPanel.add(orderlistbtn);
         bottomPanel.add(cartbtn);
         bottomPanel.setBackground(Color.decode("#8A8585"));

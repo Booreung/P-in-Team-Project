@@ -50,6 +50,7 @@ public class StaffCallScreen extends JDialog {
 
         JButton cancelButton = new JButton("닫기");
         cancelButton.setBackground(Color.decode("#B0FFA9"));
+        cancelButton.setForeground(Color.black);
 
         cancelButton.addActionListener(new ActionListener() {
             @Override
@@ -77,6 +78,7 @@ public class StaffCallScreen extends JDialog {
         button1.setFont(button1.getFont().deriveFont(Font.BOLD, 23));
         button1.setPreferredSize(new Dimension(150, 120));
         button1.setBackground(Color.decode("#FCEB83"));
+        button1.setForeground(Color.black);
         button1.setBorder(BorderFactory.createLineBorder(Color.decode("#FCEB83")));
 
         button1.addActionListener(new ActionListener() {
@@ -92,6 +94,7 @@ public class StaffCallScreen extends JDialog {
         button2.setFont(button1.getFont().deriveFont(Font.BOLD, 23));
         button2.setPreferredSize(new Dimension(150, 120));
         button2.setBackground(Color.decode("#FCEB83"));
+        button2.setForeground(Color.black);
         button2.setBorder(BorderFactory.createLineBorder(Color.decode("#FCEB83")));
         button2.addActionListener(new ActionListener() {
             @Override
@@ -106,6 +109,7 @@ public class StaffCallScreen extends JDialog {
         button3.setFont(button1.getFont().deriveFont(Font.BOLD, 23));
         button3.setPreferredSize(new Dimension(150, 120));
         button3.setBackground(Color.decode("#FCEB83"));
+        button3.setForeground(Color.black);
         button3.setBorder(BorderFactory.createLineBorder(Color.decode("#FCEB83")));
         button3.addActionListener(new ActionListener() {
             @Override
@@ -134,6 +138,7 @@ public class StaffCallScreen extends JDialog {
         button4.setFont(button1.getFont().deriveFont(Font.BOLD, 23));
         button4.setPreferredSize(new Dimension(150, 120));
         button4.setBackground(Color.decode("#FCEB83"));
+        button4.setForeground(Color.black);
         button4.setBorder(BorderFactory.createLineBorder(Color.decode("#FCEB83")));
 
         button4.addActionListener(new ActionListener() {
@@ -149,6 +154,7 @@ public class StaffCallScreen extends JDialog {
         button5.setFont(button1.getFont().deriveFont(Font.BOLD, 23));
         button5.setPreferredSize(new Dimension(150, 120));
         button5.setBackground(Color.decode("#FCEB83"));
+        button5.setForeground(Color.black);
         button5.setBorder(BorderFactory.createLineBorder(Color.decode("#FCEB83")));
 
         button5.addActionListener(new ActionListener() {
@@ -164,6 +170,7 @@ public class StaffCallScreen extends JDialog {
         button6.setFont(button1.getFont().deriveFont(Font.BOLD, 23));
         button6.setPreferredSize(new Dimension(150, 120));
         button6.setBackground(Color.decode("#FCEB83"));
+        button6.setForeground(Color.black);
         button6.setBorder(BorderFactory.createLineBorder(Color.decode("#FCEB83")));
 
         button6.addActionListener(new ActionListener() {

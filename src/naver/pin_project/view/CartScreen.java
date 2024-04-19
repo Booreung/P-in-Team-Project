@@ -63,6 +63,7 @@ public class CartScreen extends JPanel {
         int total = calculateTotal();
         // 계산한 총 주문 금액을 표시할 JTextField를 생성하며, 총 주문 금액을 문자열로 변환하여 표시합니다.
         totalPriceTextField = new JTextField("◆ 총: " + total + " 원 ◆");
+        totalPriceTextField.setForeground(Color.black);
         // JTextField의 배경색을 설정합니다.
         totalPriceTextField.setBackground(Color.decode("#FCEB83"));
         // JTextField를 편집 불가능 상태로 만듭니다. 이렇게 하면 사용자가 직접 총 주문 금액을 수정할 수 없습니다.
@@ -76,6 +77,7 @@ public class CartScreen extends JPanel {
 
         // "이 버튼을 누르면 ★결제창★으로 넘어갑니다" 라는 텍스트를 가진 결제 버튼을 생성합니다. (키워드: 결제 버튼 생성)
         JButton payButton = new JButton("이 버튼을 누르면 ★결제창★으로 넘어갑니다");
+        payButton.setForeground(Color.black);
 
         // payButton의 현재 폰트를 가져옵니다.
         Font buttonFont = payButton.getFont();

@@ -55,6 +55,7 @@ public class OrderListScreen extends JFrame {
         table.setRowHeight(30);
         // 테이블 배경색 설정
         table.setBackground(new Color(138,133,133));
+        table.setForeground(Color.white);
 
         // 테이블 헤더 설정
         JTableHeader header = table.getTableHeader();
@@ -105,7 +106,7 @@ public class OrderListScreen extends JFrame {
         // 테이블 각 열에 적용
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-            table.setBackground(Color.white);
+            table.setBackground(new Color(138, 133, 133));
             table.setBorder((new LineBorder(new Color(138,133,133))));
         }
 
