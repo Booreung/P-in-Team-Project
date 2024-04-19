@@ -147,7 +147,7 @@ public class SignUpScreen extends JDialog {
             public void focusGained(FocusEvent e) {    // 텍스트 필드에 포커스를 주면, placeholder 텍스트가 사라지고 텍스트 색상이 검정색으로 변경
                 if (birthDateField.getText().equals("YYYY-MM-DD 형식으로 입력하세요")) {
                     birthDateField.setText("");
-                    birthDateField.setForeground(Color.BLACK);
+                    birthDateField.setForeground(Color.white);
                 }
             }
 

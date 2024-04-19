@@ -112,13 +112,14 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
         frame.setSize(800, 480);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        JButton cButton = new JButton("확인");
-        cButton.setBackground(Color.decode("#B0FFA9"));
-        cButton.setForeground(Color.black);
+        JButton cButton = new JButton("결과 확인완료!! >> 게임으로 돌아가기 <<");
+        cButton.setBackground(Color.decode("#505050"));
+        cButton.setForeground(Color.decode("#FFA9A9"));
 
         frame.getContentPane().add(createScorecard(1, gameMenu.UserName), BorderLayout.CENTER);//메뉴에서 받아온 아이디
         frame.getContentPane().add(cButton, BorderLayout.SOUTH);
         frame.setBackground(Color.decode("#8A8585"));
+        frame.setForeground(Color.black);
 
         cButton.addActionListener(new ActionListener() {
             @Override
@@ -133,19 +134,26 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     private JPanel createScorecard(int numPlayers, String name) {
         JPanel p = new JPanel(new GridBagLayout());
         System.out.println("gameframe:"+name);
-        p.setBackground(Color.decode("#B0FFA9"));
-        p.setForeground(Color.white);
+        p.setBackground(Color.darkGray);
+        p.setForeground(Color.black);
 
-        p.add(new JLabel("  "+name+" 님  "), gbc(0, 1, 1, 1,2));
+
+        JLabel name_label = new JLabel("  " + name + " 님  ");
+        name_label.setForeground(Color.white);
+        p.add(name_label, gbc(0, 1, 1, 1, 2));
         p.add(new JLabel("      "), gbc(0, 1, 1, 1,2));
+        p.setForeground(Color.black);
         for (int x = 1; x <= 10; x++) {
-            p.add(new JLabel(Integer.toString(x)), gbc(x, 0, 1, 1,0));
+            JLabel score_label = new JLabel(Integer.toString(x));
+            score_label.setForeground(Color.white);
+            p.add(score_label, gbc(x, 0, 1, 1,0));
+            p.setForeground(Color.black);
         }//표 윗쪽 라벨 삽입
 
         for (int y = 1; y <= numPlayers; y++) {
             JTextArea textArea = new JTextArea(2, 10);
-            textArea.setBackground(Color.decode("#B0FFA9"));
-            textArea.setForeground(Color.black);
+            textArea.setBackground(Color.darkGray);
+            textArea.setForeground(Color.white);
             p.add(textArea, gbc(0, y, 1, 1,0));
 
             for (int i = 1; i <= 10; i++) {
@@ -160,9 +168,10 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
 
         JLabel label = new JLabel(String.valueOf(score_sum));
         label.setBackground(Color.decode("#8A8585"));
-        label.setForeground(Color.black);
+        label.setForeground(Color.white);
 
         JPanel p = new JPanel(new GridBagLayout());
+        p.setBackground(Color.darkGray);
         p.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         for (int i = 0; i < entries; i++) {
 
@@ -218,7 +227,7 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
                 loadingBar.setValue(progress * 100 / 100); // 0~100 사이 값으로 설정
                 loadingBar.setString(progress + "%  .... 공이 굴러가구 있습니다!!!");
                 loadingBar.setBackground(Color.decode("#8A8585"));
-                loadingBar.setForeground(Color.decode("#FCEB83"));
+                loadingBar.setForeground(Color.DARK_GRAY);
 
 
                 if (progress == 100) {
