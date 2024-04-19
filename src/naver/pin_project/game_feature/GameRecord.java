@@ -38,6 +38,7 @@ public class GameRecord extends JFrame {
         table.setGridColor(Color.decode("#3D3E41"));
         table.setRowHeight(30);
         setColumnHeaderBackgroundColor(Color.decode("#88DBFF"));
+        setColumnHeaderForegroundColor(Color.decode("#313131"));
 
         // Create the update button
         JButton updateButton = new JButton("업데이트");
@@ -53,6 +54,12 @@ public class GameRecord extends JFrame {
         contentPane.setBackground(Color.decode("#5B5D61"));
         setContentPane(contentPane);
     }
+
+    private void setColumnHeaderForegroundColor(Color color) {
+        JTableHeader header = table.getTableHeader();
+        header.setForeground(color);
+    }
+
     private void setColumnHeaderBackgroundColor(Color color) {
         JTableHeader header = table.getTableHeader();
         header.setBackground(color);
