@@ -1,5 +1,7 @@
 package src.naver.pin_project.game_feature;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,11 @@ public class GameFrame extends JFrame { //이곳은 게임실행창입니다!
     private JProgressBar loadingBar;
     private Timer timer, clickdelay;
     public GameFrame() {
+        try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         setTitle("Game");
         setSize(730, 530);
         setLocationRelativeTo(null);

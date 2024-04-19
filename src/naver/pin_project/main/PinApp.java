@@ -1,6 +1,7 @@
 package src.naver.pin_project.main;
 
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import src.naver.pin_project.view.LoginScreen;
 import src.naver.pin_project.view.StartScreen;
 
@@ -34,6 +35,11 @@ public class PinApp extends JFrame {
         add(cardPanel);
     }
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         //단일 스레드를 실행하기 위한 메소드 (공식임)
         SwingUtilities.invokeLater(() -> {
             PinApp app = new PinApp();
