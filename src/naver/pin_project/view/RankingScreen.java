@@ -89,6 +89,7 @@ public class RankingScreen extends JFrame {
     private void setTableHeaderFont(JTableHeader header, Font font) {
         header.setFont(font);
         header.setBackground(new Color(252, 235, 131)); // 헤더 배경색 설정
+        header.setForeground(Color.black);
         header.setBorder(new LineBorder(new Color(237, 180, 81), 1));
     }
 

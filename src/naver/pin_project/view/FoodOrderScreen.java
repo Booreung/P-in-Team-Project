@@ -106,12 +106,14 @@ public class FoodOrderScreen extends JPanel {
 
                     // "+" 버튼을 생성하고, 배경색을 설정합니다.
                     JButton addButton = new JButton("+");
+                    addButton.setForeground(Color.black);
                     addButton.setBackground(Color.decode("#B0FFA9"));
                     // "+" 버튼이 눌렸을 때 수량을 1 증가시키는 리스너를 추가합니다.
                     addButton.addActionListener(new QuantityButtonListener(food, quantityLabel, new JLabel(), 1));
 
                     // "-" 버튼을 생성하고, 배경색을 설정합니다.
                     JButton subtractButton = new JButton("-");
+                    subtractButton.setForeground(Color.black);
                     subtractButton.setBackground(Color.decode("#FF66CC"));
                     // "-" 버튼이 눌렸을 때 수량을 1 감소시키는 리스너를 추가합니다.
                     subtractButton.addActionListener(new QuantityButtonListener(food, quantityLabel, new JLabel(), -1));

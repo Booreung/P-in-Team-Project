@@ -95,6 +95,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridx = 2;
         checkDuplicateButton = new JButton("중복확인");
         checkDuplicateButton.setBackground(Color.decode("#B0FFA9"));
+        checkDuplicateButton.setForeground(Color.black);
         checkDuplicateButton.setPreferredSize(new Dimension(100, 30)); // 버튼 크기 설정
         JPanel buttonpanel = new JPanel();
         buttonpanel.setBackground(Color.decode("#8A8585"));
@@ -195,6 +196,7 @@ public class SignUpScreen extends JDialog {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         sendVerificationCodeButton = new JButton("인증번호 받기");
         sendVerificationCodeButton.setBackground(Color.decode("#B0FFA9"));
+        sendVerificationCodeButton.setForeground(Color.black);
         sendVerificationCodeButton.setPreferredSize(new Dimension(100, 30)); // 버튼 크기 설정
         textFieldPanel.add(sendVerificationCodeButton, gbc);
         gbc.gridwidth = 1;
@@ -224,11 +226,13 @@ public class SignUpScreen extends JDialog {
 
         JButton signupButton = new JButton("회원가입");
         signupButton.setBackground(Color.decode("#FCEB83")); // 회원가입 버튼 색
+        signupButton.setForeground(Color.black);
         signupButton.setFont(signupButton.getFont().deriveFont(18f));
 
 
         JButton cancelButton = new JButton("취   소");
         cancelButton.setBackground(Color.decode("#8DFFF3")); // 취소 버튼 색
+        cancelButton.setForeground(Color.black);
         cancelButton.setFont(cancelButton.getFont().deriveFont(18f));
 
 

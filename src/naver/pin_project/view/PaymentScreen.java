@@ -78,7 +78,9 @@ public class PaymentScreen extends JFrame {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0)); // 새로운 그리드 레이아웃 패널 생성
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // 여백 추가
         cardPaymentButton = createButton("카드 결제", "src/naver/pin_project/lib/카드결제.png", new Color(176, 255, 169)); // 카드 결제 버튼 생성
+        cardPaymentButton.setForeground(Color.black);
         cashPaymentButton = createButton("현금 결제", "src/naver/pin_project/lib/현금결제.png", new Color(252, 235, 131)); // 현금 결제 버튼 생성
+        cashPaymentButton.setForeground(Color.black);
         buttonPanel.add(cardPaymentButton); // 카드 결제 버튼을 버튼 패널에 추가
         buttonPanel.add(cashPaymentButton); // 현금 결제 버튼을 버튼 패널에 추가
         buttonPanel.setBackground((new Color(138,133,133))); // 배경색 설정

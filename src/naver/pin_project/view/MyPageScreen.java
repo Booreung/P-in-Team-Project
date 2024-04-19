@@ -99,10 +99,12 @@ public class MyPageScreen extends JDialog {    // 필드 정의하기
         // 수정버튼 생성
         JButton update = new JButton("수정");
         update.setBackground(Color.decode("#FCEB83"));
+        update.setForeground(Color.black);
 
         // 삭제버튼 생성
         JButton delete = new JButton("삭제");
         delete.setBackground(Color.decode("#8DFFF3"));
+        delete.setForeground(Color.black);
 
         // 버튼 패널 생성
         JPanel buttonPanel = new JPanel(new FlowLayout());

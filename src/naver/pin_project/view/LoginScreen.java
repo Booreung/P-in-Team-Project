@@ -91,8 +91,11 @@ public class LoginScreen extends JPanel {
         inputPanel.setBackground(Color.decode("#8A8585"));
         buttonPanel.setBackground(Color.decode("#8A8585"));
         loginBtn.setBackground(Color.decode("#B0FFA9"));
+        loginBtn.setForeground(Color.black);
         joinBtn.setBackground(Color.decode("#FCEB83"));
+        joinBtn.setForeground(Color.black);
         nonloginBtn.setBackground(Color.decode("#8DFFF3"));
+        nonloginBtn.setForeground(Color.black);
 
 
         //로그인 버튼을 누르면 메인 키오스크 화면으로
